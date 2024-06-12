@@ -1,0 +1,125 @@
+/**
+布局
+ */
+.auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.column-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.single-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.double-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.three-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+/**
+尺寸
+ */
+.h-inherit {
+    height: inherit;
+}
+
+.w-inherit {
+    width: inherit;
+}
+
+.wh-inherit {
+    width: inherit;
+    height: inherit;
+}
+
+.font-size-95 {
+    font-size: 95%;
+}
+
+.font-size-x-small {
+    font-size: 12px;
+}
+
+.font-size-small {
+    font-size: 13px;
+}
+
+.font-size-medium {
+    font-size: 14px;
+}
+
+.font-size-p-medium {
+    font-size: 15px;
+}
+
+.font-size-large {
+    font-size: 16px;
+}
+
+.font-size-x-large {
+    font-size: 17px;
+}
+
+/**
+样式
+ */
+.title {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.stress {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ys-font {
+    font-family: ys;
+}
+
+.hm-font {
+    font-family: hm;
+}
+
+.ss-font {
+    font-family: ss;
+}
+
+.opacity-100 {
+    opacity: .9;
+}
+
+.bottom-line {
+    border-bottom: 1px solid rgb(226 232 240 / 60%);
+}
+
+.backdrop-blur-2 {
+    backdrop-filter: saturate(180%) blur(20px);
+}
+
+.hover-color:hover {
+    color: rgb(var(--z-primary-color));
+    transition: all .25s;
+}
+
+.hover-transparent:hover {
+    border-radius: 5px;
+    background-color: rgb(var(--z-gray-color));
+    transition: all .25s;
+}

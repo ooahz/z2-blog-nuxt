@@ -1,0 +1,32 @@
+/* 主题 */
+html {
+    --z-primary-color: 26, 92, 255;
+    --z-gray-color: 241, 245, 249;
+    --z-deep-color: 18, 20, 22;
+    --z-primary-deep-color: 52, 73, 94;
+    --z-fontcolor: 51, 51, 51;
+    --z-fontcolor-gray: 153, 164, 178;
+    --z-primary-fontcolor: 255, 255, 255;
+    --z-basic-input-color: 233, 237, 242;
+    --z-primary-hover-color: 197, 223, 240;
+    --z-basic-color: 255, 255, 255;
+    --z-basic-bg: 250, 250, 250;
+    --z-common-bg: 247, 248, 249;
+    --z-header-height: 60px;
+    --ahzoo-menu-shadow: 4px 4px 6px 0 rgb(0 0 0 / 10%), -4px -4px 6px rgb(255 255 255 / 100%);
+}
+
+[data-theme="dark"] {
+    --z-primary-color: 29, 65, 154;
+    --z-gray-color: 241, 245, 249;
+    --z-primary-deep-color: 18, 20, 22;
+    --z-fontcolor: 167, 177, 190;
+    --z-primary-fontcolor: 86, 132, 194;
+    --z-basic-input-color: 72, 82, 92;
+    --z-primary-hover-color: 151, 190, 242;
+    --z-basic-color: 34, 34, 34;
+    --z-basic-bg: 28, 28, 28;
+    --z-common-bg: 18, 20, 22;
+    --ahzoo-menu-shadow: 4px 4px 6px 0 rgb(48 48 48 / 10%), -4px -4px 6px rgb(66 66 66 / 100%);
+}
+

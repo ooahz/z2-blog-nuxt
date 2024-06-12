@@ -1,0 +1,71 @@
+{
+  "name": "z2blog",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Z次元——现代化Nuxt博客",
+  "author": {
+    "name": "Ahzoo(十玖八柒)",
+    "email": "ooahz@outlook.com",
+    "url": "https://github.com/ooahz",
+    "homepage": "https://ahzoo.cn"
+  },
+  "keyworkd": [
+    "ahzoo",
+    "Z次元",
+    "十玖八柒",
+    "博客",
+    "Nuxt",
+    "Vue"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "dev": "nuxt dev",
+    "lint:style": "stylelint **/*.{css,less,vue} --fix",
+    "lint:js": "eslint --ext .ts,.js,.vue .",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.3.12",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxtjs/stylelint-module": "^5.2.0",
+    "@pinia/nuxt": "^0.5.1",
+    "@types/lodash": "^4.17.1",
+    "@vitejs/plugin-vue": "^4.5.0",
+    "autoprefixer": "^10.4.17",
+    "eslint": "^8.57.0",
+    "postcss": "^8.4.33",
+    "sass": "^1.70.0",
+    "stylelint": "^16.5.0",
+    "stylelint-config-recommended-vue": "^1.5.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.4",
+    "typescript": "^5.4.5",
+    "vite": "^5.0.0",
+    "@types/prismjs": "^1.26.3",
+    "@types/qs": "^6.9.11",
+    "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@ahzoo/ouo": "^1.0.2",
+    "@ahzoo/sus": "^1.0.1",
+    "@ahzoo/utils": "^1.0.3",
+    "@heroicons/vue": "^2.1.1",
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.21",
+    "nuxt": "^3.10.0",
+    "nuxt-svgo": "^4.0.0",
+    "pinia": "^2.1.7",
+    "prismjs": "^1.29.0",
+    "qs": "^6.11.2",
+    "tailwindcss": "^3.4.1",
+    "vite-plugin-prismjs": "^0.0.11",
+    "vue": "^3.4.15"
+  }
+}
