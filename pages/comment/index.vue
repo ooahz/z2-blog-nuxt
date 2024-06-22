@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Comment from "@/components/comment/index.vue";
-import {OuOLanding, OuOTag} from "@ahzoo/ouo";
-import ColumnItem from "~/components/list/ColumnItem.vue";
+import {OuOLanding} from "@ahzoo/ouo";
 
 const comment = ref();
 
@@ -25,6 +24,6 @@ useSeoMeta({
 </template>
 <style scoped lang="scss">
 .comment-content {
-  background: rgba(var(--z-basic-bg), .7);
+  background: rgba(var(--z-common-bg), .6);
 }
 </style>

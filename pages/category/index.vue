@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {OuOLanding} from "@ahzoo/ouo";
-import type {CategoryMap} from '@/types/categoryInterface'
-import {OuOTag} from '@ahzoo/ouo';
+import type {CategoryMap} from "@/types/categoryInterface";
+import {OuOTag} from "@ahzoo/ouo";
 import type {PreviewColumn} from "@/types/columnInterface";
 import {listCategory} from "@/api/category";
 import {listColumnByCategoryId} from "@/api/column";

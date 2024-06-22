@@ -4,7 +4,7 @@ import TopComment from "@/components/sidebar/TopComment.vue";
 </script>
 
 <template>
-    <aside id="sidebar" class="w-1/3 ml-5 rounded-tr-md block mobile:hidden">
+    <aside id="sidebar" class="w-1/3 ml-9 rounded-tr-md block mobile:hidden">
       <Info/>
       <TopComment/>
     </aside>

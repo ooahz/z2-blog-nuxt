@@ -32,12 +32,12 @@ const authorInfo = new AuthorImpl();
 
   &-landing {
     margin: 30px;
-    font-size: 18px;
+    font-size: 19px;
     letter-spacing: 7px;
   }
 
   &-description {
-    font-size: 25px;
+    font-size: 27px;
     letter-spacing: 6px;
   }
 }

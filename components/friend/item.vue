@@ -25,7 +25,7 @@ defineProps({
   padding: 0 11px 13px;
   font-weight: bold;
   color: rgb(var(--z-fontcolor-gray));
-  background: rgba(var(--z-basic-bg), .6);
+  background: rgba(var(--z-global-bg), .6);
   border-radius: 10px;
   box-shadow: var(--ahzoo-menu-shadow);
 
@@ -65,7 +65,7 @@ defineProps({
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 5px solid rgb(var(--z-basic-bg));
+      border: 5px solid rgb(var(--z-global-bg));
       box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.4);
     }
   }

@@ -66,7 +66,7 @@ function goSearch(item: string) {
 }
 
 .search-container {
-  background-color: rgb(var(--z-basic-color));
+  background-color: rgb(var(--z-common-bg));
   transition: all .3s;
 
   &__input {

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import {OuOPagination} from "@ahzoo/ouo";
-import type {Article} from '@/types/articleInterface'
+import {formatDateTime, getAttribute, setAttribute, tocGenerate} from "@ahzoo/utils";
+import type {Article} from "@/types/articleInterface";
 import type {PreviewColumn} from "@/types/columnInterface";
+import type {TocInterface} from "@/types/tocInterface";
 import {AuthorImpl} from "@/types/impl/author";
 import ArticleColumn from "@/components/column/ArticleColumn.vue";
 import {getArticleDetail} from "@/api/article";
 import {useMenuStore} from "@/store/menuStore";
-import {formatDateTime, getAttribute, setAttribute, tocGenerate} from "@ahzoo/utils";
 import Prism from "prismjs";
 import {listColumnByArticleId} from "@/api/column";
 import {useArticleStore} from "@/store/articleStore";
-import type {TocInterface} from "@/types/tocInterface";
 
 const {path} = useRoute();
 const menuState = useMenuStore();
@@ -18,7 +18,7 @@ const articleStore = useArticleStore();
 
 // 配置菜单
 menuState.setWithComment();
-
+const {$viewport} = useNuxtApp();
 const article = reactive<Article>({} as Article);
 const columnList = reactive<Array<PreviewColumn>>([]);
 const articleTocList = ref<TocInterface[]>([]);
@@ -31,12 +31,6 @@ const articlePath = <string>path.split("/").pop();
  */
 await getArticleByPath(articlePath);
 await getColumnByArticleId(article.id);
-
-function scrollTo(id: string) {
-  document.querySelector(id)?.scrollIntoView({
-    behavior: "smooth"
-  });
-}
 
 function initToc() {
   articleTocList.value = tocGenerate("#article-content");
@@ -109,12 +103,12 @@ onUnmounted(() => {
     <div v-if="!article.title" id="show" class="w-full h-full">
       <Loading/>
     </div>
-    <div v-else class="article__mask relative">
+    <div v-else class="article__mask relative h-[60vh] mobile:h-[280px]">
       <div class="article-cover h-full absolute">
         <img :src="article.thumbnail" alt="">
       </div>
       <div class="article__info w-full h-full absolute t-0 flex flex-col justify-center">
-        <div class="article__info-title font-semibold leading-loose mobile:text-base">
+        <div class="article__info-title font-semibold leading-loose text-5xl mobile:text-2xl">
           {{ article.title }}
         </div>
         <div class="font-size-small flex flex-col">
@@ -128,7 +122,8 @@ onUnmounted(() => {
           </span>
         </div>
       </div>
-      <svg class="article-waves w-full absolute bottom-0" xmlns="http://www.w3.org/2000/svg"
+      <svg v-if="$viewport.isGreaterThan('mobileMedium')"
+           class="article-waves w-full absolute bottom-0" xmlns="http://www.w3.org/2000/svg"
            xmlns:xlink="http://www.w3.org/1999/xlink"
            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
         <defs>
@@ -142,15 +137,15 @@ onUnmounted(() => {
         </g>
       </svg>
     </div>
-    <div class="article__container flex justify-end w-full p-5 mb-5">
-      <div class="article__content px-5">
-        <div id="article-content" class="article-content w-full rounded-t-xl leading-loose mobile:w-full"
+    <div class="article__container flex justify-end w-full p-5 mb-5 mobile:p-0">
+      <div class="article__content px-5 w-full">
+        <div id="article-content" class="article-content w-full rounded-t-xl leading-loose"
              v-html="article.content">
         </div>
         <div class="copyright my-5 p-5 rounded-b-xl">
           <p v-html="authorInfo.copyright"></p>
         </div>
-        <div class="column-list flex flex-col">
+        <div class="column-list flex flex-col overflow-hidden relative">
           <ArticleColumn
               v-show="index===nowIndex"
               v-for="(column, index) in columnList"
@@ -185,12 +180,11 @@ onUnmounted(() => {
 
 .article-content,
 .copyright {
-  background-color: rgb(var(--z-basic-bg));
+  background-color: rgb(var(--z-common-bg));
 }
 
 .article {
   &__mask {
-    height: 60vh;
     min-height: 390px;
     max-height: 450px;
     overflow: hidden;
@@ -211,8 +205,6 @@ onUnmounted(() => {
   }
 
   &__content {
-    width: 72%;
-
     .article-content {
       padding: 18px 25px;
       min-height: 50vh;
@@ -245,10 +237,6 @@ onUnmounted(() => {
     color: white;
     padding: 0 57px;
     background: rgba(48, 48, 115, .3);
-
-    &-title {
-      font-size: 3rem;
-    }
   }
 }
 
@@ -297,6 +285,26 @@ onUnmounted(() => {
 </style>
 
 <style lang="scss">
+
+.article__content {
+  a {
+    padding: 0 3px;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px dotted rgba(var(--z-fontcolor-gray), 1);
+    border-radius: 3px 3px 0 0;
+    transition: all .2s;
+
+    &:hover {
+      padding: 1px 3px;
+      color: rgb(var(--z-basic-color));
+      background: rgba(var(--z-primary-color), .7);
+      border-width: 0;
+      border-radius: 3px;
+    }
+  }
+}
+
 .comment {
   &-head {
     height: 7px;

@@ -26,15 +26,15 @@ function openSearch() {
 <template>
   <Search/>
   <div id="nav"
-       class="ss-font stress bottom-line-1 fixed flex items-center justify-center rounded-b-xl">
-    <div class="left hover-color absolute left-7 cursor-pointer" @click="back2Home()">Z次元</div>
+       class="ss-font stress bottom-line-1 fixed flex items-center justify-center top-0 rounded-b-xl">
+    <div class="left hover-shadow absolute left-7 cursor-pointer" @click="back2Home()">Z次元</div>
     <div class="center items-center cursor-pointer">
-      <span class="center__item hover-color mr-8" @click="skip('category')">分 类</span>
-      <span class="center__item hover-color mr-8" @click="skip('comment')">留 言</span>
-      <span class="center__item hover-color" @click="skip('friends')">友 链</span>
+      <span class="center__item hover-shadow mr-8" @click="skip('category')">分 类</span>
+      <span class="center__item hover-shadow mr-8" @click="skip('comment')">留 言</span>
+      <span class="center__item hover-shadow" @click="skip('friends')">友 链</span>
     </div>
     <div class="right cursor-pointer absolute right-7">
-      <span class="normal-svg right__item hover-color"><MagnifyingGlassIcon @click="openSearch()"/></span>
+      <span class="normal-svg right__item hover-shadow"><MagnifyingGlassIcon @click="openSearch()"/></span>
     </div>
   </div>
 </template>
@@ -51,7 +51,7 @@ function openSearch() {
 }
 
 [scroll="scroll"] #nav {
-  background-color: rgba(var(--z-basic-color), .8);
+  background-color: rgba(var(--z-common-bg), .8);
   backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(102, 102, 102, .05);
 }

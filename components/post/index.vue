@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import type {Article, PreviewArticle} from "@/types/articleInterface"
+import type {PreviewArticle} from "@/types/articleInterface"
 import {OuOPagination, OuOTag} from "@ahzoo/ouo";
 import {useMenuStore} from "@/store/menuStore";
 import {listArticle} from "@/api/article";
 import ArticleItem from "@/components/list/ArticleItem.vue";
-import {useArticleStore} from "@/store/articleStore";
 import type {Page} from "@/types/resultInterface";
 
-const articleStore = useArticleStore();
 const menuState = useMenuStore();
 
 const articleList = ref<PreviewArticle[]>([]);
@@ -25,11 +23,6 @@ async function getArticleList(pagination: number) {
     page.value = result.page;
     totalPage.value = Math.floor(Number.parseInt(pageRes.total) / pageRes.size) + 1;
   }
-}
-
-function showDetail(article: Article) {
-  articleStore.setArticlePath(article.path);
-  navigateTo(`/p/${article.path}`);
 }
 
 function switchPage(pagination: any) {
@@ -58,7 +51,7 @@ onMounted(() => {
     </div>
     <div class="grid auto-grid gap-9 gap-y-7 pc:gap-5 screen">
       <div v-for="article in articleList">
-        <ArticleItem :article="article" @click="showDetail(article)"/>
+        <ArticleItem :article="article"/>
       </div>
     </div>
     <div class="pagination flex justify-center w-full mt-4">
@@ -69,7 +62,7 @@ onMounted(() => {
 
 <style lang="scss">
 #post {
-  padding: 10px 5vw;
+  padding: 10px 8vw;
 }
 
 .pagination {

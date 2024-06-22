@@ -43,7 +43,7 @@ onMounted(() => {
   padding: 1.25rem;
   border-radius: 0.75rem;
   opacity: .5;
-  background-color: rgba(var(--z-basic-color), .6);
+  background-color: rgba(var(--z-common-bg), .6);
   transition: all 0.3s;
 
   &:hover {

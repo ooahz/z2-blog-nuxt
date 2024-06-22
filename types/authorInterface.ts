@@ -1,5 +1,6 @@
 export interface AuthorInterface {
     name: string;
+    enName?: string;
     siteName: string;
     website: string;
     avatar: string;

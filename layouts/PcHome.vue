@@ -8,7 +8,7 @@ onMounted(()=>{
 
 onBeforeUnmount(()=>{
   const primary = document.getElementById("primary");
-  primary!.style.backgroundColor = "rgba(var(--z-common-bg), .7)";
+  primary!.style.backgroundColor = "rgba(var(--z-global-bg), .7)";
 })
 </script>
 

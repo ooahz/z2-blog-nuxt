@@ -1,8 +1,6 @@
 import prismjs from "vite-plugin-prismjs"
 
 export default defineNuxtConfig({
-    future: undefined,
-    ignore: undefined,
     app: {
         head: {
             title: "Z次元",
@@ -12,8 +10,8 @@ export default defineNuxtConfig({
             meta: [
                 {name: "keywords", content: "Z次元,十玖八柒"},
                 {name: "description", content: "Z次元 - 一个收藏回忆与分享技术的地方"},
-                { charset: "utf-8" },
-                { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" }
+                {charset: "utf-8"},
+                {name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover"}
             ],
             link: [
                 {
@@ -35,6 +33,7 @@ export default defineNuxtConfig({
     modules: [
         "@pinia/nuxt",
         "nuxt-svgo",
+        "nuxt-viewport",
         // "@nuxtjs/stylelint-module",
     ],
     svgo: {

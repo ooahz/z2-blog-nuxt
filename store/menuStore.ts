@@ -4,13 +4,16 @@ import type {Menu} from "@/types/menuInterface";
 export const useMenuStore = defineStore("menuStoreId", {
     state: () => {
         return {
-            menu: [{} as Menu]
+            menu: [{
+                title: "置顶",
+                icon: "ArrowUpCircleIcon"
+            }, {
+                title: "主题",
+                icon: "SparklesIcon"
+            } as Menu]
         }
     },
     actions: {
-        setMenu(menu: Menu[]) {
-            this.menu = menu
-        },
         setWithComment() {
             this.menu = [
                 {

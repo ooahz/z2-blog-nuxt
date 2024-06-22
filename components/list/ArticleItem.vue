@@ -10,10 +10,15 @@ defineProps({
     required: true
   },
 });
+
+function showArticleDetail(article: PreviewArticle) {
+  navigateTo(`/p/${article.path}`);
+}
 </script>
 
 <template>
-  <div class="article-item relative rounded-xl">
+  <div class="article-item block relative rounded-xl"
+     @click="showArticleDetail(article)">
     <div class="mask">
       <div class="w-full h-full px-5 relative">
         <img :src="article.thumbnail" class="cover rounded-t-2xl opacity-90" alt="">
@@ -32,7 +37,6 @@ defineProps({
         <div class="label-category-item backdrop-blur-2 rounded-full ml-1"
              v-for="column in article.columnList">
             {{ column.name }}
-
         </div>
       </div>
     </div>
@@ -54,7 +58,7 @@ defineProps({
   width: 100%;
   height: 260px;
   padding-top: 20px;
-  background-color: rgb(var(--z-basic-color));
+  background-color: rgb(var(--z-common-bg));
 
   &:hover {
     .article-info {
@@ -87,7 +91,7 @@ defineProps({
   min-height: 90px;
   padding: 20px;
   bottom: 0;
-  background-color: rgba(var(--z-basic-color), .7);
+  background-color: rgba(var(--z-common-bg), .7);
 }
 
 .article-date {
@@ -96,7 +100,7 @@ defineProps({
   padding: 3px 5px;
   font-size: 80%;
   opacity: .7;
-  background: linear-gradient(to top, rgba(var(--z-primary-deep-color), 70%) 0, rgba(var(--z-primary-deep-color), 20%) 3rem, rgba(var(--z-primary-deep-color), 10%) 4rem, #fff0);
+  background: linear-gradient(to top, rgba(var(--z-deep-color), 55%) 0, rgba(var(--z-deep-color), 20%) 3rem, rgba(var(--z-deep-color), 10%) 4rem, #fff0);
   color: rgb(var(--z-primary-fontcolor));
 }
 

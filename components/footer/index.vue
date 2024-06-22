@@ -2,15 +2,29 @@
 import {AuthorImpl} from "@/types/impl/author";
 
 const authorInfo = new AuthorImpl();
+
 </script>
 <template>
-    <footer class="ss-font rounded-t-lg flex items-center">{{ authorInfo.footer}}</footer>
+  <footer class="font-size-small rounded-t-lg w-full mt-7">
+    <div class="footer-container flex justify-between w-full">
+      <ul class="text-left">
+        <li>
+          {{ authorInfo.footer }} By {{ authorInfo.name + "(" + authorInfo.enName + ")" }} 版权所有
+        </li>
+      </ul>
+      <ul class="text-right">
+        <li>
+          {{ authorInfo.icp }}
+        </li>
+      </ul>
+    </div>
+  </footer>
 </template>
 
 <style scoped lang="scss">
-footer{
-  height: 52px;
-  padding: 0 30px;
-  background-color: rgba(var(--z-basic-color), .8);
+footer {
+  padding: 25px 6vw;
+  background: linear-gradient(to top, rgba(var(--z-global-bg), 70%) 3rem, rgba(var(--z-global-bg), 50%) 4rem, rgba(var(--z-global-bg), 30%));
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(var(--z-common-bg), .5);
 }
 </style>

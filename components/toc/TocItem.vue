@@ -38,7 +38,7 @@ function scrollToTitle() {
 </script>
 
 <template>
-  <div class="toc-list-item py-0.5"
+  <div class="toc-list-item py-0.5 cursor-pointer"
        :class="[toc.className, articleStore.selectTitle===toc.id?'active':'']"
        @click="scrollToTitle"
   >

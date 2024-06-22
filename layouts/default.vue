@@ -1,25 +1,15 @@
 <script setup lang="ts">
 import "@/static/css/style.scss";
-import {useStyleStore} from "@/store/styleStore";
 import _ from "lodash";
 import "@ahzoo/ouo/style.css";
 import "font-awesome/css/font-awesome.css"
 import {scrollSetToc, setAttribute} from "@ahzoo/utils";
 import {useArticleStore} from "@/store/articleStore";
 
-const store = useStyleStore();
+const {$viewport} = useNuxtApp();
 const articleStore = useArticleStore();
 
 const latestIndex = ref(0);
-
-let resizeChange = _.throttle(() => {
-  // 判断是否是 pc 或者 移动端
-  if (document.documentElement.clientWidth > 767) {
-    store.setDevice("pc");
-  } else {
-    store.setDevice("m");
-  }
-}, 500)
 
 // 滚动时定位Toc位置
 function scrollHandlerSetToc(scrollTop: number) {
@@ -64,14 +54,13 @@ function scrollHandler() {
 
 onMounted(() => {
   if (process.client) {
-    scrollHandler();
-    window.addEventListener("resize", resizeChange, false);
+    if ($viewport.isLessThan('tablet')) {
+      setAttribute("scroll", "scroll");
+    } else {
+      scrollHandler();
+    }
   }
 });
-
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", resizeChange, false);
-})
 </script>
 <template>
   <NuxtLoadingIndicator/>
@@ -92,6 +81,6 @@ onBeforeUnmount(() => {
 
 #primary {
   --z-bg: linear-gradient(to top right, rgba(var(--z-primary-color)), rgba(var(--z-primary-color), .8), rgba(var(--z-primary-color), .5) 150%);
-  background-color: rgba(var(--z-common-bg), .7);
+  background-color: rgba(var(--z-global-bg), .7);
 }
 </style>

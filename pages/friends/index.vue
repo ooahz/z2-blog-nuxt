@@ -54,7 +54,7 @@ useSeoMeta({
 <style scoped lang="scss">
 .friend {
   &-content {
-    background: rgba(var(--z-basic-bg), .7);
+    background: rgba(var(--z-common-bg), .6);
   }
 
   &-list {

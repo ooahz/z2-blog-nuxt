@@ -49,7 +49,7 @@ defineProps({
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(var(--z-basic-color), 1) 50px, rgba(var(--z-basic-color), 0.7), rgba(var(--z-basic-color), 0.3), rgba(var(--z-basic-color), 0.1) 40%);
+    background: linear-gradient(to top, rgba(var(--z-common-bg), 1) 50px, rgba(var(--z-common-bg), 0.7), rgba(var(--z-common-bg), 0.3), rgba(var(--z-common-bg), 0.1) 40%);
   }
 
   &-info {

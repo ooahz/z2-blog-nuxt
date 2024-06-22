@@ -1,0 +1,7 @@
+[class*="sus-"] {
+    --sus-basic-input-bg: var(--z-select-bg) !important;
+    --sus-item-bg: var(--z-select-bg) !important;
+    --sus-font-color: var(--z-fontcolor) !important;
+    --sus-basic-color: var(--z-common-bg) !important;
+
+}

@@ -23,5 +23,5 @@ logs
 .env.*
 !.env.example
 
-package-lock.json
+pnpm-lock.yaml
 .stylelintcache

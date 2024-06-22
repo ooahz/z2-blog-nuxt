@@ -3,7 +3,7 @@
  */
 .auto-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .column-grid {
@@ -118,8 +118,14 @@
     transition: all .25s;
 }
 
+.hover-shadow:hover {
+    color: rgb(var(--z-primary-color));
+    text-shadow: 0 2px 16px rgba(var(--z-primary-color), .5);
+    transition: all .25s;
+}
+
 .hover-transparent:hover {
     border-radius: 5px;
-    background-color: rgb(var(--z-gray-color));
+    background-color: rgb(var(--z-select-bg));
     transition: all .25s;
 }

@@ -6,8 +6,9 @@
     <Post/>
   </main>
 </template>
+
 <style lang="scss" scoped>
-#main{
+#main {
   margin-top: var(--z-header-height);
 }
 </style>

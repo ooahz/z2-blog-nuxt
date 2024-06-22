@@ -15,10 +15,6 @@ const showLoading = ref(false);
  */
 await searchArticleList(searchStore.keyword, 1);
 
-function showDetail(article: PreviewArticle) {
-  navigateTo(`/p/${article.path}`);
-}
-
 async function searchArticleList(keyword: string, pagination: number) {
   if (!searchStore.keyword) {
     goBack();
@@ -73,7 +69,7 @@ useSeoMeta({
           什么也没有搜索到（⊙ｏ⊙）
         </div>
         <div v-for="article in searchList">
-          <ArticleItem :article="article" @click="showDetail(article)"/>
+          <ArticleItem :article="article"/>
         </div>
       </div>
     </div>
