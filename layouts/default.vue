@@ -2,12 +2,14 @@
 import "@/static/css/style.scss";
 import _ from "lodash";
 import "@ahzoo/ouo/style.css";
-import "font-awesome/css/font-awesome.css"
+import "font-awesome/css/font-awesome.css";
 import {scrollSetToc, setAttribute} from "@ahzoo/utils";
 import {useArticleStore} from "@/store/articleStore";
+import SidebarMobile from "@/components/sidebar/mobile.vue";
 
 const {$viewport} = useNuxtApp();
 const articleStore = useArticleStore();
+const show = ref(false);
 
 const latestIndex = ref(0);
 
@@ -27,10 +29,11 @@ function scrollHandlerSetToc(scrollTop: number) {
 
 function scrollHandler() {
   try {
-    const primary = document.getElementById("primary");
+    const primary = document.getElementById("ahzoo");
     primary!.onscroll = (_.throttle(() => {
       const article = document.getElementById("article");
       const column = document.getElementById("column-info");
+      const landing = document.getElementById("landing");
 
       // 滚动条向下
       if (primary!.scrollTop > 30 || document.documentElement.scrollTop > 30) {
@@ -40,7 +43,7 @@ function scrollHandler() {
         setAttribute("scroll", "scroll");
       } else {
         // 滚动到顶部
-        if (article || column) {
+        if (article || column || landing) {
           setAttribute("scroll", "primary");
         } else {
           setAttribute("scroll", "top");
@@ -54,7 +57,8 @@ function scrollHandler() {
 
 onMounted(() => {
   if (process.client) {
-    if ($viewport.isLessThan('tablet')) {
+    show.value = true;
+    if ($viewport.isLessThan("mobile")) {
       setAttribute("scroll", "scroll");
     } else {
       scrollHandler();
@@ -64,9 +68,10 @@ onMounted(() => {
 </script>
 <template>
   <NuxtLoadingIndicator/>
-  <div id="basic" class="hm-font font-size-medium w-full h-screen flex flex-col relative">
-    <div id="primary" class="w-full overflow-y-scroll">
+  <div v-show="show" id="basic" class="hm-font font-size-medium w-full h-screen flex flex-col relative">
+    <div id="ahzoo" class="relative w-full overflow-y-scroll">
       <NuxtPage/>
+      <SidebarMobile/>
       <Footer/>
     </div>
     <Menu/>
@@ -79,8 +84,8 @@ onMounted(() => {
   transition: all .3s;
 }
 
-#primary {
+#ahzoo {
   --z-bg: linear-gradient(to top right, rgba(var(--z-primary-color)), rgba(var(--z-primary-color), .8), rgba(var(--z-primary-color), .5) 150%);
-  background-color: rgba(var(--z-global-bg), .7);
+  background-color: rgba(var(--z-global-bg), .85);
 }
 </style>

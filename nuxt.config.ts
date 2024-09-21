@@ -1,6 +1,17 @@
-import prismjs from "vite-plugin-prismjs"
+import prismjs from "vite-plugin-prismjs";
 
 export default defineNuxtConfig({
+    viewport: {
+        breakpoints: {
+            xs: 420,
+            sm: 640,
+            lg: 780
+        }
+    },
+    // site: {
+    //     url: "https://blog.ahzoo.cn",
+    //     name: "Z次元",
+    // },
     app: {
         head: {
             title: "Z次元",
@@ -20,15 +31,15 @@ export default defineNuxtConfig({
                     media: "all",
                     onload: "this.media='all'"
                 }
-            ],
+            ]
         }
     },
     devtools: {enabled: true},
     postcss: {
         plugins: {
             tailwindcss: {},
-            autoprefixer: {},
-        },
+            autoprefixer: {}
+        }
     },
     modules: [
         "@pinia/nuxt",
@@ -76,6 +87,6 @@ export default defineNuxtConfig({
             watch: {
                 usePolling: true
             }
-        },
+        }
     }
 })

@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import {AuthorImpl} from "@/types/impl/author";
 import Github from "@/static/svg/github.svg";
 import {EnvelopeIcon} from "@heroicons/vue/24/solid";
+import {useAuthorStore} from "@/store/authorStore";
 
-const authorInfo = new AuthorImpl();
+const authorStore = useAuthorStore();
+const authorInfo = authorStore.getAuthorInfo();
+
 </script>
 <template>
   <div class="author-info box w-full flex flex-col justify-center">
@@ -17,19 +19,18 @@ const authorInfo = new AuthorImpl();
       </div>
       <div class="author-info__social">
         <a class="author-info__social-svg"
-           :href="authorInfo.github">
+           :href="authorInfo.extendsParams.github">
           <Github/>
         </a>
         <a class="author-info__social-svg"
            :href="'mailto:'+ authorInfo.email">
-          <EnvelopeIcon class="p-[1px]"/>
+          <EnvelopeIcon class="p-[2px]"/>
         </a>
       </div>
     </div>
   </div>
-
 </template>
-<style scoped lang="scss">
+<style lang="scss">
 .author-info {
   &__avatar {
     width: 77px;

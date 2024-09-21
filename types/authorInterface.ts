@@ -1,12 +1,19 @@
 export interface AuthorInterface {
+    readonly id: string;
     name: string;
-    enName?: string;
     siteName: string;
     website: string;
     avatar: string;
-    description?: string;
-    saying?: string;
-    github?: string;
-    email?: string;
-    copyright?: string;
+    description: string;
+    email: string;
+    extendsParams: Extends;
+}
+
+interface Extends {
+    landingImg: string
+    github: string;
+    footer: string;
+    copyright: string;
+    icp: string;
+    icpLink: string;
 }

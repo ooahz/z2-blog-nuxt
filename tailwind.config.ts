@@ -6,7 +6,7 @@ module.exports = {
         "./layouts/**/*.vue",
         "./pages/**/*.vue",
         "./plugins/**/*.{js,ts}",
-        "./nuxt.config.{js,ts}",
+        "./nuxt.config.{js,ts}"
     ],
     theme: {
         textColor: {
@@ -14,13 +14,13 @@ module.exports = {
             secondary: "#ffed4a",
             danger: "#e3342f",
             whitesmoke: "#f5f5f5",
-            aliceblue: "#f0f8ff",
+            aliceblue: "#f0f8ff"
         },
         screens: {
             mobile: {max: "639px"},
             pad: {min: "640px", max: "767px"},
-            pc: {min: "768px", max: "1200px"},
-            screen: {min: "1201px"},
+            pc: {min: "768px", max: "1280px"},
+            screen: {min: "1281px"}
         },
         borderRadius: {
             sm: "0.125rem",
@@ -31,10 +31,10 @@ module.exports = {
             "2xl": "1rem",
             "3xl": "1.5rem",
             "4xl": "2rem",
-            full: "9999px",
-        },
+            full: "9999px"
+        }
     },
     plugins: [],
     // media:跟随系统（win10在个性化-颜色-选择默认应用模式  中修改）   class:手动通过事件改变
-    darkMode: "class", // or "media" or "class"
+    darkMode: "class" // or "media" or "class"
 };

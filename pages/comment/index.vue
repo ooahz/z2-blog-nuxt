@@ -16,10 +16,11 @@ useSeoMeta({
   </div>
   <OuOLanding/>
   <div id="main" class="page flex">
-    <div class="comment-content w-full h-screen p-5 rounded-lg">
+    <div class="comment-content w-full h-screen p-5 mt-5 rounded-lg">
       <Comment/>
     </div>
-    <Sidebar/>
+    <Sidebar class="w-1/3 mt-5"
+             v-if="!$viewport.isLessThan('sm')"/>
   </div>
 </template>
 <style scoped lang="scss">

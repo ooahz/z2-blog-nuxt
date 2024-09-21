@@ -1,4 +1,4 @@
-import {defineStore} from "pinia"
+import {defineStore} from "pinia";
 import type {Menu} from "@/types/menuInterface";
 
 export const useMenuStore = defineStore("menuStoreId", {
@@ -11,7 +11,7 @@ export const useMenuStore = defineStore("menuStoreId", {
                 title: "主题",
                 icon: "SparklesIcon"
             } as Menu]
-        }
+        };
     },
     actions: {
         setWithComment() {
@@ -39,5 +39,5 @@ export const useMenuStore = defineStore("menuStoreId", {
                 }
             ]
         }
-    },
+    }
 })

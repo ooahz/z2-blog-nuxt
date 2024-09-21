@@ -2,6 +2,8 @@ Z次元博客
 
 个人主页：https://ahzoo.cn
 
+博客地址：https://blog.ahzoo.cn
+
 Github：（十玖八柒）https://github.com/ooahz
 
 ## Star
@@ -9,18 +11,20 @@ Github：（十玖八柒）https://github.com/ooahz
 喜欢此项目的点点仓库的star吧！
 开源版本后续更新频率取决于star数量（关注度），没人关注的话后续就随缘更新了
 
+
+## 项目预览
+
+![](https://s.ahzoo.cn/img/24/open/ob10016.webp)
+![](https://s.ahzoo.cn/img/24/open/ob10005.webp)
+![](https://s.ahzoo.cn/img/24/open/ob10008.webp)
+![](https://s.ahzoo.cn/img/24/open/ob10013.webp)
+![](https://s.ahzoo.cn/img/24/open/ob10010.webp)
+
+
 ## 项目技术栈
 
-前端主要技术栈：
-Vue3、Nuxt3、Vite、Pinia、TypeScript、Tailwind CSS、SCSS
-
-后端主要技术栈：
-JDK21、SpringCloud Alibaba 2023.0.0 全家桶、SpringBoot 3+、Mybatis Plus、Mysql、Redis、ElasticSearch 8+
-
-## 项目运行必要工具
-
-运行项目前，请确认是否已启动下面的工具：
-Redis、MySQL、Elasticsearch 8+、Nacos 2.3.0
+主要技术栈：
+Vue3、Nuxt3、Vite、Pinia、TypeScript、Tailwind、SCSS
 
 ## 项目运行测试
 
@@ -51,3 +55,11 @@ pnpm build
 ```shell
 node index.mjs
 ```
+
+## 赞助支持
+
+本项目免费开源，因此没有任何收益。若您觉得本项目对您有帮助，您的赞助支持将是我最大的动力。
+
+|                       微信                       |                      支付宝                       |
+| :----------------------------------------------: | :-----------------------------------------------: |
+| <img src="https://s.ahzoo.cn/mine/wechat.png" width="200" /> | <img src="https://s.ahzoo.cn/mine/alipay.png" width="200" /> |

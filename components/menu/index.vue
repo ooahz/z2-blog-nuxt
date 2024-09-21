@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {useMenuStore} from "@/store/menuStore";
 import {ArrowUpCircleIcon, ChatBubbleOvalLeftEllipsisIcon, SparklesIcon} from "@heroicons/vue/24/solid";
-import {switchTheme} from "@/utils/utils";
+import {switchTheme} from "@ahzoo/utils";
 import type {Menu} from "@/types/menuInterface";
 
 /**
@@ -43,21 +43,23 @@ function clickMenu(menuItem: Menu) {
     <div class="menu-container relative flex items-center" :class="active?'active':''">
       <ul class="menu-button-list backdrop-blur-2 -mr-3 -mt-11">
         <li class="menu-button-list-item" v-for="menuItem in menuState.menu" @click="clickMenu(menuItem)">
-          <span :title="menuItem.title" class="normal-svg"><component :is="menuMap.get(menuItem.icon)"/></span>
+          <span :title="menuItem.title" class="normal-svg">
+            <component :is="menuMap.get(menuItem.icon)"/>
+          </span>
         </li>
       </ul>
       <button class="menu-button w-10 h-10 flex items-center justify-center" @click="active=!active">
         <span class="menu-icon-wrapper w-3.5 h-3.5 flex flex-col justify-between">
-          <span class="menu-icon-line half first"></span>
-          <span class="menu-icon-line"></span>
-          <span class="menu-icon-line half last"></span>
+          <span class="menu-icon-line half first"/>
+          <span class="menu-icon-line"/>
+          <span class="menu-icon-line half last"/>
         </span>
       </button>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 $menu-icon-transition: transform 300ms cubic-bezier(0.52, -0.80, 0.52, 0.52);
 
 #menu {
@@ -81,6 +83,7 @@ $menu-icon-transition: transform 300ms cubic-bezier(0.52, -0.80, 0.52, 0.52);
   &.active {
     .menu-button-list {
       opacity: 1;
+      width: auto;
       transform: scale(1);
     }
 
@@ -136,12 +139,13 @@ $menu-icon-transition: transform 300ms cubic-bezier(0.52, -0.80, 0.52, 0.52);
     background-color: rgba(var(--z-common-bg), .7);
     box-shadow: 0 10px 20px -10px rgba(var(--z-primary-color), .1);
     opacity: 0;
+    width: 0;
     display: flex;
     border-radius: 8px;
     list-style-type: none;
     transform: scale(0);
     transform-origin: bottom right;
-    transition: all .3s ease .1s;
+    transition: transform .3s ease .1s;
   }
 
   &-list-item {

@@ -2,12 +2,12 @@
 import {OuOLanding} from "@ahzoo/ouo";
 
 onMounted(()=>{
-  const primary = document.getElementById("primary");
+  const primary = document.getElementById("ahzoo");
   primary!.style.backgroundColor = "transparent";
 })
 
 onBeforeUnmount(()=>{
-  const primary = document.getElementById("primary");
+  const primary = document.getElementById("ahzoo");
   primary!.style.backgroundColor = "rgba(var(--z-global-bg), .7)";
 })
 </script>

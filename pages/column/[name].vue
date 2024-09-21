@@ -2,16 +2,17 @@
 import {getColumnInfo} from "@/api/column";
 import {listArticleByColumnId} from "@/api/article";
 import type {Article} from "@/types/articleInterface";
-import type {WebInfoInterface} from "@/types/webInfoInterface";
+import type {PageInfoInterface} from "@/types/pageInfoInterface";
 import type {PreviewColumn} from "@/types/columnInterface";
 import CategoryItem from "@/components/list/CategoryItem.vue";
 import ArticleItem from "@/components/list/ArticleItem.vue";
 import {getAttribute, setAttribute} from "@ahzoo/utils";
+import PageScreen from "@/components/page/screen.vue"
 
 const {path} = useRoute();
 
 const articleList = ref<Article[]>([]);
-const columnInfo = reactive<WebInfoInterface>({
+const columnInfo = reactive<PageInfoInterface>({
   title: ""
 });
 const previewColumn = ref<PreviewColumn>();
@@ -37,8 +38,10 @@ async function getArticleListByColumnId(columnId: string, pagination: number) {
 
 function initStyle() {
   const attribute = getAttribute("scroll");
-  if (attribute !== "scroll") {
+  if (attribute !== "scroll" && columnInfo.thumbnail) {
     setAttribute("scroll", "primary");
+  } else if (!columnInfo.thumbnail) {
+    setAttribute("scroll", "top");
   }
 }
 
@@ -56,20 +59,33 @@ onMounted(() => {
   <div class="w-full">
     <Header/>
   </div>
-  <div id="column-info" class="mb-2">
-    <Landing :landing="columnInfo">
+  <div v-if="columnInfo.thumbnail&&!$viewport.isLessThan('sm')"
+       id="column-info" class="mb-2">
+    <PageScreen :landing="columnInfo">
       <CategoryItem v-for="category in previewColumn?.categoryList"
                     :category="category" :style="columnInfo.style"/>
-    </Landing>
+    </PageScreen>
   </div>
   <div id="main" class="page flex">
     <div class="page-content w-full">
+      <div v-if="!columnInfo.thumbnail||$viewport.isLessThan('sm')">
+        <div class="page-header box flex-col relative rounded-xl my-5 overflow-hidden">
+          <div class="title mb-3 mx-3">{{ columnInfo.title }}</div>
+          <div class="mb-1 mx-3">所属分类：
+            <span class="tag-item" v-for="category in previewColumn?.categoryList">{{ category.name }}</span>
+          </div>
+          <div v-if="columnInfo.thumbnail" class="column-item-thumbnail h-full w-20">
+            <img :src="columnInfo.thumbnail" class="cover rounded-md" alt="">
+          </div>
+        </div>
+      </div>
       <div class="grid auto-grid gap-7 gap-y-5 pc:gap-5">
         <div v-for="article in articleList">
           <ArticleItem :article="article"/>
         </div>
       </div>
     </div>
-    <Sidebar/>
+    <Sidebar class="w-1/3"
+             v-if="!$viewport.isLessThan('sm')"/>
   </div>
 </template>

@@ -2,14 +2,14 @@
 import {type PropType} from "vue";
 import type {PreviewArticle} from "@/types/articleInterface";
 import {formatDateTime} from "@ahzoo/utils";
-import {ChevronRightIcon} from "@heroicons/vue/24/solid"
+import {ChevronRightIcon} from "@heroicons/vue/24/solid";
 
 defineProps({
   index: Number,
   article: {
     type: Object as PropType<PreviewArticle>,
     required: true
-  },
+  }
 });
 </script>
 

@@ -1,4 +1,4 @@
-import {useDefaultRequest} from "@/utils/request";
+import {useDefaultRequest} from "@/api/request";
 import type {PreviewArticle} from "@/types/articleInterface";
 
 const BASE_URL = "/blog/v1/search";

@@ -7,7 +7,7 @@ const props = defineProps({
   toc: {
     type: Object as PropType<TocInterface>,
     required: true
-  },
+  }
 });
 
 const articleStore = useArticleStore();
@@ -27,12 +27,12 @@ function scrollToTitle() {
     }, 500);
   }
 
-  const container = document.querySelector("#primary");
+  const container = document.querySelector("#ahzoo");
   container?.addEventListener("scroll", handleScroll);
-  articleStore.setSelectTitle(props.toc.id)
+  articleStore.setSelectTitle(props.toc.id);
   document.querySelector("#" + props.toc.id)?.scrollIntoView({
-    behavior: "smooth",
-  })
+    behavior: "smooth"
+  });
 
 }
 </script>

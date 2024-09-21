@@ -1,4 +1,4 @@
-import {defineStore} from "pinia"
+import {defineStore} from "pinia";
 
 export const useSearchStore = defineStore("searchStoreId", {
     state: () => {
@@ -6,7 +6,7 @@ export const useSearchStore = defineStore("searchStoreId", {
             type: "all",
             keyword: "",
             marking: ""
-        }
+        };
     },
     actions: {
         init(keyword: string, type: string) {
@@ -16,5 +16,5 @@ export const useSearchStore = defineStore("searchStoreId", {
         setMarking(keyword: string) {
             this.marking = keyword;
         }
-    },
+    }
 })

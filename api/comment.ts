@@ -1,4 +1,4 @@
-import {useDefaultRequest} from "@/utils/request";
+import {useDefaultRequest} from "@/api/request";
 import type {CommentItem, TopCommentItem, Comment} from "@/types/commentInterface";
 
 const BASE_URL = "/comment/v1/comments";
@@ -6,7 +6,7 @@ const BASE_URL = "/comment/v1/comments";
 export function listComment(path: string, pagination: number): Promise<CommentItem[]> {
     const params = {
         p: pagination
-    }
+    };
     return useDefaultRequest.get<CommentItem[]>(BASE_URL + `/${path}`, params);
 }
 

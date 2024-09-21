@@ -126,6 +126,6 @@
 
 .hover-transparent:hover {
     border-radius: 5px;
-    background-color: rgb(var(--z-select-bg));
+    background-color: rgba(var(--z-select-bg), .5);
     transition: all .25s;
 }

@@ -19,9 +19,9 @@ logs
 .idea
 
 # Local env files
-.env.dev
+.env
+.env.development
 .env.*
 !.env.example
 
-pnpm-lock.yaml
 .stylelintcache

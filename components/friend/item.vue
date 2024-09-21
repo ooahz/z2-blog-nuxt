@@ -3,7 +3,7 @@ import type {Friend} from "@/types/friendInterface";
 import {type PropType} from "vue";
 
 defineProps({
-  friend: Object as PropType<Friend>,
+  friend: Object as PropType<Friend>
 });
 </script>
 
@@ -58,7 +58,7 @@ defineProps({
     margin-left: -43px;
     border-radius: 50%;
     border: 1px dashed rgba(var(--z-primary-color));
-    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 3px 11px rgba(0, 0, 0, 0.4);
 
     img {
       width: 100%;

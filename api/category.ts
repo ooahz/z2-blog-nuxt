@@ -1,4 +1,4 @@
-import {useDefaultRequest} from "@/utils/request";
+import {useDefaultRequest} from "@/api/request";
 import type {CategoryMap} from "@/types/categoryInterface";
 
 const BASE_URL = "/blog/v1/categories";

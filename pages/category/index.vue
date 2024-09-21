@@ -37,13 +37,15 @@ useSeoMeta({
     <div class="page-content w-full">
       <div v-if="categoryList.length>0" class="box-header">
         <OuOTag class="mr-2" :size="'small'" v-for="category in categoryList"
-                @click="getColumnListByCategoryId(category.id, 1)">{{ category.name }}
+                @click="getColumnListByCategoryId(category.id, 1)">
+          {{ category.name }}
         </OuOTag>
       </div>
       <div class="category-column grid column-grid gap-6 gap-y-4 pc:gap-4">
         <ColumnItem v-for="column in columnList" :column="column"/>
       </div>
     </div>
-    <Sidebar/>
+    <Sidebar class="w-1/3 mt-5"
+             v-if="!$viewport.isLessThan('sm')"/>
   </div>
 </template>

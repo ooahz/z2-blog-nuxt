@@ -23,7 +23,7 @@ const request = async (url: string, method: MethodType, params?: any, body?: str
         onResponseError({request, response, options}) {
             console.log("response error:", response);
             OuOMessage.error("内容获取失败");
-        },
+        }
     });
 };
 
@@ -39,14 +39,14 @@ export const useDefaultRequest = {
     getRawData: async <T>(url: string, params?: any): Promise<T> => {
         const res = await request(url, "GET", params);
         return formatResult(res, false);
-    },
+    }
 };
 
 function formatResult<T>(res: any, handle: boolean): T {
     try {
         const {pending, status} = res;
         if (!pending.value) {
-            const originData = unref(res.data)
+            const originData = unref(res.data);
             const {data, state, message} = originData;
             if (state === "success") {
                 return handle ? toRaw(data) : toRaw(originData);
@@ -60,7 +60,7 @@ function formatResult<T>(res: any, handle: boolean): T {
             return "" as T;
         }
         if (!res || !res.data) {
-            OuOMessage.error("未获取到有效数据");
+            console.log("未获取到有效数据");
             return "" as T;
         }
     } catch (error: any) {

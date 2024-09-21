@@ -1,21 +1,31 @@
 <script setup lang="ts">
-import PCPage from "@/layouts/PcHome.vue";
-import MobilePage from "@/layouts/MobileHome.vue";
-
 const {$viewport} = useNuxtApp();
 
+useSeoMeta({
+  title: () => "我的信息展示"
+});
 </script>
 <template>
-  <div v-if="$viewport.isLessThan('tablet')">
-    <MobilePage/>
+  <div class="w-full">
+    <Header/>
   </div>
-  <div v-else>
-    <PCPage/>
+  <div v-if="!$viewport.isLessThan('sm')">
+    <Welcome/>
   </div>
+  <main id="main"
+        :class="$viewport.isLessThan('sm') ? 'mobile' : 'pc'">
+    <Post/>
+  </main>
 </template>
 
 <style lang="scss">
 main {
-  padding: 10px 0;
+  &.pc {
+    padding: 0 !important;
+  }
+
+  &.mobile {
+    margin-top: var(--z-header-height) !important;
+  }
 }
 </style>

@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import {useGlobalStore} from "@/store/globalStore";
-import {FriendItem} from "#components";
-import type {Friend} from "@/types/friendInterface";
+import type {FriendInterface} from "@/types/friendInterface";
 import {listFriend} from "@/api/friend";
 import {OuOLanding} from "@ahzoo/ouo";
 
 const globalStore = useGlobalStore();
-const friendList = ref<Friend[]>([]);
+const friendList = ref<FriendInterface[]>([]);
 
 /**
  * 数据获取
@@ -34,21 +33,22 @@ useSeoMeta({
   <OuOLanding/>
   <Friend/>
   <div id="main" class="page flex">
-    <div class="friend-content relative w-full h-screen p-5 rounded-lg">
+    <div class="friend-content relative w-full h-screen p-5 mt-5 rounded-lg overflow-y-scroll">
       <div class="box-header flex justify-end">
         <div class="right cursor-pointer">
             <span class="stress mx-2"
                   @click="showFriendForm">
               交换友链
              </span>
-          <i class="fa fa-send"></i>
+          <i class="fa fa-send"/>
         </div>
       </div>
-      <div class="friend-list grid gap-5">
+      <div class="friend-list grid gap-5 mt-11">
         <FriendItem v-for="(item, index) in friendList" :key="index" :friend="item"/>
       </div>
     </div>
-    <Sidebar/>
+    <Sidebar class="w-1/3 mt-5"
+             v-if="!$viewport.isLessThan('sm')"/>
   </div>
 </template>
 <style scoped lang="scss">
@@ -59,7 +59,6 @@ useSeoMeta({
 
   &-list {
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    margin: 55px 35px;
   }
 }
 </style>

@@ -1,4 +1,4 @@
-import {defineStore} from "pinia"
+import {defineStore} from "pinia";
 
 export const useGlobalStore = defineStore("globalStoreId", {
     state: () => {
@@ -6,7 +6,8 @@ export const useGlobalStore = defineStore("globalStoreId", {
             showSearch: false,
             showComment: false,
             showFriendForm: false,
-        }
+            showSidebar: false
+        };
     },
     actions: {
         setShowSearch(showSearch: boolean) {
@@ -18,5 +19,8 @@ export const useGlobalStore = defineStore("globalStoreId", {
         setShowFriendForm(showFriendForm: boolean) {
             this.showFriendForm = showFriendForm;
         },
-    },
+        setShowSidebar(showSidebar: boolean){
+            this.showSidebar = showSidebar;
+        }
+    }
 })

@@ -53,10 +53,10 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@ahzoo/ouo": "^1.0.3",
-    "@ahzoo/sus": "^1.1.0",
-    "@ahzoo/utils": "^1.0.3",
-    "@heroicons/vue": "^2.1.1",
+    "@ahzoo/ouo": "^1.0.5",
+    "@ahzoo/sus": "^1.1.7",
+    "@ahzoo/utils": "^1.0.4",
+    "@heroicons/vue": "^2.1.4",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.21",
     "nuxt": "^3.10.0",

@@ -6,14 +6,14 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }
     try {
         if (process.client) {
+            const primary = document.getElementById("ahzoo");
+            primary!.scrollTop = 0;
             const {$viewport} = useNuxtApp();
-            if ($viewport.isLessThan('tablet')) {
+            if ($viewport.isLessThan("mobile")) {
                 setAttribute("scroll", "scroll");
                 return;
             }
-            const primary = document.getElementById("primary");
-            primary!.scrollTop = 0;
-            if (to.name === "p-id" || to.name === "column-name") {
+            if (to.name === "p-id" || to.name === "column-name" || to.name === "index") {
                 setAttribute("scroll", "primary");
             } else {
                 setAttribute("scroll", "top");

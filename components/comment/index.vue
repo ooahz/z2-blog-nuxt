@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import {listComment, saveComment} from "@/api/comment";
-import type {CommentItem, Comment} from "@/types/commentInterface";
+import type {Comment, CommentItem} from "@/types/commentInterface";
 import {SuSComment, SuSList} from "@ahzoo/sus";
 import {useGlobalStore} from "@/store/globalStore";
 import {OuOMessage} from "@ahzoo/ouo";
+import emoji from "@/static/json/emoji.json";
 
 const {path} = useRoute();
 const articlePath = <string>path.split("/").pop();
 const globalStore = useGlobalStore();
 const commentList = ref<CommentItem[]>([]  as CommentItem[]);
-const comment = reactive<Comment>({} as Comment);
 const replyComment = ref<CommentItem>({} as CommentItem);
 const showLoading = ref(false);
 
@@ -66,7 +66,8 @@ async function toSaveComment(comment: Comment) {
     return;
   }
   showLoading.value = true;
-  const res = await unref(saveComment(comment));
+  comment.website = window.location.href;
+  const res = await saveComment(comment);
   showLoading.value = false;
   if (!!res) {
     localStorage.setItem("content", comment.contentMD);
@@ -77,8 +78,7 @@ async function toSaveComment(comment: Comment) {
 }
 
 async function getCommentList(pagination: number) {
-  const newColumnList = await listComment(articlePath, pagination);
-  commentList.value = unref(newColumnList);
+  commentList.value = await listComment(articlePath, pagination);
 }
 </script>
 
@@ -90,9 +90,9 @@ async function getCommentList(pagination: number) {
         <div v-show="showLoading" class="w-full h-full">
           <Loading/>
         </div>
-        <div class="stress my-3" v-show="replyComment.userName">回复@{{ replyComment?.userName }}：</div>
-        <SuSComment class="w-full h-auto" :cache="true" :replyComment="replyComment" :emoji="''"
-                    @onCancel="toCancelComment" @onSave="toSaveComment"/>
+        <div class="stress my-3" v-show="replyComment?.userName">回复@{{ replyComment?.userName }}：</div>
+        <SuSComment class="w-full h-auto" :cache="true" :reply="replyComment" :emoji="emoji"
+                    @on-cancel="toCancelComment" @on-save="toSaveComment"/>
       </div>
     </div>
   </Teleport>
@@ -103,17 +103,18 @@ async function getCommentList(pagination: number) {
               @click="toShowComment">
           发表评论
         </span>
-        <i class="fa fa-send"></i>
+        <i class="fa fa-send"/>
       </div>
     </div>
     <div class="comment-list">
-      <SuSList v-for="commentItem in commentList" :comment="commentItem" @onReply="toReplyComment"/>
+      <SuSList v-for="commentItem in commentList" :comment="commentItem" @on-reply="toReplyComment"/>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .comment {
+
   &-mask {
     z-index: 11;
     background-color: rgba(var(--z-common-bg), .8);

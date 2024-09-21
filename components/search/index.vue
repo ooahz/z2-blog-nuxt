@@ -25,7 +25,7 @@ function goSearch(item: string) {
     searchStore.setMarking(keyword.value);
     keyword.value = "";
     globalState.setShowSearch(false);
-    navigateTo(`/search/${keyword.value}`);
+    navigateTo(`/search`);
   }
 }
 </script>
@@ -58,11 +58,11 @@ function goSearch(item: string) {
 
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .search {
   z-index: 99;
   color: rgb(var(--z-fontcolor));
-  background-color: rgba(var(--z-common-bg), .3);
+  background-color: rgba(var(--z-common-bg), .8);
 }
 
 .search-container {

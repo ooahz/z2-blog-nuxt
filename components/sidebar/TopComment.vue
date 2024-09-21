@@ -17,7 +17,19 @@ async function getTopComment() {
 </script>
 <template>
   <div class="top-comment box mt-5">
-    <div class="box-header bottom-line pb-1.5 mt-1">最新评论</div>
-    <SuSTop v-for="commentItem in commentList" :comment="commentItem"/>
+    <div class="box-header bottom-line pb-1.5 mt-1 mx-1.5">最新评论</div>
+    <a :href="commentItem.website"
+       v-for="commentItem in commentList"
+       class="no-style" target="_blank">
+      <SuSTop :comment="commentItem"/>
+    </a>
   </div>
 </template>
+
+<style lang="scss">
+.top-comment {
+  &.box {
+    padding: 1.25rem 0.875rem 1rem;
+  }
+}
+</style>

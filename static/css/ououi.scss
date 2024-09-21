@@ -1,0 +1,20 @@
+[class*="ouo-"] {
+  --ouo-basic-font-color: var(--z-fontcolor) !important;
+  --ouo-primary-font-color: var(--z-primary-fontcolor) !important;
+  --ouo-primary-color: var(--z-primary-color) !important;
+  --ouo-common-bg: var(--z-common-bg) !important;
+  --ouo-basic-color: var(--z-common-bg) !important;
+  --ouo-default-color: var(--z-common-bg) !important;
+  --ouo-pagination-size: 30px !important;
+  --ouo-loading-bg: 29, 38, 48;
+  --ouo-loading-bg-opacity: 1;
+  --ouo-landing-bg: 245, 245, 245;
+}
+
+.ouo-input {
+  max-height: 100px;
+}
+
+[data-theme="dark"] .ouo-landing {
+  display: none;
+}

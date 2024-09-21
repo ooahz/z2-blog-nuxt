@@ -1,0 +1,22 @@
+[class*="sus-"] {
+  --sus-basic-input-bg: var(--z-select-bg) !important;
+  --sus-item-bg: var(--z-select-bg) !important;
+  --sus-font-color: var(--z-fontcolor) !important;
+  --sus-common-bg: var(--z-common-bg) !important;
+}
+
+.sus-top-item {
+  &:hover {
+    border-radius: 5px;
+    background-color: rgba(var(--z-select-bg), .5);
+    transition: all .25s;
+  }
+}
+
+.vditor-panel {
+  background-color: rgb(var(--z-common-bg));
+}
+
+.vditor-reset {
+  color: rgb(var(--z-fontcolor));
+}

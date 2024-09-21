@@ -1,4 +1,4 @@
-import {defineStore} from "pinia"
+import {defineStore} from "pinia";
 import type {TocInterface} from "@/types/tocInterface";
 
 export const useArticleStore = defineStore("useArticleStoreId", {
@@ -6,8 +6,8 @@ export const useArticleStore = defineStore("useArticleStoreId", {
         return {
             selectTitle: "",
             tocList: [] as TocInterface[],
-            onClick: false,
-        }
+            onClick: false
+        };
     },
     actions: {
         setSelectTitle(title: string) {
@@ -18,6 +18,6 @@ export const useArticleStore = defineStore("useArticleStoreId", {
         },
         setOnClick(click: boolean) {
             this.onClick = click;
-        },
-    },
+        }
+    }
 })

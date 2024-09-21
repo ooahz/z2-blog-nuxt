@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {PreviewArticle} from "@/types/articleInterface"
+import type {PreviewArticle} from "@/types/articleInterface";
 import {OuOPagination, OuOTag} from "@ahzoo/ouo";
 import {useMenuStore} from "@/store/menuStore";
 import {listArticle} from "@/api/article";
@@ -46,7 +46,9 @@ onMounted(() => {
   <div id="post">
     <div class="box-header flex justify-between">
       <div class="filter flex">
-        <OuOTag class="mr-2" :size="'small'" :checked=true @click="">全部文章</OuOTag>
+        <OuOTag class="mr-2" :size="'small'" :checked=true @click="">
+          全部文章
+        </OuOTag>
       </div>
     </div>
     <div class="grid auto-grid gap-9 gap-y-7 pc:gap-5 screen">
@@ -55,7 +57,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="pagination flex justify-center w-full mt-4">
-      <OuOPagination v-if="totalPage>1" :total=totalPage @onclick="switchPage"></OuOPagination>
+      <OuOPagination v-if="totalPage>1" :total=totalPage @onclick="switchPage"/>
     </div>
   </div>
 </template>

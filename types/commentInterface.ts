@@ -8,6 +8,7 @@ export interface Comment {
     contentMD: string;
     replyName?: string;
     parentId?: string;
+    website?: string;
 }
 
 export interface CommentItem {
@@ -27,7 +28,7 @@ export interface CommentItem {
 
 export interface TopCommentItem {
     userName: string;
-    userWebsite: string;
+    website: string;
     userAvatar: string;
     content: string;
     replyName?: string;

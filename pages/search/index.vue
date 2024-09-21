@@ -3,7 +3,6 @@ import ArticleItem from "@/components/list/ArticleItem.vue";
 import {useSearchStore} from "@/store/searchStore";
 import type {PreviewArticle} from "@/types/articleInterface";
 import {searchAll, searchArticleContent, searchArticleTitle} from "@/api/search";
-import {goBack} from "@/utils/utils";
 
 const searchStore = useSearchStore();
 
@@ -17,7 +16,7 @@ await searchArticleList(searchStore.keyword, 1);
 
 async function searchArticleList(keyword: string, pagination: number) {
   if (!searchStore.keyword) {
-    goBack();
+    navigateTo("/");
     return;
   }
   const params = {
@@ -73,6 +72,7 @@ useSeoMeta({
         </div>
       </div>
     </div>
-    <Sidebar/>
+    <Sidebar class="w-1/3"
+             v-if="!$viewport.isLessThan('sm')"/>
   </div>
 </template>

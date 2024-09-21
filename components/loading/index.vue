@@ -1,13 +1,13 @@
 <template>
   <div class="loading__mask flex items-center justify-center fixed top-0 left-0 w-full h-full">
     <div class="loading__animation flex relative items-center justify-center">
-      <div class="animation__1"></div>
-      <div class="animation__2"></div>
+      <div class="animation__1"/>
+      <div class="animation__2"/>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 $z-loading-size: 66px;
 
 .loading__mask {
