@@ -3,11 +3,29 @@ import "@/static/css/style.scss";
 import _ from "lodash";
 import "@ahzoo/ouo/style.css";
 import "font-awesome/css/font-awesome.css";
-import {setAttribute} from "@ahzoo/utils";
+import {scrollSetToc, setAttribute} from "@ahzoo/utils";
+import {useArticleStore} from "@/store/articleStore";
 import SidebarMobile from "@/components/sidebar/mobile.vue";
 
 const {$viewport} = useNuxtApp();
+const articleStore = useArticleStore();
 const show = ref(false);
+
+const latestIndex = ref(0);
+
+// 滚动时定位Toc位置
+function scrollHandlerSetToc(scrollTop: number) {
+  const scrollToc = scrollSetToc(scrollTop, latestIndex.value, articleStore.tocList);
+  if (!scrollToc) {
+    return;
+  }
+  latestIndex.value = scrollToc.latestIndex;
+  // 防止重复设置当前选中目录
+  if (articleStore.onClick) {
+    return;
+  }
+  articleStore.setSelectTitle(scrollToc.id);
+}
 
 function scrollHandler() {
   try {
@@ -15,10 +33,11 @@ function scrollHandler() {
     primary!.onscroll = (_.throttle(() => {
       // 滚动条向下
       if (primary!.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+        scrollHandlerSetToc(primary!.scrollTop);
         setAttribute("scroll", "scroll");
       } else {
         // 滚动到顶部
-        setAttribute("scroll", "top");
+        setAttribute("scroll", "primary");
       }
     }, 200));
   } catch (e) {
@@ -27,8 +46,6 @@ function scrollHandler() {
 }
 
 onMounted(() => {
-  const primary = document.getElementById("ahzoo");
-  primary!.scrollTop = 0;
   if (process.client) {
     show.value = true;
     if ($viewport.isLessThan("mobile")) {
@@ -43,28 +60,10 @@ onMounted(() => {
   <NuxtLoadingIndicator/>
   <div v-show="show" id="basic" class="font-size-medium w-full h-screen flex flex-col relative">
     <div id="ahzoo" class="relative w-full overflow-y-scroll">
-      <div class="w-full">
-        <Header/>
-      </div>
-      <div id="main" class="page flex" :class="$viewport.isLessThan('lg') ? 'mobile' : 'pc'">
-        <NuxtPage/>
-        <Sidebar class="w-1/3 mt-5"
-                 v-if="!$viewport.isLessThan('lg')"/>
-      </div>
+      <NuxtPage/>
       <SidebarMobile/>
       <Footer/>
     </div>
     <Menu/>
   </div>
 </template>
-
-<style lang="scss">
-#basic {
-  color: rgb(var(--z-fontcolor));
-  transition: all .3s;
-  background-image: url("/basic-bg.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-</style>

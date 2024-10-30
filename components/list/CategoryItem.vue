@@ -35,7 +35,7 @@ onMounted(() => {
     </div>
   </div>
 </template>
-<style lang="scss">
+<style scoped lang="scss">
 .category-item {
   overflow: hidden;
   width: 150px;

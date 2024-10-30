@@ -5,7 +5,7 @@ export default defineNuxtConfig({
         breakpoints: {
             xs: 420,
             sm: 640,
-            lg: 780
+            lg: 768
         }
     },
     // site: {

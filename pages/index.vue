@@ -1,31 +1,29 @@
 <script setup lang="ts">
 const {$viewport} = useNuxtApp();
 
+definePageMeta({
+  layout: "home"
+})
+
 useSeoMeta({
   title: () => "我的信息展示"
 });
 </script>
 <template>
-  <div class="w-full">
-    <Header/>
-  </div>
-  <div v-if="!$viewport.isLessThan('sm')">
+  <div v-if="!$viewport.isLessThan('lg')">
     <Welcome/>
   </div>
-  <main id="main"
-        :class="$viewport.isLessThan('sm') ? 'mobile' : 'pc'">
+  <div id="main" class="page flex" :class="$viewport.isLessThan('lg') ? 'mobile' : 'pc'">
     <Post/>
-  </main>
+    <Sidebar class="w-1/3 mt-[50px]"
+             v-if="!$viewport.isLessThan('lg')"/>
+  </div>
 </template>
 
-<style lang="scss">
-main {
+<style scoped lang="scss">
+#main {
   &.pc {
-    padding: 0 !important;
-  }
-
-  &.mobile {
-    margin-top: var(--z-header-height) !important;
+    padding-top: 10px !important;
   }
 }
 </style>

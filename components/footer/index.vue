@@ -26,7 +26,7 @@ const authorInfo = authorStore.getAuthorInfo();
 
 <style scoped lang="scss">
 footer {
-  padding: 35px 6vw 20px;
+  padding: 35px 50px 20px;
   background: linear-gradient(to top, rgba(var(--z-global-bg), .9) 4rem, rgba(var(--z-global-bg), 30%));
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(var(--z-common-bg), .5);
 }

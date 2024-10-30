@@ -50,7 +50,7 @@ function showArticleDetail(article: PreviewArticle) {
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .article-item {
   width: 100%;
   height: 260px;

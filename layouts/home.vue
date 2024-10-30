@@ -12,13 +12,19 @@ const show = ref(false);
 function scrollHandler() {
   try {
     const primary = document.getElementById("ahzoo");
+    const landing = document.getElementById("landing");
+    const column = document.getElementById("column-info");
     primary!.onscroll = (_.throttle(() => {
       // 滚动条向下
       if (primary!.scrollTop > 30 || document.documentElement.scrollTop > 30) {
         setAttribute("scroll", "scroll");
       } else {
         // 滚动到顶部
-        setAttribute("scroll", "top");
+        if (landing || column) {
+          setAttribute("scroll", "primary");
+        } else {
+          setAttribute("scroll", "top");
+        }
       }
     }, 200));
   } catch (e) {
@@ -27,8 +33,6 @@ function scrollHandler() {
 }
 
 onMounted(() => {
-  const primary = document.getElementById("ahzoo");
-  primary!.scrollTop = 0;
   if (process.client) {
     show.value = true;
     if ($viewport.isLessThan("mobile")) {
@@ -46,11 +50,7 @@ onMounted(() => {
       <div class="w-full">
         <Header/>
       </div>
-      <div id="main" class="page flex" :class="$viewport.isLessThan('lg') ? 'mobile' : 'pc'">
-        <NuxtPage/>
-        <Sidebar class="w-1/3 mt-5"
-                 v-if="!$viewport.isLessThan('lg')"/>
-      </div>
+      <NuxtPage/>
       <SidebarMobile/>
       <Footer/>
     </div>

@@ -89,16 +89,10 @@
     font-weight: 600;
 }
 
-.ys-font {
-    font-family: ys;
-}
-
-.hm-font {
-    font-family: hm;
-}
-
 .ss-font {
-    font-family: ss;
+    font-family: ss,
+    Microsoft Yahei,
+    serif;
 }
 
 .opacity-100 {
@@ -106,7 +100,7 @@
 }
 
 .bottom-line {
-    border-bottom: 1px solid rgb(226 232 240 / 60%);
+    border-bottom: 1px solid rgba(var(--z-gray-color), .6);
 }
 
 .backdrop-blur-2 {

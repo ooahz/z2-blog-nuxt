@@ -55,7 +55,7 @@ defineProps({
   &__content {
     z-index: 2;
     letter-spacing: 6px;
-    margin: -150px 80px 0 80px;
+    margin: -150px 80px 0 max(80px, calc(50vw - 650px));
     color: rgba(var(--z-primary-fontcolor));
     transition: all 0.2s;
   }
@@ -74,7 +74,7 @@ defineProps({
 
   &-slot {
     z-index: 2;
-    margin: 15px 45px;
+    margin: 15px max(80px, calc(50vw - 650px));
   }
 }
 </style>

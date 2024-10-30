@@ -27,7 +27,7 @@ function closeSidebar() {
        @click="closeSidebar">
     <div class="sidebar-mask backdrop-blur-2 fixed top-0 right-0 w-full h-full"
          v-show="globalState.showSidebar"/>
-    <aside id="sidebar" class="ml-9 block overflow-y-scroll">
+    <aside id="sidebar" class="ml-11 block overflow-y-scroll">
       <Info/>
       <div class="mt-5">
         <div class="menu-box" @click="skip('category')">分类</div>

@@ -24,7 +24,7 @@ onMounted(() => {
       <div class="landing-info-landing">欢迎来到{{ authorInfo.siteName }}</div>
       <span class="landing-info-description">{{ authorInfo.description }}</span>
     </div>
-    <svg v-if="!$viewport.isLessThan('sm')"
+    <svg v-if="!$viewport.isLessThan('lg')"
          class="no-filter landing-waves w-full absolute bottom-0"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">

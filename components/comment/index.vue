@@ -117,7 +117,7 @@ async function getCommentList(pagination: number) {
 
   &-mask {
     z-index: 11;
-    background-color: rgba(var(--z-common-bg), .8);
+    background-color: rgba(var(--z-global-bg), .9);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-transition: all .25s ease;

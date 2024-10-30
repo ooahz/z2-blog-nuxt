@@ -2,7 +2,6 @@
 import {useGlobalStore} from "@/store/globalStore";
 import type {FriendInterface} from "@/types/friendInterface";
 import {listFriend} from "@/api/friend";
-import {OuOLanding} from "@ahzoo/ouo";
 
 const globalStore = useGlobalStore();
 const friendList = ref<FriendInterface[]>([]);
@@ -27,28 +26,20 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="w-full">
-    <Header/>
-  </div>
-  <OuOLanding/>
   <Friend/>
-  <div id="main" class="page flex">
-    <div class="friend-content relative w-full h-screen p-5 mt-5 rounded-lg overflow-y-scroll">
-      <div class="box-header flex justify-end">
-        <div class="right cursor-pointer">
+  <div class="friend-content relative w-full h-screen mobile:px-5 px-8 pt-8 mt-5 rounded-lg overflow-y-scroll">
+    <div class="box-header flex justify-end">
+      <div class="right cursor-pointer">
             <span class="stress mx-2"
                   @click="showFriendForm">
               交换友链
              </span>
-          <i class="fa fa-send"/>
-        </div>
-      </div>
-      <div class="friend-list grid gap-5 mt-11">
-        <FriendItem v-for="(item, index) in friendList" :key="index" :friend="item"/>
+        <i class="fa fa-send"/>
       </div>
     </div>
-    <Sidebar class="w-1/3 mt-5"
-             v-if="!$viewport.isLessThan('sm')"/>
+    <div class="friend-list grid gap-5 my-7">
+      <FriendItem v-for="(item, index) in friendList" :key="index" :friend="item"/>
+    </div>
   </div>
 </template>
 <style scoped lang="scss">

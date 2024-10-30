@@ -15,7 +15,7 @@ function getColumnDetail() {
 </script>
 
 <template>
-  <div class="column-item relative box flex flex-col">
+  <div class="column-item relative box flex flex-col overflow-hidden">
     <div @click="getColumnDetail()" class="h-16 flex cursor-pointer">
       <div v-if="column.thumbnail" class="column-item-thumbnail h-full w-20">
         <img :src="column.thumbnail" class="cover rounded-md" alt="">
@@ -28,9 +28,9 @@ function getColumnDetail() {
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .column-item {
-  overflow: hidden;
+  max-width: 500px;
 
   &-title:after {
     bottom: 0;

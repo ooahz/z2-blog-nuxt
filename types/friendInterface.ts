@@ -1,4 +1,4 @@
-export interface FriendInterface {
+export interface Friend {
     website: string;
     oldWebsite: string;
     name: string;

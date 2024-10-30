@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ArticleItem from "@/components/list/ArticleItem.vue";
+import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
 import {useSearchStore} from "@/store/searchStore";
 import type {PreviewArticle} from "@/types/articleInterface";
 import {searchAll, searchArticleContent, searchArticleTitle} from "@/api/search";
@@ -52,27 +52,20 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="w-full">
-    <Header/>
+  <div v-show="showLoading" class="w-full h-full">
+    <Loading/>
   </div>
-  <div id="main" class="page flex">
-    <div v-show="showLoading" class="w-full h-full">
-      <Loading/>
+  <div class="page-content w-full">
+    <div class="search-header box flex rounded-xl">
+      <span class="title tag-item">{{ searchStore.keyword }}</span>
     </div>
-    <div class="page-content w-full">
-      <div class="search-header box flex rounded-xl">
-        <span class="title tag-item">{{ searchStore.keyword }}</span>
+    <div class="mt-7">
+      <div v-if="!searchList||searchList.length<=0" class="text-center">
+        什么也没有搜索到（⊙ｏ⊙）
       </div>
-      <div class="grid auto-grid gap-7 gap-y-5 pc:gap-5 mt-7">
-        <div v-if="!searchList||searchList.length<=0" class="text-center">
-          什么也没有搜索到（⊙ｏ⊙）
-        </div>
-        <div v-for="article in searchList">
-          <ArticleItem :article="article"/>
-        </div>
+      <div v-for="article in searchList">
+        <ArticleItem :article="article"/>
       </div>
     </div>
-    <Sidebar class="w-1/3"
-             v-if="!$viewport.isLessThan('sm')"/>
   </div>
 </template>

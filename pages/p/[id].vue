@@ -89,6 +89,10 @@ function goColumnPage(columnName: string) {
   navigateTo(`/column/${columnName}`);
 }
 
+definePageMeta({
+  layout: "post"
+})
+
 useSeoMeta({
   title: () => `${article.title ?? ""}`,
   description: () => `${article.description ?? authorInfo.description}`
@@ -133,7 +137,7 @@ onUnmounted(() => {
           </span>
         </div>
       </div>
-      <svg v-if="!$viewport.isLessThan('sm')"
+      <svg v-if="!$viewport.isLessThan('lg')"
            class="article-waves w-full absolute bottom-0" xmlns="http://www.w3.org/2000/svg"
            xmlns:xlink="http://www.w3.org/1999/xlink"
            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
@@ -248,7 +252,7 @@ onUnmounted(() => {
 
   &__info {
     color: rgba(var(--z-primary-fontcolor));
-    background: rgba(var(--z-primary-color), .3);
+    background: rgba(var(--z-primary-color), .5);
   }
 }
 

@@ -1,6 +1,5 @@
 import {defineStore} from "pinia";
 import type {AuthorInterface} from "@/types/authorInterface";
-import {getAuthorInfoDetail} from "@/api/author";
 
 export const useAuthorStore = defineStore("authorStoreId", {
   state: () => {
@@ -27,27 +26,7 @@ export const useAuthorStore = defineStore("authorStoreId", {
   },
   actions: {
     getAuthorInfo(): AuthorInterface {
-      getAuthorInfoDetail().then((res) => {
-        if (res && res.website) {
-          if (!res.siteName) {
-            res.siteName = this.authorInfo.siteName;
-          }
-          if (!res.extendsParams) {
-            res.extendsParams = this.authorInfo.extendsParams;
-          }
-          this.setAuthorInfo(res);
-          this.setExtendsParams(res);
-        }
-      });
       return this.authorInfo;
-    },
-    setAuthorInfo(authorInfo: AuthorInterface) {
-      this.authorInfo = authorInfo;
-    },
-    setExtendsParams(authorInfo: AuthorInterface) {
-      if (typeof authorInfo.extendsParams === "string") {
-        this.authorInfo.extendsParams = JSON.parse(authorInfo.extendsParams);
-      }
     }
   }
 });

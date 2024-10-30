@@ -6,8 +6,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }
     try {
         if (process.client) {
-            const primary = document.getElementById("ahzoo");
-            primary!.scrollTop = 0;
             const {$viewport} = useNuxtApp();
             if ($viewport.isLessThan("mobile")) {
                 setAttribute("scroll", "scroll");

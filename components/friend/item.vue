@@ -8,75 +8,90 @@ defineProps({
 </script>
 
 <template>
-  <a :href="friend?.website" class="friends flex flex-wrap">
-    <div class="friends-img relative">
-      <img :src="friend?.avatar" alt=""/>
-    </div>
-    <div class="friends-info flex flex-col items-center w-full">
-      <p class="friends-description" :title="friend?.description">{{ friend?.description }}</p>
-      <p class="friends-title" :title="friend?.website">{{ friend?.name }}</p>
-    </div>
-  </a>
+  <div class="item-hover friends-item">
+    <a :href="friend?.website" class="flex items-center">
+      <div class="friends-item-img">
+        <img :src="friend?.avatar" alt=""/>
+      </div>
+      <div class="flex flex-wrap flex-[1] ml-3">
+        <p class="stress friends-item-name single-line w-full pb-1.5" :title="friend?.website">{{ friend?.name }}</p>
+        <p class="double-line w-full mt-1" :title="friend?.description">{{ friend?.description }}</p>
+      </div>
+    </a>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.friends {
-  margin: 15px 15px 35px;
-  padding: 0 11px 13px;
-  font-weight: bold;
+.friends-item {
   color: rgb(var(--z-fontcolor-gray));
-  background: rgba(var(--z-global-bg), .6);
-  border-radius: 10px;
-  box-shadow: var(--ahzoo-menu-shadow);
+  box-shadow: var(--z-menu-shadow);
 
-  &:hover {
-    transform: scale(1.01);
-  }
-
-  &-title {
-    -webkit-line-clamp: 1;
-  }
-
-  &-description {
-    -webkit-line-clamp: 2;
+  a {
+    padding: 18px;
+    border-radius: 7px;
+    background: rgba(var(--z-common-bg), 1);
   }
 
   p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     margin: 3px;
-    font-weight: normal;
     overflow: hidden;
   }
 
   &-img {
-    left: 50%;
-    width: 86px;
-    height: 86px;
-    padding: 6px;
-    margin-top: -43px;
-    margin-left: -43px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    border: 1px dashed rgba(var(--z-primary-color));
-    box-shadow: 0 3px 11px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(var(--z-primary-color));
 
     img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 5px solid rgb(var(--z-global-bg));
-      box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.4);
     }
   }
+}
 
-  &-info {
-    margin-top: 15px;
-    min-height: 50px;
-  }
+.friends-item a {
+  border-left-width: 2px;
+  border-left-style: solid;
+}
 
-  &-title {
-    color: rgba(var(--z-primary-color));
-  }
+.friends-item:nth-of-type(6n + 1) a {
+  border-left-color: #ff002b80;
+}
+
+.friends-item:nth-of-type(6n + 2) a {
+  border-left-color: #ffa90080;
+}
+
+.friends-item:nth-of-type(6n + 3) a {
+  border-left-color: #00cc0080;
+}
+
+.friends-item:nth-of-type(6n + 4) a {
+  border-left-color: #00ccff80;
+}
+
+.friends-item:nth-of-type(6n + 5) a {
+  border-left-color: #9933cc80;
+}
+
+.friends-item:nth-of-type(6n + 6) a {
+  border-left-color: #40404080;
+}
+
+.friends-item a p:first-child {
+  color: rgba(var(--z-fontcolor));
+  border-bottom: 1px dashed rgba(var(--z-primary-color), .5);
+}
+
+[data-theme="dark"] .friends-item a {
+  filter: brightness(0.7);
+  -webkit-filter: brightness(0.7);
+  -o-filter: brightness(0.7);
+  -moz-filter: brightness(0.7);
 }
 </style>

@@ -5,7 +5,7 @@ import type {Article} from "@/types/articleInterface";
 import type {PageInfoInterface} from "@/types/pageInfoInterface";
 import type {PreviewColumn} from "@/types/columnInterface";
 import CategoryItem from "@/components/list/CategoryItem.vue";
-import ArticleItem from "@/components/list/ArticleItem.vue";
+import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
 import {getAttribute, setAttribute} from "@ahzoo/utils";
 import PageScreen from "@/components/page/screen.vue"
 
@@ -45,6 +45,10 @@ function initStyle() {
   }
 }
 
+definePageMeta({
+  layout: "home"
+})
+
 useSeoMeta({
   title: () => `${columnInfo.title ?? "专栏"}`,
   description: () => `${columnInfo.description ?? "专栏页"}`
@@ -56,10 +60,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full">
-    <Header/>
-  </div>
-  <div v-if="columnInfo.thumbnail&&!$viewport.isLessThan('sm')"
+  <div v-if="columnInfo.thumbnail&&!$viewport.isLessThan('lg')"
        id="column-info" class="mb-2">
     <PageScreen :landing="columnInfo">
       <CategoryItem v-for="category in previewColumn?.categoryList"
@@ -68,7 +69,7 @@ onMounted(() => {
   </div>
   <div id="main" class="page flex">
     <div class="page-content w-full">
-      <div v-if="!columnInfo.thumbnail||$viewport.isLessThan('sm')">
+      <div v-if="!columnInfo.thumbnail||$viewport.isLessThan('lg')">
         <div class="page-header box flex-col relative rounded-xl my-5 overflow-hidden">
           <div class="title mb-3 mx-3">{{ columnInfo.title }}</div>
           <div class="mb-1 mx-3">所属分类：
@@ -79,13 +80,11 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="grid auto-grid gap-7 gap-y-5 pc:gap-5">
-        <div v-for="article in articleList">
-          <ArticleItem :article="article"/>
-        </div>
+      <div v-for="article in articleList">
+        <ArticleItem :article="article"/>
       </div>
     </div>
     <Sidebar class="w-1/3"
-             v-if="!$viewport.isLessThan('sm')"/>
+             v-if="!$viewport.isLessThan('lg')"/>
   </div>
 </template>

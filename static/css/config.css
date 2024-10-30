@@ -12,8 +12,9 @@ html {
     --z-global-bg: 242, 243, 246;
     --z-common-bg: 247, 248, 249;
     --z-select-bg: 231, 235, 240;
-    --z-header-height: 60px;
-    --ahzoo-menu-shadow: 4px 4px 6px 0 rgba(0, 0, 0, .1), -4px -4px 6px rgb(var(--z-common-bg));
+    --z-header-height: 65px;
+    --z-menu-shadow: 0 1px 7px 0 rgba(39, 39, 39, .04);
+;
 }
 
 [data-theme="dark"] {
@@ -27,6 +28,6 @@ html {
     --z-global-bg: 29, 34, 36;
     --z-common-bg: 40, 44, 47;
     --z-select-bg: 42, 46, 47;
-    --ahzoo-menu-shadow: 4px 4px 6px 0 rgba(48, 48, 48, .1), -4px -4px 6px rgb(var(--z-common-bg));
+    --z-menu-shadow: 4px 4px 6px 0 rgba(48, 48, 48, .1), -4px -4px 6px rgb(var(--z-common-bg));
 }
 

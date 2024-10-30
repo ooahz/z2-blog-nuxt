@@ -11,10 +11,10 @@ export async function listColumnByCategoryId(categoryId: string, pagination: num
     const params = {
         p: pagination
     };
-    return useDefaultRequest.get<PreviewColumn[]>(BASE_URL + `/list/${categoryId}`, params);
+    return useDefaultRequest.get<PreviewColumn[]>(BASE_URL + `/${categoryId}`, params);
 }
 
 export async function listColumnByArticleId(articleId: string): Promise<PreviewColumn[]> {
-    return useDefaultRequest.get<PreviewColumn[]>(BASE_URL + `/article/list/${articleId}`);
+    return useDefaultRequest.get<PreviewColumn[]>(BASE_URL + `/articles/${articleId}`);
 }
 

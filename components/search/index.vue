@@ -62,7 +62,7 @@ function goSearch(item: string) {
 .search {
   z-index: 99;
   color: rgb(var(--z-fontcolor));
-  background-color: rgba(var(--z-common-bg), .8);
+  background-color: rgba(var(--z-common-bg));
 }
 
 .search-container {

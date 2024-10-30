@@ -3,7 +3,7 @@ import type {PreviewArticle} from "@/types/articleInterface";
 import {OuOPagination, OuOTag} from "@ahzoo/ouo";
 import {useMenuStore} from "@/store/menuStore";
 import {listArticle} from "@/api/article";
-import ArticleItem from "@/components/list/ArticleItem.vue";
+import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
 import type {Page} from "@/types/resultInterface";
 
 const menuState = useMenuStore();
@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="post">
+  <div id="post" class="flex-[1]">
     <div class="box-header flex justify-between">
       <div class="filter flex">
         <OuOTag class="mr-2" :size="'small'" :checked=true @click="">
@@ -51,7 +51,7 @@ onMounted(() => {
         </OuOTag>
       </div>
     </div>
-    <div class="grid auto-grid gap-9 gap-y-7 pc:gap-5 screen">
+    <div class="screen">
       <div v-for="article in articleList">
         <ArticleItem :article="article"/>
       </div>
@@ -63,10 +63,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-#post {
-  padding: 10px 8vw;
-}
-
 .pagination {
   color: rgb(var(--z-fontcolor-gray));
 }

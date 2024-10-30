@@ -8,17 +8,17 @@ export function listArticle(pagination: number): Promise<ResultList<PreviewArtic
     const params = {
         p: pagination
     };
-    return useDefaultRequest.getRawData<ResultList<PreviewArticle[]>>(BASE_URL + "/list", params);
+    return useDefaultRequest.getRawData<ResultList<PreviewArticle[]>>(BASE_URL, params);
 }
 
 export function getArticleDetail(path: string): Promise<Article> {
-    return useDefaultRequest.get<Article>(BASE_URL + `/detail/${path}`);
+    return useDefaultRequest.get<Article>(BASE_URL + `/${path}`);
 }
 
 export function listArticleByColumnId(columnId: string, pagination: number): Promise<Article[]> {
     const params = {
         p: pagination
     };
-    return useDefaultRequest.get<Article[]>(BASE_URL + `/column/list/${columnId}`, params);
+    return useDefaultRequest.get<Article[]>(BASE_URL + `/columns/${columnId}`, params);
 }
 

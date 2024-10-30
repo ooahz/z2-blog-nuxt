@@ -57,7 +57,7 @@ function showSidebar() {
 </template>
 <style lang="scss">
 #nav {
-  height: 58px;
+  height: 62px;
   width: inherit;
   z-index: 9;
   letter-spacing: 0.08em;

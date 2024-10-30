@@ -53,8 +53,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "@ahzoo/ouo": "^1.0.5",
-    "@ahzoo/sus": "^1.1.7",
+    "@ahzoo/ouo": "^1.2.3",
+    "@ahzoo/sus": "^1.3.2",
     "@ahzoo/utils": "^1.0.4",
     "@heroicons/vue": "^2.1.4",
     "font-awesome": "^4.7.0",
