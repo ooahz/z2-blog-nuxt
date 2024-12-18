@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Prism from "prismjs";
-import {OuOPagination, OuOButton} from "@ahzoo/ouo";
+import {OuODottedPagination, OuOButton} from "@ahzoo/ouo";
 import {formatDateTime, getAttribute, setAttribute, tocGenerateByDomId} from "@ahzoo/utils";
 import type {Article} from "@/types/articleInterface";
 import type {PreviewColumn} from "@/types/columnInterface";
@@ -169,8 +169,8 @@ onUnmounted(() => {
               v-for="(column, index) in columnList"
               :column="column"/>
           <div class="w-full flex flex-row justify-center m-1">
-            <OuOPagination v-if="columnList.length>=3" :total=3 :type="'dotted'" @onclick="switchColumn"/>
-            <OuOPagination v-if="columnList.length===2" :total=2 :type="'dotted'" @onclick="switchColumn"/>
+            <OuODottedPagination v-if="columnList.length>=3" :total=3 @onclick="switchColumn"/>
+            <OuODottedPagination v-if="columnList.length===2" :total=2 @onclick="switchColumn"/>
           </div>
         </div>
         <div class="box mt-3">

@@ -60,7 +60,7 @@ export default defineNuxtConfig({
             "/api": {
                 target: "http://localhost:9000",
                 changeOrigin: true,
-                prependPath: true,
+                prependPath: true
             }
         }
     },

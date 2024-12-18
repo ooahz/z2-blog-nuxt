@@ -27,7 +27,7 @@ defineProps({
   box-shadow: var(--z-menu-shadow);
 
   a {
-    padding: 18px;
+    padding: 13px 13px 13px 10px;
     border-radius: 7px;
     background: rgba(var(--z-common-bg), 1);
   }

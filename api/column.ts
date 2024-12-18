@@ -7,6 +7,10 @@ export async function getColumnInfo(columnId: string): Promise<PreviewColumn> {
     return useDefaultRequest.get<PreviewColumn>(BASE_URL + `/info/${columnId}`);
 }
 
+export async function listAllColumn(): Promise<PreviewColumn[]> {
+    return useDefaultRequest.get<PreviewColumn[]>(BASE_URL + "/all");
+}
+
 export async function listColumnByCategoryId(categoryId: string, pagination: number): Promise<PreviewColumn[]> {
     const params = {
         p: pagination
