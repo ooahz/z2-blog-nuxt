@@ -43,7 +43,7 @@ useSeoMeta({
         {{ category.name }}
       </OuOTag>
     </div>
-    <div class="category-column grid column-grid gap-6 gap-y-4 pc:gap-4">
+    <div class="category-column grid column-grid gap-7 gap-y-5 pc:gap-5 mt-6">
       <ColumnItem v-for="column in columnList" :column="column"/>
     </div>
   </div>
