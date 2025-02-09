@@ -1,7 +1,7 @@
 {
   "name": "z2blog",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "type": "module",
   "description": "Z次元——现代化Nuxt博客",
   "author": {
