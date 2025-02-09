@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import {useAuthorStore} from "@/store/authorStore";
 import Github from "@/static/svg/github.svg";
 import {EnvelopeIcon} from "@heroicons/vue/24/solid";
-import {useAuthorStore} from "@/store/authorStore";
 
 const authorStore = useAuthorStore();
 const authorInfo = authorStore.getAuthorInfo();

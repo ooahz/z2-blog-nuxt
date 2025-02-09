@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type {CategoryMap} from "@/types/categoryInterface";
-import {OuOTag} from "@ahzoo/ouo";
 import type {PreviewColumn} from "@/types/columnInterface";
 import {listCategory} from "@/api/category";
 import {listAllColumn, listColumnByCategoryId} from "@/api/column";
+import {OuOTag} from "@ahzoo/ouo";
 import ColumnItem from "@/components/list/ColumnItem.vue";
 
 const categoryList = ref<CategoryMap[]>([]);

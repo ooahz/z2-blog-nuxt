@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type {PreviewArticle} from "@/types/articleInterface";
-import {OuOPagination, OuOTag} from "@ahzoo/ouo";
-import {useMenuStore} from "@/store/menuStore";
-import {listArticle} from "@/api/article";
-import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
 import type {Page} from "@/types/resultInterface";
+import {listArticle} from "@/api/article";
+import {useMenuStore} from "@/store/menuStore";
+import {OuOPagination, OuOTag} from "@ahzoo/ouo";
+import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
 
 const menuState = useMenuStore();
 

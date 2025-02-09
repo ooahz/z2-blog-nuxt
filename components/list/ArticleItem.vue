@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {type PropType} from "vue";
+import type {PropType} from "vue";
 import type {PreviewArticle} from "@/types/articleInterface";
 import {CalendarDaysIcon, RocketLaunchIcon} from "@heroicons/vue/24/solid";
 import {formatDateTime} from "@ahzoo/utils";
@@ -102,6 +102,7 @@ function showArticleDetail(article: PreviewArticle) {
   margin-top: 9px;
   margin-left: -3px;
   font-size: 90%;
+
   &-item {
     margin-right: 3px;
     padding: 3px 7px;

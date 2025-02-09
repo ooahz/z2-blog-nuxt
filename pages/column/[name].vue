@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {getColumnInfo} from "@/api/column";
-import {listArticleByColumnId} from "@/api/article";
 import type {Article} from "@/types/articleInterface";
 import type {PageInfoInterface} from "@/types/pageInfoInterface";
 import type {PreviewColumn} from "@/types/columnInterface";
+import {getColumnInfo} from "@/api/column";
+import {listArticleByColumnId} from "@/api/article";
+import {getAttribute, setAttribute} from "@ahzoo/utils";
 import CategoryItem from "@/components/list/CategoryItem.vue";
 import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
-import {getAttribute, setAttribute} from "@ahzoo/utils";
 import PageScreen from "@/components/page/screen.vue"
 
 const {path} = useRoute();

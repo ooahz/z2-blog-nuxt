@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {MagnifyingGlassIcon, XMarkIcon} from "@heroicons/vue/24/solid";
 import {useGlobalStore} from "@/store/globalStore";
 import {useSearchStore} from "@/store/searchStore";
+import {MagnifyingGlassIcon, XMarkIcon} from "@heroicons/vue/24/solid";
 
 const globalState = useGlobalStore();
 const searchStore = useSearchStore();

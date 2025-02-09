@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {OuOButton, OuOInput, OuOMessage, OuOTag, OuOTextarea} from "@ahzoo/ouo";
-import {useGlobalStore} from "@/store/globalStore";
 import type {Friend} from "@/types/friendInterface";
 import {saveFriend} from "@/api/friend";
 import {useAuthorStore} from "@/store/authorStore";
+import {useGlobalStore} from "@/store/globalStore";
+import {OuOButton, OuOInput, OuOMessage, OuOTag, OuOTextarea} from "@ahzoo/ouo";
 
 const authorStore = useAuthorStore();
 const authorInfo = authorStore.getAuthorInfo();

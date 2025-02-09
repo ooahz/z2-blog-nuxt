@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {type PropType} from "vue";
+import type {PropType} from "vue";
 import type {PreviewColumn} from "@/types/columnInterface";
 import type {PreviewArticle} from "@/types/articleInterface";
 import ArticleSimpleItem from "@/components/list/ArticleSimpleItem.vue";

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import type {Menu} from "@/types/menuInterface";
 import {useMenuStore} from "@/store/menuStore";
 import {ArrowUpCircleIcon, ChatBubbleOvalLeftEllipsisIcon, SparklesIcon} from "@heroicons/vue/24/solid";
 import {switchTheme} from "@ahzoo/utils";
-import type {Menu} from "@/types/menuInterface";
 
 /**
  * 定义菜单图标

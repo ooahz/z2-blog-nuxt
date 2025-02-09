@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {type PropType} from "vue";
+import type {PropType} from "vue";
 import type {PreviewArticle} from "@/types/articleInterface";
 import {CalendarDaysIcon, RocketLaunchIcon} from "@heroicons/vue/24/solid";
 import {formatDateTime} from "@ahzoo/utils";

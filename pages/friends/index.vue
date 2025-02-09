@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {useGlobalStore} from "@/store/globalStore";
 import type {FriendInterface} from "@/types/friendInterface";
 import {listFriend} from "@/api/friend";
+import {useGlobalStore} from "@/store/globalStore";
 
 const globalStore = useGlobalStore();
 const friendList = ref<FriendInterface[]>([]);

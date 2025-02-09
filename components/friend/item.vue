@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {Friend} from "@/types/friendInterface";
-import {type PropType} from "vue";
+import type {PropType} from "vue";
 
 defineProps({
   friend: Object as PropType<Friend>

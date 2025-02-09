@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import Prism from "prismjs";
-import {OuODottedPagination, OuOButton} from "@ahzoo/ouo";
-import {formatDateTime, getAttribute, setAttribute, tocGenerateByDomId} from "@ahzoo/utils";
 import type {Article} from "@/types/articleInterface";
 import type {PreviewColumn} from "@/types/columnInterface";
 import type {TocInterface} from "@/types/tocInterface";
@@ -10,7 +7,10 @@ import {listColumnByArticleId} from "@/api/column";
 import {useArticleStore} from "@/store/articleStore";
 import {useAuthorStore} from "@/store/authorStore";
 import {useMenuStore} from "@/store/menuStore";
-import ArticleColumn from "~/components/column/ArticleColumn.vue";
+import Prism from "prismjs";
+import {OuODottedPagination, OuOButton} from "@ahzoo/ouo";
+import {formatDateTime, getAttribute, setAttribute, tocGenerateByDomId} from "@ahzoo/utils";
+import ArticleColumn from "@/components/column/ArticleColumn.vue";
 
 const {path} = useRoute();
 const authorStore = useAuthorStore();

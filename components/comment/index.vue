@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {listComment, saveComment} from "@/api/comment";
 import type {Comment, CommentItem} from "@/types/commentInterface";
-import {SuSComment, SuSList} from "@ahzoo/sus";
+import {listComment, saveComment} from "@/api/comment";
 import {useGlobalStore} from "@/store/globalStore";
+import {SuSComment, SuSList} from "@ahzoo/sus";
 import {OuOMessage} from "@ahzoo/ouo";
 import emoji from "@/static/json/emoji.json";
 

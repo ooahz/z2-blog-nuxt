@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
-import {useSearchStore} from "@/store/searchStore";
 import type {PreviewArticle} from "@/types/articleInterface";
 import {searchAll, searchArticleContent, searchArticleTitle} from "@/api/search";
+import {useSearchStore} from "@/store/searchStore";
+import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
 
 const searchStore = useSearchStore();
 
