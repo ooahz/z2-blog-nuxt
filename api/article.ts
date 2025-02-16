@@ -2,7 +2,7 @@ import {useDefaultRequest} from "@/api/request";
 import type {Article, PreviewArticle} from "@/types/articleInterface";
 import type {ResultList} from "@/types/resultInterface";
 
-const BASE_URL = "/blog/v1/articles";
+const BASE_URL = "/v1/articles";
 
 export function listArticle(pagination: number): Promise<ResultList<PreviewArticle[]>> {
     const params = {

@@ -1,7 +1,7 @@
 import {useDefaultRequest} from "@/api/request";
 import type {CommentItem, TopCommentItem, Comment} from "@/types/commentInterface";
 
-const BASE_URL = "/blog/v1/comments";
+const BASE_URL = "/v1/comments";
 
 export function listComment(path: string, pagination: number): Promise<CommentItem[]> {
     const params = {
