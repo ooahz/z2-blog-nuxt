@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import type {Friend} from "@/types/friendInterface";
 import {saveFriend} from "@/api/friend";
-import {useAuthorStore} from "@/store/authorStore";
 import {useGlobalStore} from "@/store/globalStore";
 import {OuOButton, OuOInput, OuOMessage, OuOTag, OuOTextarea} from "@ahzoo/ouo";
 
-const authorStore = useAuthorStore();
-const authorInfo = authorStore.getAuthorInfo();
+const appConfig = useAppConfig();
 const globalStore = useGlobalStore();
 const friend = reactive<Friend>({} as Friend);
 const websiteTitle = ref("友链网址");
@@ -53,19 +51,19 @@ function onCancel() {
     <div class="friend__owner-info mx-11">
       <div class="friend__owner-info-title">博主信息</div>
       <div class="timeline">
-        <span class="friend__owner-title">名称：</span>{{ authorInfo.name }}
+        <span class="friend__owner-title">名称：</span>{{ appConfig.name }}
       </div>
       <div class="timeline">
-        <span class="friend__owner-title">网址：</span>{{ authorInfo.website }}
+        <span class="friend__owner-title">网址：</span>{{ appConfig.website }}
       </div>
       <div class="timeline">
-        <span class="friend__owner-title">头像：</span>{{ authorInfo.website + authorInfo.avatar }}
+        <span class="friend__owner-title">头像：</span>{{ appConfig.website + appConfig.avatar }}
       </div>
       <div class="timeline">
-        <span class="friend__owner-title">邮箱：</span>{{ authorInfo.email }}
+        <span class="friend__owner-title">邮箱：</span>{{ appConfig.email }}
       </div>
       <div class="timeline">
-        <span class="friend__owner-title">简介：</span>{{ authorInfo.description }}
+        <span class="friend__owner-title">简介：</span>{{ appConfig.description }}
       </div>
     </div>
     <div class="m-7 min-w-[260px]">

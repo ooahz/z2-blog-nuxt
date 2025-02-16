@@ -8,10 +8,13 @@ export default defineNuxtConfig({
             lg: 768
         }
     },
-    // site: {
-    //     url: "https://blog.ahzoo.cn",
-    //     name: "Z次元",
-    // },
+    site: {
+        url: "https://ouo.pub",
+        name: "Z次元",
+        description: "Z次元 - 一个收藏回忆与分享技术的地方",
+        defaultLocale: "zh-CN",
+        trailingSlash: false
+    },
     app: {
         head: {
             title: "Z次元",
@@ -58,7 +61,7 @@ export default defineNuxtConfig({
     nitro: {
         devProxy: {
             "/api": {
-                target: "http://localhost:8090",
+                target: "http://localhost:8080",
                 changeOrigin: true,
                 prependPath: true
             }

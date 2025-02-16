@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import {MagnifyingGlassIcon, Bars3BottomRightIcon} from "@heroicons/vue/24/solid";
 import {useGlobalStore} from "@/store/globalStore";
-import {useAuthorStore} from "@/store/authorStore";
 
-const authorStore = useAuthorStore();
-const authorInfo = authorStore.getAuthorInfo();
+const appConfig = useAppConfig();
 const globalState = useGlobalStore();
 
 function back2Home() {
@@ -39,7 +37,7 @@ function showSidebar() {
   <Search/>
   <div id="nav"
        class="ss-font stress bottom-line-1 fixed flex items-center justify-center top-0 rounded-b-xl">
-    <div class="left hover-shadow absolute left-7 cursor-pointer" @click="back2Home()">{{ authorInfo.siteName }}</div>
+    <div class="left hover-shadow absolute left-7 cursor-pointer" @click="back2Home()">{{ appConfig.siteName }}</div>
     <div class="center items-center cursor-pointer mobile:hidden">
       <span class="center__item hover-shadow mr-8" @click="skip('category')">分 类</span>
       <span class="center__item hover-shadow mr-8" @click="skip('comment')">留 言</span>

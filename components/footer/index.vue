@@ -1,22 +1,18 @@
 <script setup lang="ts">
-import {useAuthorStore} from "@/store/authorStore";
-
-const authorStore = useAuthorStore();
-const authorInfo = authorStore.getAuthorInfo();
-
+const appConfig = useAppConfig();
 </script>
 <template>
   <footer class="font-size-small w-full mt-7">
     <div class="footer-container flex justify-between w-full">
       <ul class="text-left">
         <li>
-          {{ authorInfo.extendsParams.footer }} By {{ authorInfo.name }} 版权所有
+          {{ appConfig.footer }} By {{ appConfig.name }} 版权所有
         </li>
       </ul>
       <ul class="text-right mobile:flex justify-center">
         <li class="hover-color">
-          <a class="no-style" :href="authorInfo.extendsParams.icpLink" target="_blank">
-            {{authorInfo.extendsParams.icp }}
+          <a class="no-style" :href="appConfig.icpLink" target="_blank">
+            {{ appConfig.icp }}
           </a>
         </li>
       </ul>

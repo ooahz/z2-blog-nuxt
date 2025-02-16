@@ -5,7 +5,6 @@ import type {TocInterface} from "@/types/tocInterface";
 import {getArticleDetail} from "@/api/article";
 import {listColumnByArticleId} from "@/api/column";
 import {useArticleStore} from "@/store/articleStore";
-import {useAuthorStore} from "@/store/authorStore";
 import {useMenuStore} from "@/store/menuStore";
 import Prism from "prismjs";
 import {OuODottedPagination, OuOButton} from "@ahzoo/ouo";
@@ -13,11 +12,10 @@ import {formatDateTime, getAttribute, setAttribute, tocGenerateByDomId} from "@a
 import ArticleColumn from "@/components/column/ArticleColumn.vue";
 
 const {path} = useRoute();
-const authorStore = useAuthorStore();
+const appConfig = useAppConfig();
 const menuState = useMenuStore();
 const articleStore = useArticleStore();
 
-const authorInfo = authorStore.getAuthorInfo();
 // 配置菜单
 menuState.setWithComment();
 const {$viewport} = useNuxtApp();
@@ -95,7 +93,7 @@ definePageMeta({
 
 useSeoMeta({
   title: () => `${article.title ?? ""}`,
-  description: () => `${article.description ?? authorInfo.description}`
+  description: () => `${article.description ?? appConfig.description}`
 })
 
 onMounted(() => {
@@ -162,7 +160,7 @@ onUnmounted(() => {
         </div>
         <div id="article-content" class="article-content w-full rounded-t-xl leading-loose" v-html="article.content">
         </div>
-        <div v-html="authorInfo.extendsParams.copyright" class="copyright my-5 p-5 rounded-b-xl"/>
+        <div v-html="appConfig.copyright" class="copyright my-5 p-5 rounded-b-xl"/>
         <div class="column-list flex flex-col overflow-hidden relative">
           <ArticleColumn
               v-show="index===nowIndex"

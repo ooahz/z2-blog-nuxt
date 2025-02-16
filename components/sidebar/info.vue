@@ -1,30 +1,27 @@
 <script setup lang="ts">
-import {useAuthorStore} from "@/store/authorStore";
 import Github from "@/static/svg/github.svg";
 import {EnvelopeIcon} from "@heroicons/vue/24/solid";
 
-const authorStore = useAuthorStore();
-const authorInfo = authorStore.getAuthorInfo();
-
+const appConfig = useAppConfig();
 </script>
 <template>
   <div class="author-info w-full flex flex-col justify-center">
     <div class="author-info__avatar">
-      <img class="cover" :src="authorInfo.avatar" :alt="authorInfo.name">
+      <img class="cover" :src="appConfig.avatar" :alt="appConfig.name">
     </div>
     <div>
       <div class="mt-3">
-        <p class="font-size-large font-semibold text-center">{{ authorInfo.name }}</p>
-        <p class="font-size-small my-2 text-center">{{ authorInfo.description }}</p>
+        <p class="font-size-large font-semibold text-center">{{ appConfig.name }}</p>
+        <p class="font-size-small my-2 text-center">{{ appConfig.description }}</p>
       </div>
       <div class="author-info__social flex justify-center mt-4 font-size-x-small">
         <a class="inline-flex items-center"
-           :href="authorInfo.extendsParams.github">
+           :href="appConfig.github">
           <Github/>
           <span class="ml-1">Github</span>
         </a>
         <a class="inline-flex items-center ml-3"
-           :href="'mailto:'+ authorInfo.email">
+           :href="'mailto:'+ appConfig.email">
           <EnvelopeIcon class="p-[1px]"/>
           <span class="ml-1">邮件</span>
         </a>

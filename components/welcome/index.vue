@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import {useAuthorStore} from "@/store/authorStore";
 import {setAttribute} from "@ahzoo/utils";
 
-const authorStore = useAuthorStore();
-const authorInfo = authorStore.getAuthorInfo();
+const appConfig = useAppConfig();
 
 onMounted(() => {
   if (process.client) {
     setAttribute("scroll", "primary");
     const landingImg = document.getElementById("landing-img");
     if (landingImg) {
-      landingImg.style.backgroundImage = `url(${authorInfo.extendsParams.landingImg})`
+      landingImg.style.backgroundImage = `url(${appConfig.landingImg})`
     }
   }
 })
@@ -21,8 +19,8 @@ onMounted(() => {
     <div id="landing-img" class="bg-img landing-cover absolute w-full h-full"></div>
     <div class="landing-mask absolute w-full h-full"></div>
     <div class="landing-info absolute text-center">
-      <div class="landing-info-landing">欢迎来到{{ authorInfo.siteName }}</div>
-      <span class="landing-info-description">{{ authorInfo.description }}</span>
+      <div class="landing-info-landing">欢迎来到{{ appConfig.siteName }}</div>
+      <span class="landing-info-description">{{ appConfig.description }}</span>
     </div>
     <svg v-if="!$viewport.isLessThan('lg')"
          class="no-filter landing-waves w-full absolute bottom-0"
