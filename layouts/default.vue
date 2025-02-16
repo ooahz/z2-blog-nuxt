@@ -31,7 +31,7 @@ onMounted(() => {
   primary!.scrollTop = 0;
   if (process.client) {
     show.value = true;
-    if ($viewport.isLessThan("mobile")) {
+    if ($viewport.isLessThan('lg')) {
       setAttribute("scroll", "scroll");
     } else {
       scrollHandler();

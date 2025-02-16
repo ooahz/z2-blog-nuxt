@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     try {
         if (process.client) {
             const {$viewport} = useNuxtApp();
-            if ($viewport.isLessThan("mobile")) {
+            if ($viewport.isLessThan('lg')) {
                 setAttribute("scroll", "scroll");
                 return;
             }
@@ -20,5 +20,4 @@ export default defineNuxtRouteMiddleware((to, from) => {
     } catch (e) {
         console.log(e);
     }
-
 })
