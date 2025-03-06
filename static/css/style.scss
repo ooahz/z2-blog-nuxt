@@ -89,7 +89,7 @@ input {
 #main {
   min-height: calc(100vh - var(--z-header-height));
   max-width: 1300px;
-  margin: 10px auto 0;
+  margin: 0 auto;
 }
 
 #ahzoo {
@@ -101,7 +101,7 @@ input {
   padding: var(--z-header-height) 35px 25px;
 
   &.mobile {
-    padding: var(--z-header-height) 18px 25px;
+    padding: var(--z-header-height) 18px 0;
   }
 }
 

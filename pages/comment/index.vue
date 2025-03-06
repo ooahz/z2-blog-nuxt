@@ -8,7 +8,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="comment-content w-full h-screen mobile:px-5 px-8 pt-8 mt-5 rounded-lg">
+  <div class="comment-content w-full h-full mobile:px-5 px-8 py-8 mt-5 rounded-lg">
     <Comment/>
   </div>
 </template>

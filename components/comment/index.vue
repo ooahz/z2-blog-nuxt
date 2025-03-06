@@ -96,7 +96,7 @@ async function getCommentList(pagination: number) {
       </div>
     </div>
   </Teleport>
-  <div id="comment" class="relative h-full overflow-y-scroll">
+  <div id="comment" class="relative h-full">
     <div class="box-header flex justify-end">
       <div class="right cursor-pointer">
         <span class="stress mx-2"

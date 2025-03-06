@@ -27,7 +27,7 @@ useSeoMeta({
 
 <template>
   <Friend/>
-  <div class="friend-content relative w-full h-screen mobile:px-5 px-8 pt-8 mt-5 rounded-lg overflow-y-scroll">
+  <div class="friend-content relative w-full h-full mobile:px-5 px-8 pt-8 mt-5 rounded-lg">
     <div class="box-header flex justify-end">
       <div class="right cursor-pointer">
             <span class="stress mx-2"
