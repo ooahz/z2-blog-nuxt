@@ -37,7 +37,7 @@ useSeoMeta({
         <i class="fa fa-send"/>
       </div>
     </div>
-    <div class="friend-list grid gap-5 my-7">
+    <div class="friend-list grid gap-7 my-7">
       <FriendItem v-for="(item, index) in friendList" :key="index" :friend="item"/>
     </div>
   </div>

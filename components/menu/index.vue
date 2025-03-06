@@ -19,7 +19,7 @@ function clickMenu(menuItem: Menu) {
   if (menuItem.title === "主题") {
     switchTheme();
   } else if (menuItem.title === "置顶") {
-    const dom = document.querySelector("#main");
+    const dom = document.querySelector("body");
     if (!dom) {
       document.querySelector("#article")?.scrollIntoView({
         behavior: "smooth"
@@ -27,19 +27,20 @@ function clickMenu(menuItem: Menu) {
     } else {
       dom?.scrollIntoView({
         behavior: "smooth",
-        block: "end"
+        block: "start"
       });
     }
   } else if (menuItem.title === "评论区") {
     document.querySelector("#comment")?.scrollIntoView({
-      behavior: "smooth"
+      behavior: "smooth",
+      block: "start"
     });
   }
 }
 </script>
 
 <template>
-  <div id="menu" class="absolute">
+  <div id="menu" class="fixed">
     <div class="menu-container relative flex items-center" :class="active?'active':''">
       <ul class="menu-button-list backdrop-blur-2 -mr-3 -mt-11">
         <li class="menu-button-list-item" v-for="menuItem in menuState.menu" @click="clickMenu(menuItem)">

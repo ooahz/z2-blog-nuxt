@@ -47,8 +47,8 @@ function onCancel() {
 
 <template>
   <div v-show="globalStore.showFriendForm"
-       class="friend flex flex-row mobile:flex-col items-center justify-center fixed top-0 left-0 w-full h-full">
-    <div class="friend__container overflow-y-scroll">
+       class="friend fixed top-0 left-0 w-full h-screen overflow-y-scroll">
+    <div class="friend__container flex flex-row mobile:block items-center justify-center h-full">
       <div class="friend__owner-info mx-11">
         <div class="friend__owner-info-title">博主信息</div>
         <div class="timeline">
@@ -142,7 +142,6 @@ function onCancel() {
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-transition: all .25s ease;
   transition: all .25s ease;
-  min-height: 100vh;
 
   &__form {
     &-input {

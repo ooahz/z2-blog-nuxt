@@ -11,10 +11,9 @@ const show = ref(false);
 
 function scrollHandler() {
   try {
-    const primary = document.getElementById("ahzoo");
-    primary!.onscroll = (_.throttle(() => {
+     window!.onscroll = (_.throttle(() => {
       // 滚动条向下
-      if (primary!.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+      if (window.scrollY > 30 || document.documentElement.scrollTop > 30) {
         setAttribute("scroll", "scroll");
       } else {
         // 滚动到顶部
@@ -31,7 +30,7 @@ onMounted(() => {
   primary!.scrollTop = 0;
   if (process.client) {
     show.value = true;
-    if ($viewport.isLessThan('lg')) {
+    if ($viewport.isLessThan("lg")) {
       setAttribute("scroll", "scroll");
     } else {
       scrollHandler();
@@ -41,7 +40,7 @@ onMounted(() => {
 </script>
 <template>
   <NuxtLoadingIndicator/>
-  <div v-show="show" id="basic" class="font-size-medium w-full h-screen flex flex-col relative">
+  <div v-show="show" id="basic" class="font-size-medium w-full h-full flex flex-col relative">
     <div id="ahzoo" class="relative w-full overflow-y-scroll">
       <div class="w-full">
         <Header/>

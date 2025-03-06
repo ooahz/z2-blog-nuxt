@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     try {
         if (process.client) {
             const {$viewport} = useNuxtApp();
-            if ($viewport.isLessThan('lg')) {
+            if ($viewport.isLessThan("lg")) {
                 setAttribute("scroll", "scroll");
                 return;
             }
