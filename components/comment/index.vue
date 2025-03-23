@@ -9,7 +9,7 @@ import emoji from "@/static/json/emoji.json";
 const {path} = useRoute();
 const articlePath = <string>path.split("/").pop();
 const globalStore = useGlobalStore();
-const commentList = ref<CommentItem[]>([]  as CommentItem[]);
+const commentList = ref<CommentItem[]>([] as CommentItem[]);
 const replyComment = ref<CommentItem>({} as CommentItem);
 const showLoading = ref(false);
 
@@ -34,6 +34,7 @@ function toReplyComment(comment: CommentItem) {
   replyComment.value = unref(comment);
   globalStore.setShowComment(true);
 }
+
 function toCancelComment() {
   globalStore.setShowComment(false);
 }

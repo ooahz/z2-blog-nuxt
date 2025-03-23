@@ -1,6 +1,7 @@
 import {OuOMessage} from "@ahzoo/ouo";
 
 const BASE_URL = "http://127.0.0.1:8080/blog";
+// const BASE_URL = "/api/blog";
 
 type MethodType = "GET" | "POST" | "PUT" | "DELETE";
 
