@@ -4,13 +4,13 @@ import type {Friend} from "@/types/friendInterface";
 
 const BASE_URL = "/v1/friends";
 
-export function saveFriend(friend: Friend, isUpdate: boolean): Promise<Result<any>> {
+export function saveFriendApi(friend: Friend, isUpdate: boolean): Promise<Result<any>> {
     const params = {
         u: isUpdate
     };
     return useDefaultRequest.post<Result<any>>(BASE_URL, friend, params);
 }
 
-export function listFriend(): Promise<Friend[]> {
+export function listFriendApi(): Promise<Friend[]> {
     return useDefaultRequest.get<Friend[]>(BASE_URL);
 }

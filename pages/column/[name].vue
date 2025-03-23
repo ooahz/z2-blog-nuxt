@@ -2,8 +2,8 @@
 import type {Article} from "@/types/articleInterface";
 import type {PageInfoInterface} from "@/types/pageInfoInterface";
 import type {PreviewColumn} from "@/types/columnInterface";
-import {getColumnInfo} from "@/api/column";
-import {listArticleByColumnId} from "@/api/article";
+import {getColumnInfoApi} from "@/api/column";
+import {listArticleByColumnIdApi} from "@/api/article";
 import {getAttribute, setAttribute} from "@ahzoo/utils";
 import CategoryItem from "@/components/list/CategoryItem.vue";
 import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
@@ -22,7 +22,7 @@ const columnInfoTemp: PreviewColumn = await getColumnInfoByName(articlePath);
 await getArticleListByColumnId(columnInfoTemp.id, 1);
 
 async function getColumnInfoByName(name: string) {
-  const newColumnInfo: PreviewColumn = await getColumnInfo(name);
+  const newColumnInfo: PreviewColumn = await getColumnInfoApi(name);
   previewColumn.value = unref(newColumnInfo);
   columnInfo.title = newColumnInfo.name;
   columnInfo.thumbnail = newColumnInfo.thumbnail;
@@ -32,7 +32,7 @@ async function getColumnInfoByName(name: string) {
 }
 
 async function getArticleListByColumnId(columnId: string, pagination: number) {
-  const newArticleList = await listArticleByColumnId(columnId, pagination);
+  const newArticleList = await listArticleByColumnIdApi(columnId, pagination);
   articleList.value = unref(newArticleList);
 }
 

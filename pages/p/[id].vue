@@ -2,8 +2,8 @@
 import type {Article} from "@/types/articleInterface";
 import type {PreviewColumn} from "@/types/columnInterface";
 import type {TocInterface} from "@/types/tocInterface";
-import {getArticleDetail} from "@/api/article";
-import {listColumnByArticleId} from "@/api/column";
+import {getArticleDetailApi} from "@/api/article";
+import {listColumnByArticleIdApi} from "@/api/column";
 import {useArticleStore} from "@/store/articleStore";
 import {useMenuStore} from "@/store/menuStore";
 import Prism from "prismjs";
@@ -52,12 +52,12 @@ function switchColumn(page: any) {
 }
 
 async function getColumnByArticleId(articleId: string) {
-  const newColumn = await listColumnByArticleId(articleId);
+  const newColumn = await listColumnByArticleIdApi(articleId);
   Object.assign(columnList, newColumn);
 }
 
 async function getArticleByPath(path: string) {
-  const newArticle: Article = await getArticleDetail(path);
+  const newArticle: Article = await getArticleDetailApi(path);
   if (!newArticle || !newArticle.id) {
     navigateTo("/");
     return;

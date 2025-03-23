@@ -3,18 +3,18 @@ import type {CommentItem, TopCommentItem, Comment} from "@/types/commentInterfac
 
 const BASE_URL = "/v1/comments";
 
-export function listComment(path: string, pagination: number): Promise<CommentItem[]> {
+export function listFriendApi(path: string, pagination: number): Promise<CommentItem[]> {
     const params = {
         p: pagination
     };
     return useDefaultRequest.get<CommentItem[]>(BASE_URL + `/${path}`, params);
 }
 
-export function topComment(): Promise<TopCommentItem[]> {
+export function topCommentApi(): Promise<TopCommentItem[]> {
     return useDefaultRequest.get<TopCommentItem[]>(BASE_URL + "/top");
 }
 
-export function saveComment(comment: Comment) {
+export function saveCommentApi(comment: Comment) {
     return useDefaultRequest.post(BASE_URL, comment);
 }
 

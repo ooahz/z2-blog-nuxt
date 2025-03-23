@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type {CategoryMap} from "@/types/categoryInterface";
 import type {PreviewColumn} from "@/types/columnInterface";
-import {listCategory} from "@/api/category";
-import {listAllColumn, listColumnByCategoryId} from "@/api/column";
+import {listCategoryApi} from "@/api/category";
+import {listAllColumnApi, listColumnByCategoryIdApi} from "@/api/column";
 import {OuOTag} from "@ahzoo/ouo";
 import ColumnItem from "@/components/list/ColumnItem.vue";
 
@@ -13,16 +13,16 @@ getCategoryList();
 getAllColumnList();
 
 async function getCategoryList() {
-  const newCategoryList = await listCategory();
+  const newCategoryList = await listCategoryApi();
   categoryList.value = unref(newCategoryList);
 }
 
 async function getAllColumnList() {
-  const newColumnList = await listAllColumn();
+  const newColumnList = await listAllColumnApi();
   columnList.value = unref(newColumnList);
 }
 async function getColumnListByCategoryId(categoryId: string, pagination: number) {
-  const newColumnList = await listColumnByCategoryId(categoryId, pagination);
+  const newColumnList = await listColumnByCategoryIdApi(categoryId, pagination);
   columnList.value = unref(newColumnList);
 }
 

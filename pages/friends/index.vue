@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {FriendInterface} from "@/types/friendInterface";
-import {listFriend} from "@/api/friend";
+import {listFriendApi} from "@/api/friend";
 import {useGlobalStore} from "@/store/globalStore";
 
 const globalStore = useGlobalStore();
@@ -16,7 +16,7 @@ function showFriendForm() {
 }
 
 async function getFriendList() {
-  friendList.value = await listFriend();
+  friendList.value = await listFriendApi();
 }
 
 useSeoMeta({

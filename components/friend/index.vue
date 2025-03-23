@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {Friend} from "@/types/friendInterface";
-import {saveFriend} from "@/api/friend";
+import {saveFriendApi} from "@/api/friend";
 import {useGlobalStore} from "@/store/globalStore";
 import {OuOButton, OuOInput, OuOMessage, OuOTag, OuOTextarea} from "@ahzoo/ouo";
 
@@ -32,7 +32,7 @@ async function onSend() {
     OuOMessage.warning("头像地址需以http或https开头");
     return;
   }
-  const res = await saveFriend(friend, updateFriend.value);
+  const res = await saveFriendApi(friend, updateFriend.value);
   if (res.state === "success") {
     OuOMessage.success("友链信息已提交");
     globalStore.showFriendForm = false;

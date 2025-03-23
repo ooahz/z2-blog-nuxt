@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {PreviewArticle} from "@/types/articleInterface";
 import type {Page} from "@/types/resultInterface";
-import {listArticle} from "@/api/article";
+import {listArticleApi} from "@/api/article";
 import {useMenuStore} from "@/store/menuStore";
 import {OuOPagination, OuOTag} from "@ahzoo/ouo";
 import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
@@ -16,7 +16,7 @@ const lastPagination = ref(0);
 await getArticleList(1);
 
 async function getArticleList(pagination: number) {
-  const result = await listArticle(pagination);
+  const result = await listArticleApi(pagination);
   articleList.value = result.data;
   const pageRes = result.page;
   if (pageRes?.size > 0) {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {Comment, CommentItem} from "@/types/commentInterface";
-import {listComment, saveComment} from "@/api/comment";
+import {listFriendApi, saveCommentApi} from "@/api/comment";
 import {useGlobalStore} from "@/store/globalStore";
 import {SuSComment, SuSList} from "@ahzoo/sus";
 import {OuOMessage} from "@ahzoo/ouo";
@@ -67,7 +67,7 @@ async function toSaveComment(comment: Comment) {
   }
   showLoading.value = true;
   comment.website = window.location.href;
-  const res = await saveComment(comment);
+  const res = await saveCommentApi(comment);
   showLoading.value = false;
   if (!!res) {
     localStorage.setItem("content", comment.contentMD);
@@ -78,7 +78,7 @@ async function toSaveComment(comment: Comment) {
 }
 
 async function getCommentList(pagination: number) {
-  commentList.value = await listComment(articlePath, pagination);
+  commentList.value = await listFriendApi(articlePath, pagination);
 }
 </script>
 

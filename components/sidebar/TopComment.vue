@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type {TopCommentItem} from "@/types/commentInterface";
-import {topComment} from "@/api/comment";
+import {topCommentApi} from "@/api/comment";
 import {SuSTop} from "@ahzoo/sus";
 
 const commentList = ref<TopCommentItem[]>([]);
@@ -11,7 +11,7 @@ const commentList = ref<TopCommentItem[]>([]);
 await getTopComment();
 
 async function getTopComment() {
-  const newCommentList = await topComment();
+  const newCommentList = await topCommentApi();
   commentList.value = unref(newCommentList);
 }
 </script>

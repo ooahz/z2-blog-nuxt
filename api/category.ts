@@ -3,6 +3,6 @@ import type {CategoryMap} from "@/types/categoryInterface";
 
 const BASE_URL = "/v1/categories";
 
-export function listCategory(): Promise<CategoryMap[]>  {
+export function listCategoryApi(): Promise<CategoryMap[]>  {
     return useDefaultRequest.get<CategoryMap[]>(BASE_URL);
 }

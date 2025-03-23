@@ -4,18 +4,18 @@ import type {ResultList} from "@/types/resultInterface";
 
 const BASE_URL = "/v1/articles";
 
-export function listArticle(pagination: number): Promise<ResultList<PreviewArticle[]>> {
+export function listArticleApi(pagination: number): Promise<ResultList<PreviewArticle[]>> {
     const params = {
         p: pagination
     };
     return useDefaultRequest.getRawData<ResultList<PreviewArticle[]>>(BASE_URL, params);
 }
 
-export function getArticleDetail(path: string): Promise<Article> {
+export function getArticleDetailApi(path: string): Promise<Article> {
     return useDefaultRequest.get<Article>(BASE_URL + `/${path}`);
 }
 
-export function listArticleByColumnId(columnId: string, pagination: number): Promise<Article[]> {
+export function listArticleByColumnIdApi(columnId: string, pagination: number): Promise<Article[]> {
     const params = {
         p: pagination
     };
