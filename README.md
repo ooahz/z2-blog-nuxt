@@ -6,11 +6,21 @@ Z次元博客
 
 Github：（十玖八柒）https://github.com/ooahz
 
+## 说明
+
+遇到什么问题，欢迎提issue
+交流讨论可移步此处：[文档&交流](https://blog.ahzoo.cn/p/z2blog/)
+
 ## Star
 
 喜欢此项目的点点仓库的star吧！
 开源版本后续更新频率取决于star数量（关注度），没人关注的话后续就随缘更新了
 
+## 仓库地址
+
+博客前端开源仓库地址：[z2-nuxt-blog](https://github.com/ooahz/z2-blog-nuxt)
+博客后端开源仓库地址：[z2-blog-cloud](https://github.com/ooahz/z2-blog-cloud)
+后台管理前端开源仓库地址：[z2-blog-admin](https://github.com/ooahz/z2-blog-admin)
 
 ## 项目预览
 
