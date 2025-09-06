@@ -7,7 +7,7 @@ import {listColumnByArticleIdApi} from "@/api/column";
 import {useArticleStore} from "@/store/articleStore";
 import {useMenuStore} from "@/store/menuStore";
 import Prism from "prismjs";
-import {OuODottedPagination, OuOButton} from "@ahzoo/ouo";
+import {OuOButton, OuODottedPagination} from "@ahzoo/ouo";
 import {formatDateTime, getAttribute, setAttribute, tocGenerateByDomId} from "@ahzoo/utils";
 import ArticleColumn from "@/components/column/ArticleColumn.vue";
 
@@ -52,6 +52,9 @@ function switchColumn(page: any) {
 }
 
 async function getColumnByArticleId(articleId: string) {
+  if (!articleId) {
+    return;
+  }
   const newColumn = await listColumnByArticleIdApi(articleId);
   Object.assign(columnList, newColumn);
 }
@@ -131,7 +134,8 @@ onUnmounted(() => {
             <span>最后更新：{{ formatDateTime(article?.updatedDate) }}</span>
           </span>
           <span class="article-meta__sort">
-            <span class="sort-column cursor-pointer" v-for="columnItem in columnList" @click="goColumnPage(columnItem.name)">{{ columnItem.name }}</span>
+            <span class="sort-column cursor-pointer" v-for="columnItem in columnList"
+                  @click="goColumnPage(columnItem.name)">{{ columnItem.name }}</span>
           </span>
         </div>
       </div>
@@ -266,7 +270,7 @@ onUnmounted(() => {
   border-radius: 5px;
 }
 
-.article-waves{
+.article-waves {
   height: 90px;
 }
 

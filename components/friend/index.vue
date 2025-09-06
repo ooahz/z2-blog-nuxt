@@ -47,8 +47,8 @@ function onCancel() {
 
 <template>
   <div v-show="globalStore.showFriendForm"
-       class="friend fixed top-0 left-0 w-full h-screen overflow-y-scroll">
-    <div class="friend__container flex flex-row mobile:block items-center justify-center h-full">
+       class="friend fixed top-0 left-0 w-full h-screen">
+    <div class="friend__container flex flex-row mobile:block items-center justify-center h-full overflow-y-scroll">
       <div class="friend__owner-info mx-11">
         <div class="friend__owner-info-title">博主信息</div>
         <div class="timeline">
@@ -93,7 +93,7 @@ function onCancel() {
           </OuOTag>
         </div>
 
-        <div class="friend__form flex flex-col overflow-y-scroll">
+        <div class="friend__form flex flex-col">
           <div class="m-1 friend__form-input">
             <OuOInput :placeholder="'名称'" v-model="friend.name" :border="true"/>
           </div>

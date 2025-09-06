@@ -33,10 +33,14 @@
 }
 
 /* 滚动条 */
+#ahzoo::-webkit-scrollbar {
+  display: none;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
-  display: none;
+  display: block;
 }
 
 ::-webkit-scrollbar-track {
