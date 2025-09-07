@@ -175,7 +175,7 @@ onUnmounted(() => {
             <OuODottedPagination v-if="columnList.length===2" :total=2 @onclick="switchColumn"/>
           </div>
         </div>
-        <div class="box mt-3">
+        <div v-if="!(appConfig.feature.comment === 'disable')" class="box mt-3">
           <Comment/>
         </div>
       </div>

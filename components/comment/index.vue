@@ -86,7 +86,7 @@ async function getCommentList(pagination: number) {
 <template>
   <Teleport to="body">
     <div class="comment-mask fixed flex flex-col items-center justify-center top-0 left-0 w-full h-full"
-         v-show="globalStore.showComment">
+         v-if="globalStore.showComment">
       <div class="comment-sus flex flex-col">
         <div v-show="showLoading" class="w-full h-full">
           <Loading/>

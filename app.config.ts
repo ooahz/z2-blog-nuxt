@@ -1,4 +1,5 @@
 import authorConfig from './author.config'
+import featureConfig from "./feature.config";
 
 export default defineAppConfig({
     ...authorConfig,
@@ -9,5 +10,8 @@ export default defineAppConfig({
         + "Z次元</a>，若本文涉及转载第三方内容，请您一同注明。",
     footer: "©2024 - 2025",
     icp: "豫ICP备20021466号",
-    icpLink: "http://beian.miit.gov.cn"
+    icpLink: "http://beian.miit.gov.cn",
+    feature:{
+        ...featureConfig
+    }
 })

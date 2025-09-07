@@ -4,6 +4,7 @@ import TopComment from "@/components/sidebar/TopComment.vue";
 import Info from "@/components/sidebar/info.vue";
 
 const globalState = useGlobalStore();
+const appConfig = useAppConfig();
 
 /**
  * 界面跳转
@@ -31,7 +32,8 @@ function closeSidebar() {
       <Info/>
       <div class="mt-5">
         <div class="menu-box" @click="skip('category')">分类</div>
-        <div class="menu-box" @click="skip('comment')">留言</div>
+        <div v-if="!(appConfig.feature.comment === 'disable')"
+            class="menu-box" @click="skip('comment')">留言</div>
         <div class="menu-box" @click="skip('friends')">友链</div>
       </div>
       <TopComment/>

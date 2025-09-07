@@ -2,7 +2,7 @@
 const appConfig = useAppConfig();
 </script>
 <template>
-  <footer class="font-size-small w-full">
+  <footer class="font-size-x-small w-full">
     <div class="footer-container flex justify-between w-full">
       <ul class="text-left">
         <li>
@@ -22,9 +22,8 @@ const appConfig = useAppConfig();
 
 <style scoped lang="scss">
 footer {
-  padding: 30px 50px 20px;
-  background: linear-gradient(to top, rgba(var(--z-global-bg), .9) 4rem, rgba(var(--z-global-bg), 30%));
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(var(--z-common-bg), .5);
+  padding: 25px 50px 18px;
+  background: linear-gradient(to top, rgba(var(--z-common-bg), .9) 4rem, rgba(var(--z-common-bg), 30%));
 }
 
 .footer-container {

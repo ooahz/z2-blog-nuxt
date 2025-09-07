@@ -3,6 +3,7 @@ import type {TopCommentItem} from "@/types/commentInterface";
 import {topCommentApi} from "@/api/comment";
 import {SuSTop} from "@ahzoo/sus";
 
+const appConfig = useAppConfig();
 const commentList = ref<TopCommentItem[]>([]);
 
 /**
@@ -11,12 +12,16 @@ const commentList = ref<TopCommentItem[]>([]);
 await getTopComment();
 
 async function getTopComment() {
+  if (appConfig.feature.comment === "disable") {
+    return;
+  }
   const newCommentList = await topCommentApi();
   commentList.value = unref(newCommentList);
 }
 </script>
 <template>
-  <div class="top-comment box mt-5">
+  <div v-if="!(appConfig.feature.comment === 'disable')"
+       class="top-comment box mt-5">
     <div class="box-header bottom-line pb-1.5 mt-1 mx-1.5">最新评论</div>
     <a :href="commentItem.website"
        v-for="commentItem in commentList"

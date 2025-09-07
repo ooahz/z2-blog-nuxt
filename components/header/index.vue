@@ -40,10 +40,12 @@ function showSidebar() {
     <div class="left hover-shadow absolute left-7 cursor-pointer" @click="back2Home()">{{ appConfig.siteName }}</div>
     <div class="center items-center cursor-pointer mobile:hidden">
       <span class="center__item hover-shadow mr-8" @click="skip('category')">分 类</span>
-      <span class="center__item hover-shadow mr-8" @click="skip('comment')">留 言</span>
+      <span v-if="!(appConfig.feature.comment === 'disable')"
+          class="center__item hover-shadow mr-8" @click="skip('comment')">留 言</span>
       <span class="center__item hover-shadow" @click="skip('friends')">友 链</span>
     </div>
-    <div class="flex right cursor-pointer absolute right-7">
+    <div v-if="!(appConfig.feature.search === 'disable')"
+        class="flex right cursor-pointer absolute right-7">
       <span class="right__item normal-svg hover-shadow">
         <MagnifyingGlassIcon @click="openSearch()"/>
       </span>

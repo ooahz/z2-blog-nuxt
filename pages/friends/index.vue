@@ -4,6 +4,7 @@ import {listFriendApi} from "@/api/friend";
 import {useGlobalStore} from "@/store/globalStore";
 
 const globalStore = useGlobalStore();
+const appConfig = useAppConfig();
 const friendList = ref<FriendInterface[]>([]);
 
 /**
@@ -29,7 +30,8 @@ useSeoMeta({
   <Friend/>
   <div class="friend-content relative w-full h-full mobile:px-5 px-8 pt-8 mt-5 rounded-lg">
     <div class="box-header flex justify-end">
-      <div class="right cursor-pointer">
+      <div v-if="!(appConfig.feature.friendLink === 'disable')"
+          class="right cursor-pointer">
             <span class="stress mx-2"
                   @click="showFriendForm">
               交换友链
