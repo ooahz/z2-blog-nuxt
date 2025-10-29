@@ -14,7 +14,3 @@
 .ouo-input {
     max-height: 100px;
 }
-
-[data-theme="dark"] .ouo-landing {
-    display: none;
-}

@@ -67,7 +67,7 @@ function onCancel() {
           <span class="friend__owner-title">简介：</span>{{ appConfig.description }}
         </div>
       </div>
-      <div class="m-7 min-w-[260px]">
+      <div class="m-7 min-w-[280px]">
         <div class="friend-tips my-5">
           <p class="title mb-2">友链交换说明：</p>
           <p>此站点为演示站点，友链仅作演示</p>

@@ -10,15 +10,11 @@ defineProps({
     required: true
   }
 });
-
-function showArticleDetail(article: PreviewArticle) {
-  navigateTo(`/p/${article.path}`);
-}
 </script>
 
 <template>
-  <div class="article-item block relative rounded-xl"
-       @click="showArticleDetail(article)">
+  <a class="article-item block relative rounded-xl"
+       :href="`/p/${article.path}`">
     <div class="mask">
       <div class="w-full h-full px-5 relative">
         <img :src="article.thumbnail" class="cover rounded-t-2xl opacity-90" alt="">
@@ -47,7 +43,7 @@ function showArticleDetail(article: PreviewArticle) {
         </div>
       </div>
     </div>
-  </div>
+  </a>
 </template>
 
 <style scoped lang="scss">
@@ -105,7 +101,7 @@ function showArticleDetail(article: PreviewArticle) {
 
   &-item {
     margin-right: 3px;
-    padding: 3px 7px;
+    padding: 4px 8px;
     background-color: rgba(var(--z-gray-color), .8);
   }
 }

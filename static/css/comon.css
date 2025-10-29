@@ -95,6 +95,10 @@
     serif;
 }
 
+.default-font {
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 .opacity-100 {
     opacity: .9;
 }

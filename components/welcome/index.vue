@@ -42,7 +42,7 @@ onMounted(() => {
 <style lang="scss">
 #landing {
   height: 65vh;
-  min-height: 400px;
+  min-height: 430px;
   max-height: 550px;
   width: inherit;
   overflow: hidden;
@@ -76,12 +76,12 @@ onMounted(() => {
 
   &-landing {
     margin: 30px;
-    font-size: 19px;
+    font-size: 22px;
     letter-spacing: 7px;
   }
 
   &-description {
-    font-size: 27px;
+    font-size: 29px;
     letter-spacing: 6px;
   }
 }

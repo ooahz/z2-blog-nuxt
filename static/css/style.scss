@@ -33,9 +33,13 @@
 }
 
 /* 滚动条 */
-#ahzoo::-webkit-scrollbar {
-  display: none;
+#ahzoo,
+.article-content {
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
+
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -92,7 +96,7 @@ input {
 
 #main {
   min-height: calc(100vh - var(--z-header-height));
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -217,10 +221,11 @@ img {
   }
 }
 
-.emoji {
+.emoji,
+.emoji img {
   display: inline-block;
   margin: 0;
-  width: 24px;
+  width: 24px !important;
 }
 
 .item-hover {

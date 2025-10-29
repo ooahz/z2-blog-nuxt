@@ -100,7 +100,7 @@ async function getCommentList(pagination: number) {
   <div id="comment" class="relative h-full">
     <div class="box-header flex justify-end">
       <div class="right cursor-pointer">
-        <span class="stress mx-2"
+        <span class="title mx-2"
               @click="toShowComment">
           发表评论
         </span>

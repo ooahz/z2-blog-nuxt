@@ -3,13 +3,13 @@ const appConfig = useAppConfig();
 </script>
 <template>
   <footer class="font-size-x-small w-full">
-    <div class="footer-container flex justify-between w-full">
+    <div class="footer-container flex mobile:flex-col justify-between items-center w-full">
       <ul class="text-left">
         <li>
           {{ appConfig.footer }} By {{ appConfig.name }} 版权所有
         </li>
       </ul>
-      <ul class="text-right mobile:flex justify-center">
+      <ul class="text-right justify-center">
         <li class="hover-color">
           <a class="no-style" :href="appConfig.icpLink" target="_blank">
             {{ appConfig.icp }}

@@ -10,15 +10,11 @@ defineProps({
     required: true
   }
 });
-
-function showArticleDetail(article: PreviewArticle) {
-  navigateTo(`/p/${article.path}`);
-}
 </script>
 
 <template>
-  <div class="item-hover horizontal-article-item flex relative p-3.5 rounded-xl"
-       @click="showArticleDetail(article)">
+  <a class="item-hover horizontal-article-item flex relative p-3.5 rounded-xl"
+     :href="`/p/${article.path}`">
     <div class="article-img relative mobile:hidden">
       <img :src="article.thumbnail" class="cover rounded-xl opacity-90" alt="">
     </div>
@@ -48,7 +44,7 @@ function showArticleDetail(article: PreviewArticle) {
         </div>
       </div>
     </div>
-  </div>
+  </a>
 </template>
 
 <style scoped lang="scss">
@@ -76,7 +72,7 @@ function showArticleDetail(article: PreviewArticle) {
 
   &-item {
     margin-right: 3px;
-    padding: 3px 7px;
+    padding: 4px 8px;
     background-color: rgba(var(--z-gray-color), .8);
   }
 }

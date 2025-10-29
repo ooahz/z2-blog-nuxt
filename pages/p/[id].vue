@@ -10,6 +10,7 @@ import Prism from "prismjs";
 import {OuOButton, OuODottedPagination} from "@ahzoo/ouo";
 import {formatDateTime, getAttribute, setAttribute, tocGenerateByDomId} from "@ahzoo/utils";
 import ArticleColumn from "@/components/column/ArticleColumn.vue";
+import Copyright from "@/static/svg/copyright.svg";
 
 const {path} = useRoute();
 const appConfig = useAppConfig();
@@ -119,12 +120,13 @@ onUnmounted(() => {
     <div v-if="!article.title" id="show" class="w-full h-full">
       <Loading/>
     </div>
-    <div v-else class="article__mask relative h-[60vh] mobile:h-[280px]">
+    <div v-else class="article__header relative">
       <div class="article-cover h-full absolute">
         <img :src="article.thumbnail" alt="">
       </div>
-      <div class="article__info w-full h-full absolute t-0 flex flex-col justify-center px-11 mobile:px-5 mobile:pt-11">
-        <div class="article__info-title font-semibold leading-loose text-5xl mobile:text-2xl">
+      <div class="article-mask absolute"></div>
+      <div class="article__info w-full h-full relative t-0 flex flex-col justify-center px-11 mobile:px-5 mobile:pt-11">
+        <div class="article__info-title font-semibold leading-loose text-[2.8rem] mobile:text-[1.7rem]">
           {{ article.title }}
         </div>
         <div class="font-size-small flex flex-col">
@@ -133,7 +135,7 @@ onUnmounted(() => {
             <span class="mx-2">|</span>
             <span>最后更新：{{ formatDateTime(article?.updatedDate) }}</span>
           </span>
-          <span class="article-meta__sort">
+          <span class="article-meta__sort mt-">
             <span class="sort-column cursor-pointer" v-for="columnItem in columnList"
                   @click="goColumnPage(columnItem.name)">{{ columnItem.name }}</span>
           </span>
@@ -155,16 +157,20 @@ onUnmounted(() => {
       </svg>
     </div>
     <div class="article__container flex justify-end w-full p-5 mb-5 mobile:p-1">
-      <div class="article__content px-5 w-[72%] mobile:w-full mobile:px-0 pad:w-full">
+      <div class="article__content px-6 w-[72%] mobile:w-full mobile:px-0 pad:w-full">
         <div class="aside sticky hidden screen:block">
           <div class="aside-item absolute flex flex-col">
             <OuOButton class="mb-3" :type="'card-2'" :equilateral="true" @click="scrollTo('#article')">置顶</OuOButton>
             <OuOButton :type="'card-2'" :equilateral="true" @click="scrollTo('#comment')">评论</OuOButton>
           </div>
         </div>
-        <div id="article-content" class="article-content w-full rounded-t-xl leading-loose" v-html="article.content">
+        <div id="article-content" class="article-content w-full rounded-t-xl leading-loose overflow-hidden"
+             v-html="article.content">
         </div>
-        <div v-html="appConfig.copyright" class="copyright my-5 p-5 rounded-b-xl"/>
+        <div class="copyright relative flex items-center my-5 p-5 rounded-b-xl overflow-hidden">
+          <span v-html="appConfig.copyright"></span>
+          <Copyright/>
+        </div>
         <div class="column-list flex flex-col overflow-hidden relative">
           <ArticleColumn
               v-show="index===nowIndex"
@@ -204,7 +210,8 @@ onUnmounted(() => {
 }
 
 .article {
-  &__mask {
+  &__header {
+    height: clamp(360px, 40vh, 500px);
     overflow: hidden;
     background: var(--z-article-bg);
 
@@ -220,7 +227,7 @@ onUnmounted(() => {
 
   &__container {
     animation: bottom-top 1s;
-    max-width: 1400px;
+    max-width: 1500px;
     margin: auto;
   }
 
@@ -238,7 +245,7 @@ onUnmounted(() => {
       &-item {
         width: 52px;
         height: 52px;
-        left: -60px;
+        left: -70px;
       }
     }
   }
@@ -253,21 +260,42 @@ onUnmounted(() => {
   }
 
   &__info {
+    margin: auto;
+    max-width: 1500px;
     color: rgba(var(--z-primary-fontcolor));
-    background: rgba(var(--z-primary-color), .5);
+  }
+
+  &-mask {
+    inset: 0;
+    background: rgba(var(--z-primary-color), .7);
   }
 }
 
-[data-theme="dark"] .article__mask {
+[data-theme="dark"] .article__header {
   filter: brightness(0.9);
 }
 
 .sort-category,
 .sort-column {
-  padding: 4px 8px;
+  padding: 6px 11px;
   margin-right: 6px;
   background: #ffffff52;
   border-radius: 5px;
+}
+
+.copyright {
+  min-height: 80px;
+
+  svg {
+    position: absolute;
+    top: 5px;
+    right: -20px;
+    width: 110px;
+    height: 110px;
+    opacity: .05;
+    transform-origin: 50% 50%;
+    transform: rotate(-20deg);
+  }
 }
 
 .article-waves {
@@ -307,6 +335,11 @@ onUnmounted(() => {
 </style>
 
 <style lang="scss">
+.mobile-view {
+  .article__header {
+    height: 280px;
+  }
+}
 
 .article__content {
   a {

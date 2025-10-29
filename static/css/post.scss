@@ -6,6 +6,16 @@ h3 {
   font-size: 1.17em;
 }
 
+.mobile-view {
+  h2 {
+    font-size: 1.3em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+}
+
 h1,
 h2,
 h3,
@@ -19,7 +29,6 @@ h6 {
   ) no-repeat;
   display: flex;
   position: relative;
-  margin: 5px 0 15px;
   width: fit-content;
   font-weight: bold;
   transition: all 0.2s ease-out;
@@ -29,6 +38,18 @@ h6 {
       width: 39px;
     }
   }
+}
+
+h1,
+h2,
+h3 {
+  margin: 15px 0;
+}
+
+h4,
+h5,
+h6 {
+  margin: 10px 0;
 }
 
 h1:after,
@@ -191,7 +212,7 @@ blockquote {
 table {
   display: table;
   width: 100%;
-  margin: 10px 5px;
+  margin: 10px 0;
   border-spacing: 0;
   border-collapse: collapse;
   empty-cells: show;

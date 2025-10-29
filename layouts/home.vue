@@ -44,7 +44,8 @@ onMounted(() => {
 </script>
 <template>
   <NuxtLoadingIndicator/>
-  <div v-show="show" id="basic" class="font-size-medium w-full h-full flex flex-col relative">
+  <div v-show="show" id="basic" class="font-size-medium w-full h-full flex flex-col relative"
+       :class="$viewport.isLessThan('lg') ? 'mobile-view' : ''">
     <div id="ahzoo" class="relative w-full overflow-y-scroll">
       <div class="w-full">
         <Header/>

@@ -30,7 +30,7 @@ function getColumnDetail() {
 
 <style scoped lang="scss">
 .column-item {
-  max-width: 500px;
+  max-width: 550px;
 
   &-title:after {
     bottom: 0;

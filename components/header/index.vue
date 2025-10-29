@@ -36,16 +36,19 @@ function showSidebar() {
 <template>
   <Search/>
   <div id="nav"
-       class="ss-font stress bottom-line-1 fixed flex items-center justify-center top-0 rounded-b-xl">
-    <div class="left hover-shadow absolute left-7 cursor-pointer" @click="back2Home()">{{ appConfig.siteName }}</div>
+       class="title bottom-line-1 fixed flex items-center justify-center top-0 rounded-b-xl">
+    <div class="ss-font left hover-shadow absolute left-7 cursor-pointer" @click="back2Home()">{{
+        appConfig.siteName
+      }}
+    </div>
     <div class="center items-center cursor-pointer mobile:hidden">
       <span class="center__item hover-shadow mr-8" @click="skip('category')">分 类</span>
       <span v-if="!(appConfig.feature.comment === 'disable')"
-          class="center__item hover-shadow mr-8" @click="skip('comment')">留 言</span>
+            class="center__item hover-shadow mr-8" @click="skip('comment')">留 言</span>
       <span class="center__item hover-shadow" @click="skip('friends')">友 链</span>
     </div>
     <div v-if="!(appConfig.feature.search === 'disable')"
-        class="flex right cursor-pointer absolute right-7">
+         class="flex right cursor-pointer absolute right-7">
       <span class="right__item normal-svg hover-shadow">
         <MagnifyingGlassIcon @click="openSearch()"/>
       </span>
@@ -57,14 +60,17 @@ function showSidebar() {
 </template>
 <style lang="scss">
 #nav {
-  height: 62px;
+  height: 68px;
   width: inherit;
   z-index: 9;
-  letter-spacing: 0.08em;
   color: rgb(var(--z-fontcolor));
   background-color: transparent;
   border-bottom: none;
   transition: all .3s;
+
+  .left {
+    letter-spacing: 0.1em;
+  }
 }
 
 [scroll="scroll"] #nav {

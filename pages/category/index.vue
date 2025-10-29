@@ -38,7 +38,7 @@ useSeoMeta({
       <OuOTag class="mr-2" :size="'small'" @click="getAllColumnList" :checked="'true'">
         全部专栏
       </OuOTag>
-      <OuOTag class="mr-2" :size="'small'" v-for="category in categoryList"
+      <OuOTag class="mr-3" :size="'small'" v-for="category in categoryList"
               @click="getColumnListByCategoryId(category.id, 1)">
         {{ category.name }}
       </OuOTag>

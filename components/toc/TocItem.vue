@@ -27,7 +27,7 @@ function scrollToTitle() {
     }, 500);
   }
 
-  const container = document.querySelector("#ahzoo");
+  const container = document.querySelector("#article");
   container?.addEventListener("scroll", handleScroll);
   articleStore.setSelectTitle(props.toc.id);
   document.querySelector("#" + props.toc.id)?.scrollIntoView({
@@ -39,7 +39,7 @@ function scrollToTitle() {
 
 <template>
   <div class="toc-list-item py-0.5 cursor-pointer"
-       :class="[toc.className, articleStore.selectTitle===toc.id?'active':'']"
+       :class="[toc.className]"
        @click="scrollToTitle"
   >
     {{ toc.name }}
@@ -50,10 +50,9 @@ function scrollToTitle() {
 .toc-list-item {
   overflow: hidden;
   white-space: nowrap;
+  transition: all .25s;
 
-  &.active {
-    font-size: 110%;
-    font-weight: 600;
+  &.active, &:hover {
     color: rgb(var(--z-primary-color));
   }
 }

@@ -11,7 +11,7 @@ const show = ref(false);
 
 function scrollHandler() {
   try {
-     window!.onscroll = (_.throttle(() => {
+    window!.onscroll = (_.throttle(() => {
       // 滚动条向下
       if (window.scrollY > 30 || document.documentElement.scrollTop > 30) {
         setAttribute("scroll", "scroll");
@@ -40,7 +40,8 @@ onMounted(() => {
 </script>
 <template>
   <NuxtLoadingIndicator/>
-  <div v-show="show" id="basic" class="font-size-medium w-full h-full flex flex-col relative">
+  <div v-show="show" id="basic" class="font-size-medium w-full h-full flex flex-col relative"
+       :class="$viewport.isLessThan('lg') ? 'mobile-view' : ''">
     <div id="ahzoo" class="relative w-full overflow-y-scroll">
       <div class="w-full">
         <Header/>

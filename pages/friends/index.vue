@@ -32,7 +32,7 @@ useSeoMeta({
     <div class="box-header flex justify-end">
       <div v-if="!(appConfig.feature.friendLink === 'disable')"
           class="right cursor-pointer">
-            <span class="stress mx-2"
+            <span class="title mx-2"
                   @click="showFriendForm">
               交换友链
              </span>
@@ -51,7 +51,7 @@ useSeoMeta({
   }
 
   &-list {
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
   }
 }
 </style>
