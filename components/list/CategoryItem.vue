@@ -29,8 +29,8 @@ onMounted(() => {
   <div class="category-item backdrop-blur-2 relative mx-3">
     <div class="h-10 cursor-pointer">
       <div class="category-item-svg h-full w-20"/>
-      <div class="mx-3">
-        <div class="category-item-title flex flex-col title relative pb-0.5 mb-1">{{ category.name }}</div>
+      <div class="">
+        <div class="title category-item-title relative pb-0.5">{{ category.name }}</div>
       </div>
     </div>
   </div>
@@ -38,8 +38,8 @@ onMounted(() => {
 <style scoped lang="scss">
 .category-item {
   overflow: hidden;
-  width: 150px;
-  padding: 1.25rem;
+  min-width: 110px;
+  padding: 16px 25px 10px;
   border-radius: 0.75rem;
   opacity: .5;
   background-color: rgba(var(--z-common-bg), .6);

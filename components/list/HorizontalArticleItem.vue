@@ -30,7 +30,7 @@ defineProps({
           <span>{{ formatDateTime(article.updatedDate || "") }}</span>
         </div>
       </div>
-      <div class="double-line stress">{{ article.title }}</div>
+      <div class="double-line item-title">{{ article.title }}</div>
       <div class="flex">
         <p class="three-line flex-[1]">{{ article.description }}</p>
         <div class="article-img relative hidden mobile:block ml-1.5">
@@ -55,7 +55,7 @@ defineProps({
   background-color: rgb(var(--z-common-bg));
 }
 
-.article-img{
+.article-img {
   width: 40%;
   max-width: 350px;
 }
@@ -75,5 +75,10 @@ defineProps({
     padding: 4px 8px;
     background-color: rgba(var(--z-gray-color), .8);
   }
+}
+
+.item-title {
+  font-size: 19px;
+  font-weight: 700;
 }
 </style>

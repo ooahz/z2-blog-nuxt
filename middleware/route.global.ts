@@ -11,7 +11,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
                 setAttribute("scroll", "scroll");
                 return;
             }
-            if (to.name === "p-id" || to.name === "column-name" || to.name === "index") {
+            if (to.name === "p-id" || to.name === "index") {
                 setAttribute("scroll", "primary");
             } else {
                 setAttribute("scroll", "top");

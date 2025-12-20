@@ -122,20 +122,20 @@ onUnmounted(() => {
     </div>
     <div v-else class="article__header relative">
       <div class="article-cover h-full absolute">
-        <img :src="article.thumbnail" alt="">
+        <img :src="article.thumbnail" class="cover" alt="">
       </div>
       <div class="article-mask absolute"></div>
-      <div class="article__info w-full h-full relative t-0 flex flex-col justify-center px-11 mobile:px-5 mobile:pt-11">
-        <div class="article__info-title font-semibold leading-loose text-[2.8rem] mobile:text-[1.7rem]">
+      <div class="article__info w-full h-full relative t-0 flex flex-col justify-center px-11 mobile:px-5 mobile:pt-11 pad:pt-11 pc:pt-0">
+        <div class="article__info-title font-semibold leading-loose text-[2.8rem] mobile:text-[1.7rem] pc:mt-[-50px] screen:mt-[-50px]">
           {{ article.title }}
         </div>
-        <div class="font-size-small flex flex-col">
+        <div class="font-size-small flex flex-col mt-2">
           <span class="my-4">
             <span>创建时间：{{ formatDateTime(article?.createdDate) }}</span>
             <span class="mx-2">|</span>
             <span>最后更新：{{ formatDateTime(article?.updatedDate) }}</span>
           </span>
-          <span class="article-meta__sort mt-">
+          <span class="article-meta__sort mt-2">
             <span class="sort-column cursor-pointer" v-for="columnItem in columnList"
                   @click="goColumnPage(columnItem.name)">{{ columnItem.name }}</span>
           </span>
@@ -211,17 +211,17 @@ onUnmounted(() => {
 
 .article {
   &__header {
-    height: clamp(360px, 40vh, 500px);
+    height: clamp(450px, 50vh, 500px);
     overflow: hidden;
-    background: var(--z-article-bg);
 
     .article-cover {
-      opacity: .5;
-      width: 65%;
-      right: 0;
-      margin: 0 -20% 0 auto;
-      transform: rotate(10deg) translateY(-10%) scale(2);
-      filter: blur(10px);
+      overflow: hidden;
+      margin: auto;
+      width: 100%;
+      transform: rotate(10deg) translateY(-10%) scale(var(--anzhiyu-header-cover-scale));
+      will-change: transform;
+      filter: blur(10px) brightness(60%);
+      transition: filter 0s;
     }
   }
 
@@ -267,7 +267,7 @@ onUnmounted(() => {
 
   &-mask {
     inset: 0;
-    background: rgba(var(--z-primary-color), .7);
+    background: rgba(80, 86, 125, 20%);
   }
 }
 
@@ -277,10 +277,10 @@ onUnmounted(() => {
 
 .sort-category,
 .sort-column {
-  padding: 6px 11px;
+  padding: 8px 12px;
   margin-right: 6px;
   background: #ffffff52;
-  border-radius: 5px;
+  border-radius: 7px;
 }
 
 .copyright {

@@ -19,7 +19,7 @@ function scrollHandler() {
         setAttribute("scroll", "scroll");
       } else {
         // 滚动到顶部
-        if (landing || column) {
+        if (landing) {
           setAttribute("scroll", "primary");
         } else {
           setAttribute("scroll", "top");

@@ -81,12 +81,12 @@
  */
 .title {
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .stress {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .ss-font {
@@ -95,8 +95,9 @@
     serif;
 }
 
-.default-font {
-    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+.mi-font {
+    font-family: mi,
+    ui-sans-serif, system-ui, sans-serif, Microsoft Yahei, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
 
 .opacity-100 {

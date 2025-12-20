@@ -1,7 +1,6 @@
 import {OuOMessage} from "@ahzoo/ouo";
 
 const BASE_URL = "http://127.0.0.1:8080/blog";
-// const BASE_URL = "/api/blog";
 
 type MethodType = "GET" | "POST" | "PUT" | "DELETE";
 
@@ -16,7 +15,6 @@ const request = async (url: string, method: MethodType, params?: any, body?: str
         },
         onRequestError({request, options, error}) {
             console.log("request error:", request, error);
-            OuOMessage.error("请求出错");
         },
         onResponse({request, response, options}) {
             return response._data;
