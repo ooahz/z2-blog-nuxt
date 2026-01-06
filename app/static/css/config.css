@@ -1,0 +1,38 @@
+/* 主题 */
+html {
+    --z-primary-color: 66, 90, 239;
+    --z-primary-select-color: 61, 85, 223;
+    --z-gray-color: 231, 234, 237;
+    --z-deep-color: 18, 20, 22;
+    --z-fontcolor: 51, 51, 51;
+    --z-fontcolor-gray: 153, 164, 178;
+    --z-primary-fontcolor: 255, 255, 255;
+    --z-btn-fontcolor: 255, 255, 255;
+    --z-basic-input-color: 233, 237, 242;
+    --z-basic-color: 255, 255, 255;
+    --z-global-bg: 242, 243, 246;
+    --z-common-bg: 247, 248, 249;
+    --z-regular-bg: 235, 236, 239;
+    --z-regular-hover-bg: 215, 219, 255;
+    --z-plain-bg: 231, 235, 240;
+    --z-header-height: 82px;
+    --z-menu-shadow: 0 1px 7px 0 rgba(39, 39, 39, .04);;
+}
+
+.dark {
+    --z-primary-color: 157, 163, 255;
+    --z-primary-select-color: 50, 52, 71;
+    --z-gray-color: 50, 52, 71;
+    --z-fontcolor: 167, 177, 190;
+    --z-primary-fontcolor: 204, 204, 209;
+    --z-btn-fontcolor: 32, 33, 43;
+    --z-basic-input-color: 72, 82, 92;
+    --z-basic-color: 34, 34, 34;
+    --z-global-bg: 12, 13, 19;
+    --z-common-bg: 27, 28, 36;
+    --z-regular-bg: 50, 52, 71;
+    --z-regular-hover-bg: 62, 64, 88;
+    --z-plain-bg: 42, 43, 63;
+    --z-menu-shadow: 4px 4px 6px 0 rgba(48, 48, 48, .1), -4px -4px 6px rgb(var(--z-common-bg));
+}
+

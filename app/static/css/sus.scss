@@ -1,0 +1,50 @@
+@import "@ahzoo/sus/dist/v/style.css";
+
+[class*="sus-"] {
+  --sus-basic-input-bg: var(--z-plain-bg);
+  --sus-primary-color: var(--z-primary-color);
+  --sus-primary-fontcolor: var(--z-btn-fontcolor);
+  --sus-font-color: var(--z-fontcolor);
+  --sus-common-bg: var(--z-common-bg);
+  --sus-primary-hover-color: var(--z-primary-select-color);
+  --sus-item-hover-bg: var(--z-plain-bg);
+  --sus-gray-bg: var(--z-gray-color)
+}
+
+.sus-top-item {
+  &:hover {
+    border-radius: 5px;
+    background-color: rgba(var(--z-regular-hover-bg), .5);
+    transition: all .25s;
+  }
+}
+
+.sus-comment__footer-notify {
+  display: none;
+}
+
+.sus-top-item {
+  max-height: 150px;
+  overflow: hidden;
+
+  img {
+    max-height: 200px;
+    width: auto;
+  }
+}
+
+[view="mobile"] {
+  --sus-item-margin: 20px;
+
+  .sus-comment__info {
+    flex-direction: column;
+  }
+
+  .sus-comment .sus-comment-avatar {
+    display: none;
+  }
+}
+
+.vditor-emojis__tip {
+  width: auto !important;
+}

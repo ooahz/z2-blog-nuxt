@@ -27,14 +27,6 @@ export default defineNuxtConfig({
                 {charset: "utf-8"},
                 {name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover"}
             ],
-            link: [
-                {
-                    rel: "stylesheet",
-                    href: "https://npm.elemecdn.com/@fortawesome/fontawesome-free/css/all.min.css",
-                    media: "all",
-                    onload: "this.media='all'"
-                }
-            ]
         }
     },
     devtools: {enabled: true},
@@ -44,10 +36,14 @@ export default defineNuxtConfig({
             autoprefixer: {}
         }
     },
+    css: [
+        "@/static/css/style.scss"
+    ],
     modules: [
         "@pinia/nuxt",
         "nuxt-svgo",
         "nuxt-viewport",
+        "@nuxtjs/color-mode",
         // "@nuxtjs/stylelint-module",
     ],
     svgo: {
@@ -60,8 +56,8 @@ export default defineNuxtConfig({
     },
     nitro: {
         devProxy: {
-            "/api": {
-                target: "http://localhost:8080",
+            "/blog/": {
+                target: "http://localhost:8080/blog/",
                 changeOrigin: true,
                 prependPath: true
             }
