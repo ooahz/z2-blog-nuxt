@@ -1,11 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 @import "comon.css";
 @import "config.css";
 @import "ououi";
 @import "sus";
 @import "post";
+
+@theme {
+  --breakpoint-mobile: 639px;
+  --breakpoint-pad: 640px;
+  --breakpoint-pc: 768px;
+  --breakpoint-screen: 1281px;
+}
 
 @font-face {
   font-family: ss;
