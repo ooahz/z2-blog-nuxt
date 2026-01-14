@@ -30,7 +30,7 @@ function showSidebar() {
     <a href="/" class="ss-font left hover-shadow absolute left-7 cursor-pointer">
       {{ appConfig.siteName }}
     </a>
-    <div class="center items-center cursor-pointer mobile:hidden">
+    <div class="center items-center cursor-pointer pad:block mobile:hidden">
       <a href="/category" class="center__item hover-shadow mr-8">分 类</a>
       <a href="/comment" v-if="!(appConfig.feature?.comment === 'disable')"
          class="center__item hover-shadow mr-8">留 言</a>

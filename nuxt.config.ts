@@ -10,23 +10,26 @@ export default defineNuxtConfig({
     },
     site: {
         url: "https://ouo.pub",
-        name: "Z次元",
-        description: "Z次元 - 一个收藏回忆与分享技术的地方",
+        name: "Z次源",
+        description: "Z次源 - 一个收藏回忆与分享技术的地方",
         defaultLocale: "zh-CN",
         trailingSlash: false
     },
     app: {
         head: {
-            title: "Z次元",
+            title: "Z次源",
             htmlAttrs: {
                 lang: "zh-CN"
             },
             meta: [
-                {name: "keywords", content: "Z次元,十玖八柒"},
-                {name: "description", content: "Z次元 - 一个收藏回忆与分享技术的地方"},
+                {name: "keywords", content: "Z次源,十玖八柒"},
+                {name: "description", content: "Z次源 - 一个收藏回忆与分享技术的地方"},
                 {charset: "utf-8"},
                 {name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover"}
             ],
+            link: [
+                {rel: "preload", as: "image", href: "/basic-bg.png", fetchpriority: "high"}
+            ]
         }
     },
     devtools: {enabled: true},
@@ -61,9 +64,15 @@ export default defineNuxtConfig({
                 changeOrigin: true,
                 prependPath: true
             }
+        },
+        compressPublicAssets: {
+            gzip: true,
+            brotli: true
         }
     },
-    // 代码高亮
+    experimental: {
+        payloadExtraction: true
+    },
     vite: {
         plugins: [
             prismjs({
@@ -86,6 +95,15 @@ export default defineNuxtConfig({
             watch: {
                 usePolling: true
             }
+        },
+    },
+    sourcemap: {
+        server: false,
+        client: false
+    },
+    runtimeConfig: {
+        public: {
+            apiBase: process.env.NUXT_PUBLIC_API_BASE
         }
     }
 })

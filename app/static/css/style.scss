@@ -1,12 +1,12 @@
-@import "tailwindcss";
+@use "ououi" as *;
+@use "sus" as *;
+@use "post" as *;
+@use "tailwindcss" as *;
 @import "comon.css";
 @import "config.css";
-@import "ououi";
-@import "sus";
-@import "post";
 
 @theme {
-  --breakpoint-mobile: 639px;
+  --breakpoint-mobile: 380px;
   --breakpoint-pad: 640px;
   --breakpoint-pc: 768px;
   --breakpoint-screen: 1281px;
@@ -29,6 +29,7 @@
 
 html {
   font-family: mi, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: rgb(var(--z-fontcolor));
 }
 
 .dark img,

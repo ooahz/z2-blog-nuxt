@@ -20,7 +20,7 @@ defineProps({
       <slot/>
     </div>
     <div class="page-info__thumbnail absolute overflow-hidden h-full">
-      <img :src="landing?.thumbnail" class="cover w-auto h-full" alt="">
+      <img :src="landing?.thumbnail" class="cover w-auto h-full" loading="lazy" decoding="async" alt="">
     </div>
     <div class="page-info-bg w-full h-full"/>
   </div>

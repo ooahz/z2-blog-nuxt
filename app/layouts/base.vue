@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import _ from "lodash";
 import {setAttribute} from "@ahzoo/utils";
 import SidebarMobile from "@/components/sidebar/mobile.vue";
+import {logger} from "@/utils/logger";
+import {throttle} from "@/utils/throttle";
 
 interface Props {
   layoutClass?: string;
@@ -23,7 +24,7 @@ const show = ref(false);
 
 function defaultScrollHandler() {
   try {
-    const throttledScrollHandler = _.throttle(() => {
+    const throttledScrollHandler = throttle(() => {
       const scrollPosition = window.scrollY || document.documentElement.scrollTop;
       if (scrollPosition > 30) {
         setAttribute("scroll", "scroll");
@@ -38,7 +39,7 @@ function defaultScrollHandler() {
       window.removeEventListener("scroll", throttledScrollHandler);
     });
   } catch (e) {
-    console.log(e);
+    logger.error("Scroll handler error:", e);
   }
 }
 

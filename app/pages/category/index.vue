@@ -10,22 +10,19 @@ const categoryList = ref<CategoryMapInterface[]>([]);
 const columnList = ref<PreviewColumnInterface[]>([]);
 const activeCategory = ref<string | null>(null);
 
-getCategoryList();
-getAllColumnList();
+await getCategoryList();
+await getAllColumnList();
 
 async function getCategoryList() {
-  const newCategoryList = await listCategoryApi();
-  categoryList.value = unref(newCategoryList);
+  categoryList.value = await listCategoryApi();
 }
 
 async function getAllColumnList() {
-  const newColumnList = await listAllColumnApi();
-  columnList.value = unref(newColumnList);
+  columnList.value = await listAllColumnApi();
 }
 
 async function getColumnListByCategoryId(categoryId: string, pagination: number) {
-  const newColumnList = await listColumnByCategoryIdApi(categoryId, pagination);
-  columnList.value = unref(newColumnList);
+  columnList.value = await listColumnByCategoryIdApi(categoryId, pagination);
 }
 
 const layoutState = reactive({

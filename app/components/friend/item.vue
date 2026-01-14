@@ -11,7 +11,7 @@ defineProps({
   <div class="friends-item">
     <a :href="friend?.website" class="flex items-center">
       <div class="friends-item-img">
-        <img :src="friend?.avatar" alt=""/>
+        <img :src="friend?.avatar" loading="lazy" decoding="async" :alt="friend?.name || 'Friend avatar'"/>
       </div>
       <div class="flex flex-wrap flex-[1] ml-3">
         <p class="title friends-item-name single-line w-full pb-1.5" :title="friend?.website">{{ friend?.name }}</p>

@@ -1,4 +1,5 @@
 import {setAttribute} from "@ahzoo/utils";
+import {logger} from "@/utils/logger";
 
 export default defineNuxtRouteMiddleware((to, from) => {
     if (to.path === from.path) {
@@ -14,6 +15,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
             setAttribute("scroll", "top");
         }
     } catch (e) {
-        console.log(e);
+        logger.error("Route middleware error:", e);
     }
 })

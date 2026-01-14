@@ -6,7 +6,7 @@ const appConfig = useAppConfig();
 <template>
   <footer class="font-size-x-small w-full mt-7">
     <FooterInfo/>
-    <div class="footer-container flex mobile:flex-col justify-between items-center w-full">
+    <div class="footer-container flex pad:flex-row mobile:flex-col justify-between items-center w-full">
       <ul class="text-left">
         <li>
           {{ appConfig.footer }} By {{ appConfig.name }} 版权所有

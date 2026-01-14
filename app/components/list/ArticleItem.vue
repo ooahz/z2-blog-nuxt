@@ -17,7 +17,7 @@ defineProps({
      :href="`/p/${article.path}`">
     <div class="mask">
       <div class="w-full h-full px-5 relative">
-        <img :src="article.thumbnail" class="cover rounded-t-2xl opacity-90" alt="">
+        <img :src="article.thumbnail" class="cover rounded-t-2xl opacity-90" loading="lazy" decoding="async" :alt="article.title">
         <div
             class="article-date flex justify-end items-end absolute bottom-0 right-5 left-5 w-auto h-inherit opacity-70">
           <div class="flex" v-if="article.createdDate">

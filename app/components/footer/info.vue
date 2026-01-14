@@ -6,15 +6,15 @@ const appConfig = useAppConfig();
 </script>
 
 <template>
-  <div class="footer__info flex justify-between items-center flex-row mobile:flex-col">
-    <div class="flex items-center flex-row mobile:flex-col">
+  <div class="footer__info flex justify-between items-center pad:flex-row mobile:flex-col">
+    <div class="flex items-center pad:flex-row mobile:flex-col">
       <div class="flex items-center">
         <div class="info-avatar">
-          <img class="cover p-1" src="/favicon.ico" alt="Z次元">
+          <img class="cover p-1" src="/favicon.ico" alt="Z次源" loading="eager" decoding="async">
         </div>
         <div class="info-name ml-2">{{ appConfig.siteName }}</div>
       </div>
-      <span class="footer-divider mobile:opacity-10"></span>
+      <span class="footer-divider pad:opacity-100 mobile:opacity-10"></span>
       <div>
         {{ appConfig.description }}
       </div>

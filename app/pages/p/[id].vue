@@ -124,9 +124,9 @@ onUnmounted(() => {
         <img :src="article.thumbnail" class="" alt="">
       </div>
       <div
-          class="article__info w-full h-full absolute top-0 flex flex-col justify-center px-11 mobile:px-5 mobile:pt-5 pad:pt-11 pc:pt-0">
+          class="article__info w-full h-full absolute top-0 flex flex-col justify-center pad:px-11 mobile:px-5 mobile:pt-5 pad:pt-11 pc:pt-0">
         <div
-            class="article__info-title font-semibold leading-loose text-[2.8rem] mobile:text-[1.7rem] pc:mt-[-50px] screen:mt-[-50px]">
+            class="article__info-title font-semibold leading-loose pad:text-[2.8rem] mobile:text-[1.7rem] pc:mt-[-50px] screen:mt-[-50px]">
           {{ article.title }}
         </div>
         <div class="font-size-small flex flex-col mt-2">
@@ -156,8 +156,8 @@ onUnmounted(() => {
         </g>
       </svg>
     </div>
-    <div class="article__container flex justify-end w-full p-5 mb-5 mobile:p-0">
-      <div class="article__content px-6 w-[72%] mobile:w-full mobile:px-0 pad:w-full">
+    <div class="article__container flex justify-end w-full pad:p-5 mb-5 mobile:p-0">
+      <div class="article__content pad:px-6 pc:w-[72%] mobile:w-full mobile:px-0 pad:w-full">
         <div class="aside sticky hidden screen:block">
           <div class="aside-item absolute flex flex-col">
             <OuOButton class="mb-3" :type="'card-2'" :equilateral="true" @click="scrollTo('#article')">置顶</OuOButton>
@@ -186,7 +186,7 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <div class="article__aside box pad:hidden mobile:hidden">
+      <div class="article__aside box pc:block pad:hidden mobile:hidden">
         <ClientOnly>
           <!--          目录-->
           <div id="article-toc"

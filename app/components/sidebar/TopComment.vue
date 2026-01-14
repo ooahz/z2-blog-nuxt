@@ -15,8 +15,7 @@ async function getTopComment() {
   if (appConfig.feature.comment === "disable") {
     return;
   }
-  const newCommentList = await topCommentApi();
-  commentList.value = unref(newCommentList);
+  commentList.value = await topCommentApi();
 }
 </script>
 <template>

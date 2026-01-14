@@ -13,12 +13,13 @@ defineProps({
 </script>
 
 <template>
-  <a class="item-hover horizontal-article-item flex relative p-3.5 rounded-xl"
+  <a class="item-hover horizontal-article-item flex relative p-4 rounded-xl"
      :href="`/p/${article.path}`">
-    <div class="article-img relative mobile:hidden">
-      <img :src="article.thumbnail" class="cover rounded-xl opacity-90" alt="">
+    <div class="article-img relative pad:block mobile:hidden">
+      <img :src="article.thumbnail" class="cover rounded-xl opacity-90" loading="lazy" decoding="async"
+           :alt="article.title">
     </div>
-    <div class="article-info flex flex-[1] flex-col justify-between ml-5 mobile:ml-0">
+    <div class="article-info flex flex-[1] flex-col justify-between pad:ml-5 mobile:ml-0">
       <div
           class="article-date opacity-70">
         <div class="flex" v-if="article.createdDate">
@@ -33,8 +34,11 @@ defineProps({
       <div class="double-line item-title">{{ article.title }}</div>
       <div class="flex">
         <p class="three-line flex-[1]">{{ article.description }}</p>
-        <div class="article-img relative hidden mobile:block ml-1.5">
-          <img :src="article.thumbnail" class="cover rounded-xl opacity-90" alt="">
+        <div class="article-img relative pad:hidden mobile:block ml-1.5">
+          <div class="article-img relative pad:hidden mobile:block ml-1.5">
+            <img :src="article.thumbnail" class="cover rounded-xl opacity-90" loading="lazy" decoding="async"
+                 :alt="article.title">
+          </div>
         </div>
       </div>
       <div class="article-column flex justify-end opacity-70">

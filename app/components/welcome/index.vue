@@ -7,8 +7,16 @@ onMounted(() => {
   if (process.client) {
     setAttribute("scroll", "top");
     const landingImg = document.getElementById("landing-img");
-    if (landingImg) {
-      landingImg.style.backgroundImage = `url(${appConfig.landingImg})`
+    if (landingImg && appConfig.landingImg) {
+      // 预加载图片
+      const img = new Image();
+      img.src = appConfig.landingImg;
+      img.onload = () => {
+        landingImg.style.backgroundImage = `url(${appConfig.landingImg})`;
+      };
+      img.onerror = () => {
+        landingImg.style.backgroundImage = `url(${appConfig.landingImg})`;
+      };
     }
   }
 })

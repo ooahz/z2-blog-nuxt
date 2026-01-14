@@ -14,7 +14,7 @@ defineProps({
   <div class="column-item relative box flex flex-col overflow-hidden">
     <a :href="`/column/${column.name}`" class="h-16 flex cursor-pointer">
       <div v-if="column.thumbnail" class="column-item-thumbnail h-full w-20">
-        <img :src="column.thumbnail" class="cover rounded-md" alt="">
+        <img :src="column.thumbnail" class="cover rounded-md" loading="lazy" decoding="async" :alt="column.name">
       </div>
       <div class="mx-3">
         <div class="column-item-title title relative pb-0.5 mb-1">{{ column.name }}</div>

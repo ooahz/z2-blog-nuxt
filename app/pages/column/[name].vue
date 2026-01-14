@@ -17,22 +17,19 @@ const columnInfo = reactive<PageInfoInterface>({
 const previewColumn = ref<PreviewColumnInterface>();
 
 const articlePath = <string>path.split("/").pop();
-const columnInfoTemp: PreviewColumnInterface = await getColumnInfoByName(articlePath);
-await getArticleListByColumnId(columnInfoTemp.id, 1);
+await getColumnInfoByName(articlePath);
+await getArticleListByColumnId(previewColumn.value.id, 1);
 
 async function getColumnInfoByName(name: string) {
-  const newColumnInfo: PreviewColumnInterface = await getColumnInfoApi(name);
-  previewColumn.value = unref(newColumnInfo);
-  columnInfo.title = newColumnInfo.name;
-  columnInfo.thumbnail = newColumnInfo.thumbnail;
-  columnInfo.description = newColumnInfo.description;
-  columnInfo.style = newColumnInfo.style;
-  return newColumnInfo;
+  previewColumn.value = await getColumnInfoApi(name);
+  columnInfo.title = previewColumn.value.name;
+  columnInfo.thumbnail = previewColumn.value.thumbnail;
+  columnInfo.description = previewColumn.value.description;
+  columnInfo.style = previewColumn.value.style;
 }
 
 async function getArticleListByColumnId(columnId: string, pagination: number) {
-  const newArticleList = await listArticleByColumnIdApi(columnId, pagination);
-  articleList.value = unref(newArticleList);
+  articleList.value = await listArticleByColumnIdApi(columnId, pagination);
 }
 
 definePageMeta({

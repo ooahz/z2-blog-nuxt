@@ -21,7 +21,7 @@ const layoutProps = computed(() => {
       </slot>
       <NuxtPage v-if="layoutProps.fullPage"/>
       <div class="flex" v-else>
-        <div class="page-content w-full mobile:px-3 px-8 py-8 rounded-lg">
+        <div class="page-content w-full mobile:px-3 pad:px-8 py-8 rounded-lg">
           <slot/>
         </div>
         <Sidebar

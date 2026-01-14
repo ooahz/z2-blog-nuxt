@@ -2,7 +2,7 @@
 import type {FriendInterface} from "@/types/friendInterface";
 import {saveFriendApi} from "~~/service/friend";
 import {useGlobalStore} from "@/store/globalStore";
-import {OuOButton, OuOInput, OuOMessage, OuOTag, OuOTextarea} from "@ahzoo/ouo";
+import {OuOButton, OuOInput, OuOMessage, OuOTag, OuOTextarea, OuOTagGroup} from "@ahzoo/ouo";
 
 const appConfig = useAppConfig();
 const globalStore = useGlobalStore();
@@ -49,7 +49,8 @@ function onCancel() {
   <Teleport to="body">
     <div v-show="globalStore.showFriendForm"
          class="friend fixed top-0 left-0 w-full h-screen">
-      <div class="friend__container flex flex-row mobile:block items-center justify-center h-full overflow-y-scroll">
+      <div
+          class="friend__container pad:flex flex-row mobile:block items-center justify-center h-full overflow-y-scroll">
         <div class="friend__owner-info mx-11">
           <div class="friend__owner-info-title">博主信息</div>
           <div class="timeline">
@@ -68,30 +69,39 @@ function onCancel() {
             <span class="friend__owner-title">简介：</span>{{ appConfig.description }}
           </div>
         </div>
-        <div class="m-7 min-w-[280px]">
+        <div class="m-7 min-w-[300px]">
           <div class="friend-tips my-5">
             <p class="title mb-2">友链交换说明：</p>
             <p>此站点为演示站点，友链仅作演示</p>
           </div>
-          <div class="my-3">
-            <OuOTag class="mr-3" :size="'small'" :checked="'true'" @click="updateFriend=false">
-              新增
-            </OuOTag>
-            <OuOTag :size="'small'" @click="updateFriend=true">
-              更新
-            </OuOTag>
+          <div class="my-3 font-size-medium">
+            <OuOTagGroup>
+              <OuOTag class="transition-all duration-300 hover:scale-105"
+                      :type="'text'" :size="'small'" :checked="'true'" @click="updateFriend=false">
+                新增
+              </OuOTag>
+              <OuOTag class="transition-all duration-300 hover:scale-105"
+                      :type="'text'" :size="'small'" @click="updateFriend=true">
+                更新
+              </OuOTag>
+            </OuOTagGroup>
           </div>
           <div class="my-3">
             <div class="my-3">博客类型：</div>
-            <OuOTag class="mr-3" :size="'small'" :checked="'true'" :group="'type'" @click="friend.type='1'">
-              默认
-            </OuOTag>
-            <OuOTag class="mr-3" :size="'small'" :group="'type'" @click="friend.type='2'">
-              技术
-            </OuOTag>
-            <OuOTag :size="'small'" :group="'type'" @click="friend.type='3'">
-              生活
-            </OuOTag>
+            <OuOTagGroup class="font-size-medium">
+              <OuOTag class="transition-all duration-300 hover:scale-105"
+                      :type="'text'" :size="'small'" :checked="'true'" :group="'type'" @click="friend.type='1'">
+                默认
+              </OuOTag>
+              <OuOTag class="transition-all duration-300 hover:scale-105"
+                      :type="'text'" :size="'small'" :group="'type'" @click="friend.type='2'">
+                技术
+              </OuOTag>
+              <OuOTag class="transition-all duration-300 hover:scale-105"
+                      :type="'text'" :size="'small'" :group="'type'" @click="friend.type='3'">
+                生活
+              </OuOTag>
+            </OuOTagGroup>
           </div>
 
           <div class="friend__form flex flex-col">

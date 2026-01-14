@@ -26,14 +26,11 @@ async function searchArticleList(keyword: string, pagination: number) {
   const type = searchStore.type;
   showLoading.value = true;
   if (type === "content") {
-    const newSearchList = await searchArticleContentApi(params);
-    searchList.value = unref(newSearchList);
+    searchList.value = await searchArticleContentApi(params);
   } else if (type === "title") {
-    const newSearchList = await searchArticleTitleApi(params);
-    searchList.value = unref(newSearchList);
+    searchList.value = await searchArticleTitleApi(params);
   } else {
-    const newSearchList = await searchAllApi(params);
-    searchList.value = unref(newSearchList);
+    searchList.value = await searchAllApi(params);
   }
   showLoading.value = false;
 }

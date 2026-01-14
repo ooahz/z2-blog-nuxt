@@ -7,7 +7,7 @@ const appConfig = useAppConfig();
 <template>
   <div class="author-info w-full flex flex-col justify-center">
     <div class="author-info__avatar">
-      <img class="cover" :src="appConfig.avatar" :alt="appConfig.name">
+      <img class="cover" :src="appConfig.avatar" :alt="appConfig.name" loading="eager" decoding="async">
     </div>
     <div>
       <div class="mt-3">
