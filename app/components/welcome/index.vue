@@ -23,12 +23,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="landing" class="ss-font mb-3 flex items-center justify-center relative">
+  <div id="landing" class="banner ss-font mb-3 flex items-center justify-center relative">
     <div id="landing-img" class="bg-img landing-cover absolute w-full h-full"></div>
     <div class="landing-mask absolute w-full h-full"></div>
-    <div class="landing-info absolute text-center">
-      <div class="landing-info-landing">欢迎来到{{ appConfig.siteName }}</div>
-      <span class="landing-info-description">{{ appConfig.description }}</span>
+    <div class="landing-container max-w-[1380px] w-full px-4 relative z-10">
+      <div class="landing-info text-center">
+        <div class="landing-info-landing">欢迎来到{{ appConfig.siteName }}</div>
+        <span class="landing-info-description">{{ appConfig.description }}</span>
+      </div>
     </div>
     <svg v-if="!$viewport.isLessThan('lg')"
          class="no-filter landing-waves w-full absolute bottom-0"
@@ -52,7 +54,10 @@ onMounted(() => {
   height: 65vh;
   min-height: 430px;
   max-height: 550px;
-  width: inherit;
+  width: 100vw;
+  margin-left: -50vw;
+  left: 50%;
+  position: relative;
   overflow: hidden;
 }
 

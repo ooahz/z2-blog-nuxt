@@ -6,7 +6,6 @@ import {getArticleDetailApi} from "~~/service/article";
 import {listColumnByArticleIdApi} from "~~/service/column";
 import {useArticleStore} from "@/store/articleStore";
 import {useMenuStore} from "@/store/menuStore";
-import Prism from "prismjs";
 import {OuOButton, OuODottedPagination} from "@ahzoo/ouo";
 import {formatDateTime, getAttribute, setAttribute, tocGenerateByDomId} from "@ahzoo/utils";
 import ArticleColumn from "@/components/column/ArticleColumn.vue";
@@ -103,7 +102,7 @@ useSeoMeta({
 
 onMounted(() => {
   initToc();
-  Prism.highlightAll();
+  // Prism.highlightAll();
   setProperty();
   initStyle();
 });
@@ -118,7 +117,7 @@ onUnmounted(() => {
     <div v-if="!article.title" id="show" class="w-full h-full">
       <Loading/>
     </div>
-    <div v-else class="article__header relative">
+    <div v-else class="article__header banner relative">
       <div class="article-mask absolute"/>
       <div class="article-cover h-full absolute">
         <img :src="article.thumbnail" class="" alt="">
@@ -214,17 +213,22 @@ onUnmounted(() => {
   &__header {
     --z-primary-color: 63, 71, 95;
     height: clamp(450px, 55vh, 550px);
+    width: 100vw;
+    margin-left: -50vw;
+    left: 50%;
+    margin-top: calc(-1 * var(--z-header-height));
+    position: relative;
     overflow: hidden;
 
     .article-cover {
       position: relative;
       opacity: .5;
-      width: 70%;
+      width: 100%;
       height: 100%;
-      margin: 0 -20% 0 auto;
+      margin: 0;
       overflow: hidden;
       filter: blur(30px);
-      transform: rotate(10deg) translateY(30%) scale(2) translateZ(0);
+      transform: scale(1.1) translateZ(0);
 
       &:after {
         content: "";
@@ -233,13 +237,14 @@ onUnmounted(() => {
         left: 0;
         width: 100%;
         height: 100%;
-        box-shadow: 110px -130px 300px 60px rgba(var(--z-primary-color)) inset;
+        box-shadow: 0 0 300px 60px rgba(var(--z-primary-color)) inset;
       }
 
       img {
         opacity: .8;
         object-fit: cover;
-        min-width: 50vw;
+        width: 100%;
+        height: 100%;
         transition: opacity .5s ease-out;
       }
     }

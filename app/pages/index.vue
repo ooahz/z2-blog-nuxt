@@ -12,7 +12,7 @@ useSeoMeta({
 </script>
 <template>
   <div v-if="!$viewport.isLessThan('lg')">
-    <Welcome/>
+    <Banner/>
   </div>
   <div id="main" class="page" :class="$viewport.isLessThan('lg') ? 'mobile' : 'pc'">
     <div class="box-header flex flex-col">

@@ -126,12 +126,15 @@ input {
 }
 
 .page {
-  padding: var(--z-header-height) 70px 35px;
+  padding: var(--z-header-height) 20px 35px;
+  max-width: 1380px;
+  margin: 0 auto;
 }
 
 body[view="mobile"] {
   .page {
     padding: var(--z-header-height) 12px 35px;
+    max-width: 100%;
   }
 }
 
