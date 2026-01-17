@@ -6,16 +6,16 @@ const appConfig = useAppConfig();
 onMounted(() => {
   if (process.client) {
     setAttribute("scroll", "top");
-    const landingImg = document.getElementById("landing-img");
-    if (landingImg && appConfig.landingImg) {
+    const bannerImg = document.getElementById("banner-img");
+    if (bannerImg && appConfig.bannerImg) {
       // 预加载图片
       const img = new Image();
-      img.src = appConfig.landingImg;
+      img.src = appConfig.bannerImg;
       img.onload = () => {
-        landingImg.style.backgroundImage = `url(${appConfig.landingImg})`;
+        bannerImg.style.backgroundImage = `url(${appConfig.bannerImg})`;
       };
       img.onerror = () => {
-        landingImg.style.backgroundImage = `url(${appConfig.landingImg})`;
+        bannerImg.style.backgroundImage = `url(${appConfig.bannerImg})`;
       };
     }
   }
@@ -23,17 +23,17 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="landing" class="banner ss-font mb-3 flex items-center justify-center relative">
-    <div id="landing-img" class="bg-img landing-cover absolute w-full h-full"></div>
-    <div class="landing-mask absolute w-full h-full"></div>
-    <div class="landing-container max-w-[1380px] w-full px-4 relative z-10">
-      <div class="landing-info text-center">
-        <div class="landing-info-landing">欢迎来到{{ appConfig.siteName }}</div>
-        <span class="landing-info-description">{{ appConfig.description }}</span>
+  <div id="banner" class="banner ss-font mb-3 flex items-center justify-center relative">
+    <div id="banner-img" class="bg-img banner-cover absolute w-full h-full"></div>
+    <div class="banner-mask absolute w-full h-full"></div>
+    <div class="banner-container max-w-[1380px] w-full px-4 relative z-10">
+      <div class="banner-info text-center">
+        <div class="banner-info-banner">欢迎来到{{ appConfig.siteName }}</div>
+        <span class="banner-info-description">{{ appConfig.description }}</span>
       </div>
     </div>
     <svg v-if="!$viewport.isLessThan('lg')"
-         class="no-filter landing-waves w-full absolute bottom-0"
+         class="no-filter banner-waves w-full absolute bottom-0"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
       <defs>
@@ -50,18 +50,19 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-#landing {
+#banner {
   height: 65vh;
   min-height: 430px;
   max-height: 550px;
   width: 100vw;
   margin-left: -50vw;
   left: 50%;
+  margin-top: calc(-1 * var(--z-header-height));
   position: relative;
   overflow: hidden;
 }
 
-.landing {
+.banner {
   &-cover {
     opacity: .9;
     background-size: cover;
@@ -79,7 +80,11 @@ onMounted(() => {
   }
 }
 
-.landing-info {
+.banner-content {
+  position: relative;
+}
+
+.banner-info {
   margin-top: -60px;
   z-index: 1;
   color: rgb(var(--z-primary-fontcolor));
@@ -87,7 +92,7 @@ onMounted(() => {
   -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.1));
   animation: animate 5s linear infinite;
 
-  &-landing {
+  &-title {
     margin: 30px;
     font-size: 22px;
     letter-spacing: 7px;
@@ -123,7 +128,7 @@ onMounted(() => {
   animation-duration: 20s;
 }
 
-.dark .landing-mask {
+.dark .banner-mask {
   background-color: rgba(0, 0, 0, .5);
 }
 
@@ -143,3 +148,4 @@ onMounted(() => {
 }
 
 </style>
+
