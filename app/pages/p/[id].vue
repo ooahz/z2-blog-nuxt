@@ -247,7 +247,7 @@ onUnmounted(() => {
 
   &__container {
     animation: bottom-top 1s;
-    max-width: 1500px;
+    max-width: 1380px;
     margin: auto;
   }
 
@@ -282,7 +282,7 @@ onUnmounted(() => {
 
   &__info {
     margin: auto;
-    max-width: 1500px;
+    max-width: 1380px;
     color: rgba(var(--z-primary-fontcolor));
   }
 

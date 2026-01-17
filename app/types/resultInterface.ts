@@ -10,16 +10,13 @@ export interface ResultList<T> {
     code: string;
     message: string;
     data: T;
-    page: Page;
+    page: PaginationInfo;
 }
 
-export interface Page {
+export interface PaginationInfo {
     count: number;
     pagination: number;
     size: number;
     total: string;
-}
-
-export interface Pagination extends Page{
     totalPage?: number;
 }

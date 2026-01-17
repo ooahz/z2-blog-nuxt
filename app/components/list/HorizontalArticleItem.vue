@@ -34,11 +34,9 @@ defineProps({
       <div class="double-line item-title">{{ article.title }}</div>
       <div class="flex">
         <p class="three-line flex-[1]">{{ article.description }}</p>
-        <div class="article-img relative pad:hidden mobile:block ml-1.5">
-          <div class="article-img relative pad:hidden mobile:block ml-1.5">
-            <img :src="article.thumbnail" class="cover rounded-xl opacity-90" loading="lazy" decoding="async"
-                 :alt="article.title">
-          </div>
+        <div class="article-img relative mobile:block pad:hidden ml-1.5">
+          <img :src="article.thumbnail" class="cover rounded-xl opacity-90" loading="lazy" decoding="async"
+               :alt="article.title">
         </div>
       </div>
       <div class="article-column flex justify-end opacity-70">

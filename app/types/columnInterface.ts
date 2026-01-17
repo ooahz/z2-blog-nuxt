@@ -8,8 +8,8 @@ export interface PreviewColumnInterface {
     thumbnail?: string;
     total?: number;
     style?: string;
-    articleList?: Array<PreviewArticleInterface>
-    categoryList?: Array<CategoryMapInterface>
+    articleList?: PreviewArticleInterface[];
+    categoryList?: CategoryMapInterface[];
 }
 
 export interface ColumnMapInterface {

@@ -9,13 +9,12 @@ export interface PreviewArticleInterface {
     thumbnail?: string;
     createdDate?: string;
     updatedDate?: string;
-    columnList?: Array<ColumnMapInterface>;
+    columnList?: ColumnMapInterface[];
     categoryMap?: CategoryMapInterface
 }
 
 export interface ArticleInterface {
-    readonly id: string;
-    readonly path: string;
+    path: string;
     title: string;
     description?: string;
     content: string;
@@ -23,6 +22,6 @@ export interface ArticleInterface {
     createdDate: string;
     updatedDate: string;
     style: string;
-    columnList?: Array<ColumnMapInterface>;
+    columnList?: ColumnMapInterface[];
     category?: CategoryMapInterface
 }

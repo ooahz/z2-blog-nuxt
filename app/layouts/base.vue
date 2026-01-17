@@ -65,7 +65,7 @@ onMounted(() => {
       <div class="w-full">
         <Header/>
       </div>
-      <div v-if="$slots.main" id="main" class="page flex" :class="$viewport.isLessThan('lg') ? 'mobile' : 'pc'">
+      <div v-if="$slots.main" id="main" class="page asd flex" :class="$viewport.isLessThan('lg') ? 'mobile' : 'pc'">
         <slot name="main"/>
         <Sidebar v-if="showSidebar && !$viewport.isLessThan('lg')" class="w-1/3 mt-5"/>
       </div>

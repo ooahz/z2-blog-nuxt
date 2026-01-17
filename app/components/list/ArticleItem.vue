@@ -36,9 +36,9 @@ defineProps({
       <div class="article-abstract opacity-0 rounded-b-xl">
         <p class="double-line">{{ article.description }}</p>
       </div>
-      <div class="article-column flex opacity-70">
+      <div class="article-column flex opacity-70 flex-wrap">
         <div class="article-column-item rounded-md"
-             v-for="column in article.columnList">
+             v-for="column in article.columnList" :key="column.id">
           {{ column.name }}
         </div>
       </div>

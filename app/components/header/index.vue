@@ -41,7 +41,7 @@ function showSidebar() {
       <span class="right__item normal-svg hover-shadow">
         <Search :stroke-width="2.5" @click="openSearch()"/>
       </span>
-      <span class="right__item normal-svg hover-shadow ml-3 hidden mobile:block">
+      <span class="right__item normal-svg hover-shadow ml-3 pad:hidden mobile:block">
         <Menu :stroke-width="2.5" @click="showSidebar()"/>
       </span>
     </div>

@@ -6,7 +6,7 @@
 @import "config.css";
 
 @theme {
-  --breakpoint-mobile: 380px;
+  --breakpoint-mobile: 280px;
   --breakpoint-pad: 640px;
   --breakpoint-pc: 768px;
   --breakpoint-screen: 1281px;
@@ -115,7 +115,7 @@ input {
 
 #main {
   min-height: calc(100vh - var(--z-header-height));
-  max-width: 1500px;
+  max-width: 1380px;
   margin: 0 auto;
 }
 
@@ -126,7 +126,7 @@ input {
 }
 
 .page {
-  padding: var(--z-header-height) 35px 35px;
+  padding: var(--z-header-height) 70px 35px;
 }
 
 body[view="mobile"] {

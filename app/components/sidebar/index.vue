@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Info from "./info.vue";
-import TopComment from "@/components/sidebar/TopComment.vue";
+import TopComment from "./TopComment.vue";
 </script>
 
 <template>

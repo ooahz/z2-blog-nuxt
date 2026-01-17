@@ -1,4 +1,3 @@
-import {OuOMessage} from "@ahzoo/ouo";
 import {logger} from "@/utils/logger";
 
 type MethodType = "GET" | "POST" | "PUT" | "DELETE";
@@ -20,14 +19,13 @@ const request = async (url: string, method: MethodType, params?: Record<string, 
         params: {...params},
         body: method === "POST" ? body : undefined,
         onRequestError({request, options, error}) {
-            logger.error("Request error:", request, error);
+            console.error("Request error:", request, error);
         },
         onResponse({request, response, options}) {
             return response._data;
         },
         onResponseError({request, response, options}) {
-            logger.error("Response error:", response);
-            OuOMessage.error("内容获取失败");
+            console.error("Response error:", response);
         }
     });
 };
@@ -53,14 +51,14 @@ function formatResult<T>(res: ReturnType<typeof useFetch>, handleData: boolean):
 
         // 如果请求还在进行中，返回空值
         if (pending.value) {
-            logger.warn("Request still pending, status:", status.value);
+            console.warn("Request still pending, status:", status.value);
             return "" as T;
         }
 
         // 检查响应数据是否存在
         const originData = unref(data);
         if (!originData) {
-            logger.error("No valid data received");
+            console.error("No valid data received");
             return "" as T;
         }
 
@@ -70,14 +68,12 @@ function formatResult<T>(res: ReturnType<typeof useFetch>, handleData: boolean):
         if (state === "success") {
             return handleData ? toRaw(responseData) : toRaw(originData);
         } else {
-            const errorMessage = message || "请求失败";
-            OuOMessage.error(errorMessage);
             logger.error("Request failed:", responseData);
             return "" as T;
         }
     } catch (error: unknown) {
         const errorMessage = error instanceof Error ? error.message : String(error);
-        logger.error("Request error:", errorMessage, error);
+        console.error("Request error:", errorMessage, error);
         return "" as T;
     }
 }
