@@ -190,8 +190,7 @@ export default defineNuxtConfig({
             target: "es2015"
         },
         optimizeDeps: {
-            include: ["@heroicons/vue", "lucide-vue-next", "@vueuse/core"],
-            exclude: ["prismjs"]
+            include: ["@heroicons/vue", "lucide-vue-next", "@vueuse/core", "prismjs"]
         },
     },
     sourcemap: {
@@ -208,21 +207,6 @@ export default defineNuxtConfig({
         }
     },
     routeRules: {
-        // "/": {
-        //     static: true
-        // },
-        // "/p/**": {
-        //     swr: 3600
-        // },
-        // "/category/**": {
-        //     swr: 3600
-        // },
-        // "/column/**": {
-        //     swr: 3600
-        // },
-        // "/search/**": {
-        //     swr: 300
-        // }
     },
     typescript: {
         strict: true,
