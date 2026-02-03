@@ -141,7 +141,7 @@ function updateAvatar(comment: CommentItemInterface) {
         <MessageCircle/>
       </div>
     </div>
-    <div v-if="commentList.length > 0" class="comment-list">
+    <div v-if="commentList.length > 0" class="comment-list mt-7">
       <SuSList v-for="commentItem in commentList" :comment="commentItem" @on-reply="toReplyComment"/>
     </div>
     <EmptyState

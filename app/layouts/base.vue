@@ -61,17 +61,9 @@ onMounted(() => {
 <template>
   <NuxtLoadingIndicator/>
   <div v-show="show" id="basic" class="font-size-medium w-full h-full flex flex-col relative" :class="layoutClass">
-    <div class="w-full">
-      <Header/>
-    </div>
     <div id="ahzoo" class="relative w-full" :class="$attrs.class">
-      <div v-if="$slots.main" id="main" class="page asd flex" :class="$viewport.isLessThan('lg') ? 'mobile' : 'pc'">
-        <slot name="main"/>
-        <Sidebar v-if="showSidebar && !$viewport.isLessThan('lg')" class="w-1/3 mt-5"/>
-      </div>
-      <div v-else class="page">
-        <slot/>
-      </div>
+      <Header/>
+      <slot/>
       <SidebarMobile/>
       <Footer/>
     </div>

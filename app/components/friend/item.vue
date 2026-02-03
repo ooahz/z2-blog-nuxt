@@ -8,34 +8,37 @@ defineProps({
 </script>
 
 <template>
-  <div class="friends-item">
-    <a :href="friend?.website" class="flex items-center">
-      <div class="friends-item-img">
-        <img :src="friend?.avatar" loading="lazy" decoding="async" :alt="friend?.name || 'Friend avatar'"/>
-      </div>
-      <div class="flex flex-wrap flex-[1] ml-3">
-        <p class="title friends-item-name single-line w-full pb-1.5" :title="friend?.website">{{ friend?.name }}</p>
-        <p class="single-line w-full mt-1" :title="friend?.description">{{ friend?.description }}</p>
-      </div>
-    </a>
-  </div>
+  <a :href="friend?.website" class="friends-item relative flex items-center rounded-xl">
+    <div class="friends-item-img ring-2 ring-base-200 shadow-sm p-0.5">
+      <img :src="friend?.avatar" loading="lazy" decoding="async" :alt="friend?.name || 'Friend avatar'"/>
+    </div>
+    <div class="flex flex-wrap flex-1 ml-3">
+      <p class="stress friends-item-name single-line w-full pb-1.5" :title="friend?.website">{{ friend?.name }}</p>
+      <p class="double-line opacity-80 font-size-90 w-full mt-1" :title="friend?.description">{{
+          friend?.description
+        }}</p>
+    </div>
+    <div class="friends-tag absolute right-2 top-2 rounded-lg">
+      <span>{{ friend?.tag || "邻居" }}</span>
+    </div>
+  </a>
 </template>
 
 <style scoped lang="scss">
 .friends-item {
-  color: rgb(var(--z-fontcolor-gray));
-  box-shadow: var(--z-menu-shadow);
+  padding: 15px;
+  background: rgba(var(--z-common-bg), 1);
+  border: 1px solid rgba(var(--z-gray-color), 1);
   transition: all .3s ease;
 
-  a {
-    padding: 15px;
-    border-radius: 7px;
-    background: rgba(var(--z-common-bg), 1);
-    transition: all .3s;
+  &:hover {
+    transform: matrix(1, 0, 0, 1, 0, -4);
+    border: 1px solid rgba(var(--z-primary-color), .3);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
 
-    &:hover {
-      border: 1px solid rgba(var(--z-primary-color), .5);
-      background: rgba(var(--z-primary-color), .2);
+    .friends-item-img {
+      scale: 1.05;
+      box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(var(--z-primary-color), .5) 0px 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
     }
   }
 
@@ -47,10 +50,11 @@ defineProps({
   }
 
   &-img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    border: 1px solid rgba(var(--z-primary-color));
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(var(--z-primary-color), .1) 0px 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    transition: all .5s ease;
 
     img {
       width: 100%;
@@ -61,9 +65,11 @@ defineProps({
   }
 }
 
-.friends-item a p:first-child {
-  color: rgba(var(--z-fontcolor));
-  border-bottom: 1px dashed rgba(var(--z-primary-color), .5);
+.friends-tag {
+  font-size: 12px;
+  padding: 2px 7px;
+  color: rgba(var(--z-primary-color), .6);
+  background-color: rgba(var(--z-primary-color), .05);
 }
 
 .dark .friends-item a {

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {computed} from "vue";
 import type {PropType} from "vue";
 import type {TocInterface} from "@/types/tocInterface";
 import {useArticleStore} from "@/store/articleStore";
@@ -12,34 +13,40 @@ const props = defineProps({
 
 const articleStore = useArticleStore();
 
+const isActive = computed(() => {
+  return articleStore.selectTitle === props.toc.id;
+});
+
 /**
  * 通过Toc列表标题定位文章标题位置
  */
 function scrollToTitle() {
-  let timeout: any;
   // 防止重复设置当前选中标题
   articleStore.setOnClick(true);
+  articleStore.setSelectTitle(props.toc.id);
 
-  function handleScroll() {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => {
+  const element = document.getElementById(props.toc.id);
+  if (element) {
+    // 获取固定头部高度
+    const headerHeight = parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--z-header-height') || '80', 10);
+    const offset = element.offsetTop - headerHeight - 20; // 额外20px间距
+
+    window.scrollTo({
+      top: Math.max(0, offset),
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => {
       articleStore.setOnClick(false);
     }, 500);
   }
-
-  const container = document.querySelector("#article");
-  container?.addEventListener("scroll", handleScroll);
-  articleStore.setSelectTitle(props.toc.id);
-  document.querySelector("#" + props.toc.id)?.scrollIntoView({
-    behavior: "smooth"
-  });
-
 }
 </script>
 
 <template>
   <div class="toc-list-item py-0.5 cursor-pointer"
-       :class="[toc.className]"
+       :class="[toc.className, { active: isActive }]"
        @click="scrollToTitle"
   >
     {{ toc.name }}

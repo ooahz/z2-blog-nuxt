@@ -4,8 +4,6 @@ import BaseLayout from "./base.vue";
 
 <template>
   <BaseLayout layout-class="mi-font" show-sidebar reset-scroll>
-    <template #main>
-      <NuxtPage/>
-    </template>
+    <NuxtPage/>
   </BaseLayout>
 </template>

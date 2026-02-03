@@ -5,7 +5,7 @@ import Mail from "@/static/svg/mail.svg";
 const appConfig = useAppConfig();
 </script>
 <template>
-  <div class="author-info w-full flex flex-col justify-center">
+  <div class="author-info box-item w-full flex flex-col justify-center">
     <div class="author-info__avatar">
       <img class="cover" :src="appConfig.avatar" :alt="appConfig.name" loading="eager" decoding="async">
     </div>
@@ -17,19 +17,23 @@ const appConfig = useAppConfig();
       <div class="author-info__social flex justify-center mt-4 font-size-x-small">
         <a class="inline-flex items-center"
            :href="appConfig.github">
-          <Github/>
-          <span class="ml-1">Github</span>
+          <span class="meta-icon">
+            <Github/>
+          </span>
+          <span class="">Github</span>
         </a>
         <a class="inline-flex items-center ml-4"
            :href="'mailto:'+ appConfig.email">
-          <Mail class="p-[1px]"/>
-          <span class="ml-1">邮件</span>
+          <span class="meta-icon">
+            <Mail class="p-[1px]"/>
+          </span>
+          <span class="">邮件</span>
         </a>
       </div>
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .author-info {
   padding: 2rem 1.25rem 1.35rem;
   border-radius: 0.75rem;
@@ -56,18 +60,28 @@ const appConfig = useAppConfig();
 
     a {
       span {
-        opacity: .7;
+        opacity: .9;
       }
 
       &:hover {
         color: rgb(var(--z-primary-color));
+
+        .meta-icon {
+          background-color: rgba(var(--z-primary-color), .1);
+          color: rgba(var(--z-primary-color));
+        }
       }
     }
+  }
+}
 
-    svg {
-      width: 20px;
-      height: 20px;
-    }
+.meta-icon {
+  background-color: rgba(var(--z-plain-bg));
+  color: rgba(var(--z-fontcolor));
+
+  svg {
+    width: 1.3rem !important;
+    height: 1.3rem !important;
   }
 }
 </style>

@@ -25,3 +25,10 @@ export interface ArticleInterface {
     columnList?: ColumnMapInterface[];
     category?: CategoryMapInterface
 }
+
+export interface ArchiveArticleInterface {
+    readonly id: string;
+    readonly path: string;
+    title: string;
+    createdDate?: string;
+}

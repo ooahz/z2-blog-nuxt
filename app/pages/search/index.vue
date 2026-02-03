@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {PreviewArticleInterface} from "@/types/articleInterface";
-import {searchAllApi, searchArticleContentApi, searchArticleTitleApi} from "~~/service/search";
+import {searchAllApi} from "~~/service/search";
 import {useSearchStore} from "@/store/searchStore";
 import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
 
@@ -20,18 +20,11 @@ async function searchArticleList(keyword: string, pagination: number) {
     return;
   }
   const params = {
-    "keyword": keyword,
-    "pagination": pagination
+    "k": keyword,
+    "p": pagination
   };
-  const type = searchStore.type;
   showLoading.value = true;
-  if (type === "content") {
-    searchList.value = await searchArticleContentApi(params);
-  } else if (type === "title") {
-    searchList.value = await searchArticleTitleApi(params);
-  } else {
-    searchList.value = await searchAllApi(params);
-  }
+  searchList.value = await searchAllApi(params);
   showLoading.value = false;
 }
 

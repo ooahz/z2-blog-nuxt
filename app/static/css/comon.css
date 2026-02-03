@@ -52,6 +52,10 @@
     font-size: 95%;
 }
 
+.font-size-90 {
+    font-size: 90%;
+}
+
 .font-size-x-small {
     font-size: 12px;
 }
@@ -80,17 +84,23 @@
 样式
  */
 .title {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
 }
 
 .stress {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
 }
 
 .ss-font {
     font-family: ss,
+    Microsoft Yahei,
+    serif;
+}
+
+.loli-font {
+    font-family: loli,
     Microsoft Yahei,
     serif;
 }
@@ -133,4 +143,11 @@
     border-radius: 5px;
     background-color: rgba(var(--z-plain-bg), .5) !important;
     transition: all .25s;
+}
+
+.hover-primary:hover {
+    border-radius: 5px;
+    color: rgba(var(--z-primary-color), .9);
+    background-color: rgba(var(--z-primary-color), .2) !important;
+    transition: all .25s ease;
 }

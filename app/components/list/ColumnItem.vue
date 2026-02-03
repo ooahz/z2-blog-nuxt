@@ -27,7 +27,7 @@ defineProps({
 <style scoped lang="scss">
 .column-item {
   max-width: 550px;
-  border: 1px solid rgba(var(--z-gray-color), .5);
+  border: 1px solid rgba(var(--z-gray-color), 1);
   transition: all .3s ease;
 
   &:hover {

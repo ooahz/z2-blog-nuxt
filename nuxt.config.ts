@@ -102,7 +102,7 @@ export default defineNuxtConfig({
     nitro: {
         devProxy: {
             "/blog/": {
-                target: "http://localhost:8080/blog/",
+                target: "http://127.0.0.1:8080/blog/",
                 changeOrigin: true,
                 prependPath: true
             }
@@ -112,13 +112,6 @@ export default defineNuxtConfig({
             brotli: true
         },
         routeRules: {
-            "/blog/**": {
-                cors: true,
-                cache: {
-                    maxAge: 60 * 60 * 24,
-                    swr: true
-                }
-            },
             "/_nuxt/**": {
                 cache: {
                     maxAge: 60 * 60 * 24 * 365,
@@ -173,7 +166,7 @@ export default defineNuxtConfig({
                 output: {
                     manualChunks: {
                         "vendor": ["vue", "@vueuse/core"],
-                        "ui": ["@heroicons/vue", "lucide-vue-next"],
+                        "ui": ["lucide-vue-next"],
                         "markdown": ["prismjs"]
                     }
                 }
@@ -190,8 +183,7 @@ export default defineNuxtConfig({
             target: "es2015"
         },
         optimizeDeps: {
-            include: ["@heroicons/vue", "lucide-vue-next", "@vueuse/core"],
-            exclude: ["prismjs"]
+            include: ["lucide-vue-next", "@vueuse/core", "prismjs"]
         },
     },
     sourcemap: {
@@ -208,21 +200,6 @@ export default defineNuxtConfig({
         }
     },
     routeRules: {
-        // "/": {
-        //     static: true
-        // },
-        // "/p/**": {
-        //     swr: 3600
-        // },
-        // "/category/**": {
-        //     swr: 3600
-        // },
-        // "/column/**": {
-        //     swr: 3600
-        // },
-        // "/search/**": {
-        //     swr: 300
-        // }
     },
     typescript: {
         strict: true,

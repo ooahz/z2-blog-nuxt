@@ -11,9 +11,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="page-info ss-font relative flex flex-col justify-center w-full rounded-xl overflow-hidden">
+  <div class="page-info relative flex flex-col justify-center w-full rounded-xl overflow-hidden">
     <div class="page-info__content landing-info flex flex-col absolute">
-      <div class="font-bold text-[2.5rem] leading-loose">{{ landing.title }}</div>
+      <div class="loli-font font-bold text-[2.5rem] leading-loose">{{ landing.title }}</div>
       <div class="font-size-x-large">{{ landing?.description }}</div>
     </div>
     <div class="page-info-slot absolute flex bottom-0 p-1">
@@ -45,7 +45,6 @@ defineProps({
 
   &__content {
     z-index: 2;
-    letter-spacing: 6px;
     margin: -120px 80px 0 80px;
     color: rgba(var(--z-primary-fontcolor));
     transition: all 0.2s;

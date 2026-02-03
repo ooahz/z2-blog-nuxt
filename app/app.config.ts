@@ -9,6 +9,7 @@ export default defineAppConfig({
 
     // 其他配置
     landingImg: "https://s.ahzoo.cn/picture/22436164.png",
+    bannerImg: "https://s.ahzoo.cn/picture/22436164.png",
     github: "https://github.com/ooahz",
     copyright: "本文依据<strong> CC-BY-NC-SA 4.0 </strong>许可协议授权，请您在转载时注明文章来源为"
         + "<a href='https://blog.ahzoo.cn' class='highlight' target='_blank' rel='noreferrer noopener'>"

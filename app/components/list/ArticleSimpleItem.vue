@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type {PropType} from "vue";
 import type {PreviewArticleInterface} from "@/types/articleInterface";
-import {ChevronRightIcon} from "@heroicons/vue/24/solid";
 import {formatDateTime} from "@ahzoo/utils";
+import {ChevronRight} from "lucide-vue-next";
 
 defineProps({
   index: Number,
@@ -21,7 +21,7 @@ defineProps({
         <div class="opacity-80">{{ formatDateTime(article.updatedDate || "") }}</div>
       </div>
       <div>
-        <ChevronRightIcon/>
+        <ChevronRight />
       </div>
     </div>
   </a>

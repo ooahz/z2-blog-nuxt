@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="post" class="flex-[1]">
+  <div id="post" class="flex-1">
     <div class="screen">
       <div v-for="article in articleList">
         <ArticleItem :article="article"/>

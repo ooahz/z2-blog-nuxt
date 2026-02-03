@@ -6,10 +6,12 @@ import {getArticleDetailApi} from "~~/service/article";
 import {listColumnByArticleIdApi} from "~~/service/column";
 import {useArticleStore} from "@/store/articleStore";
 import {useMenuStore} from "@/store/menuStore";
+import Prism from "prismjs";
 import {OuOButton, OuODottedPagination} from "@ahzoo/ouo";
 import {formatDateTime, getAttribute, setAttribute, tocGenerateByDomId} from "@ahzoo/utils";
 import ArticleColumn from "@/components/column/ArticleColumn.vue";
 import Copyright from "@/static/svg/copyright.svg";
+import {throttle} from "@/utils/throttle";
 
 const {path} = useRoute();
 const appConfig = useAppConfig();
@@ -34,7 +36,50 @@ await getColumnByArticleId(article.id);
 function initToc() {
   articleTocList.value = tocGenerateByDomId("#article-content");
   articleStore.setTocList(articleTocList.value);
-  articleStore.setSelectTitle(articleTocList.value[0]?.id);
+  if (articleTocList.value.length > 0) {
+    articleStore.setSelectTitle(articleTocList.value[0]?.id);
+  }
+}
+
+/**
+ * 根据滚动位置更新当前激活的标题
+ */
+function updateActiveTitle() {
+  // 如果正在点击跳转，暂停自动更新
+  if (articleStore.onClick) {
+    return;
+  }
+
+  if (articleTocList.value.length === 0) {
+    return;
+  }
+
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  // 获取固定头部高度
+  const headerHeight = parseInt(
+    getComputedStyle(document.documentElement)
+      .getPropertyValue('--z-header-height') || '82',
+    10
+  );
+  const offset = scrollTop + headerHeight + 50;
+
+  // 从后往前查找第一个 offsetTop <= offset 的标题
+  let activeId = articleTocList.value[0]?.id || "";
+  for (let i = articleTocList.value.length - 1; i >= 0; i--) {
+    const toc = articleTocList.value[i];
+    const element = document.getElementById(toc.id);
+    if (element) {
+      const elementTop = element.offsetTop;
+      if (elementTop <= offset) {
+        activeId = toc.id;
+        break;
+      }
+    }
+  }
+
+  if (activeId && articleStore.selectTitle !== activeId) {
+    articleStore.setSelectTitle(activeId);
+  }
 }
 
 function scrollTo(id: string) {
@@ -100,30 +145,47 @@ useSeoMeta({
   description: () => `${article.description ?? appConfig.description}`
 })
 
+let scrollHandler: (() => void) | null = null;
+
 onMounted(() => {
   initToc();
-  // Prism.highlightAll();
+  Prism.highlightAll();
   setProperty();
   initStyle();
+
+  nextTick(() => {
+    if (process.client && articleTocList.value.length > 0) {
+      scrollHandler = throttle(updateActiveTitle, 100);
+      window.addEventListener("scroll", scrollHandler, {passive: true});
+      // 初始化时也更新一次
+      updateActiveTitle();
+    }
+  });
 });
 
 onUnmounted(() => {
+  // 清理滚动监听器
+  if (scrollHandler) {
+    window.removeEventListener("scroll", scrollHandler);
+    scrollHandler = null;
+  }
   // 重置toc
   articleStore.setTocList([]);
+  articleStore.setSelectTitle("");
 })
 </script>
 <template>
-  <div id="article" class="w-full">
-    <div v-if="!article.title" id="show" class="w-full h-full">
-      <Loading/>
-    </div>
-    <div v-else class="article__header banner relative">
+  <div v-if="!article.title" id="show" class="w-full h-full">
+    <Loading/>
+  </div>
+  <div v-else>
+    <Banner class="article__header">
       <div class="article-mask absolute"/>
       <div class="article-cover h-full absolute">
         <img :src="article.thumbnail" class="" alt="">
       </div>
       <div
-          class="article__info w-full h-full absolute top-0 flex flex-col justify-center pad:px-11 mobile:px-5 mobile:pt-5 pad:pt-11 pc:pt-0">
+          class="banner__container article__info w-full h-full absolute top-0 flex flex-col justify-center pad:px-11 mobile:px-5 mobile:pt-5 pad:pt-11 pc:pt-0">
         <div
             class="article__info-title font-semibold leading-loose pad:text-[2.8rem] mobile:text-[1.7rem] pc:mt-[-50px] screen:mt-[-50px]">
           {{ article.title }}
@@ -140,59 +202,51 @@ onUnmounted(() => {
           </span>
         </div>
       </div>
-      <svg v-if="!$viewport.isLessThan('lg')"
-           class="article-waves w-full absolute bottom-0" xmlns="http://www.w3.org/2000/svg"
-           xmlns:xlink="http://www.w3.org/1999/xlink"
-           viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-        <defs>
-          <path id="waves-gentle" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
-        </defs>
-        <g class="waves-parallax">
-          <use xlink:href="#waves-gentle" x="48" y="0"/>
-          <use xlink:href="#waves-gentle" x="48" y="3"/>
-          <use xlink:href="#waves-gentle" x="48" y="5"/>
-          <use xlink:href="#waves-gentle" x="48" y="7"/>
-        </g>
-      </svg>
-    </div>
-    <div class="article__container flex justify-end w-full pad:p-5 mb-5 mobile:p-0">
-      <div class="article__content pad:px-6 pc:w-[72%] mobile:w-full mobile:px-0 pad:w-full">
-        <div class="aside sticky hidden screen:block">
-          <div class="aside-item absolute flex flex-col">
-            <OuOButton class="mb-3" :type="'card-2'" :equilateral="true" @click="scrollTo('#article')">置顶</OuOButton>
-            <OuOButton :type="'card-2'" :equilateral="true" @click="scrollTo('#comment')">评论</OuOButton>
+    </Banner>
+    <div id="article">
+      <div class="article__container flex justify-end w-full pad:p-5 mb-5 mobile:p-0">
+        <div class="article__content pad:px-6 mobile:px-0 w-full">
+          <div class="aside sticky hidden screen:block">
+            <div class="aside-item absolute flex flex-col">
+              <OuOButton class="mb-3" :type="'card-2'" :equilateral="true" @click="scrollTo('#article')">置顶
+              </OuOButton>
+              <OuOButton :type="'card-2'" :equilateral="true" @click="scrollTo('#comment')">评论</OuOButton>
+            </div>
+          </div>
+          <div id="article-content" class="article-content w-full rounded-t-xl leading-loose overflow-hidden"
+               v-html="article.content">
+          </div>
+          <div class="copyright relative flex items-center my-5 p-5 rounded-b-xl overflow-hidden">
+            <span v-html="appConfig.copyright"></span>
+            <Copyright/>
+          </div>
+          <div class="column-list flex flex-col overflow-hidden relative">
+            <ArticleColumn
+                v-show="index===nowIndex"
+                v-for="(column, index) in columnList"
+                :column="column"/>
+            <div class="w-full flex flex-row justify-center m-1">
+              <OuODottedPagination v-if="columnList.length>=3" :total=3 @onclick="switchColumn"/>
+              <OuODottedPagination v-if="columnList.length===2" :total=2 @onclick="switchColumn"/>
+            </div>
+          </div>
+          <div v-if="!(appConfig.feature.comment === 'disable')" class="box mt-3">
+            <div class="absolute flex">
+              <div class="box-title-line w-1 h-5 mr-2.5 rounded-full"></div>
+              <span class="title">评论区</span>
+            </div>
+            <Comment/>
           </div>
         </div>
-        <div id="article-content" class="article-content w-full rounded-t-xl leading-loose overflow-hidden"
-             v-html="article.content">
-        </div>
-        <div class="copyright relative flex items-center my-5 p-5 rounded-b-xl overflow-hidden">
-          <span v-html="appConfig.copyright"></span>
-          <Copyright/>
-        </div>
-        <div class="column-list flex flex-col overflow-hidden relative">
-          <ArticleColumn
-              v-show="index===nowIndex"
-              v-for="(column, index) in columnList"
-              :column="column"/>
-          <div class="w-full flex flex-row justify-center m-1">
-            <OuODottedPagination v-if="columnList.length>=3" :total=3 @onclick="switchColumn"/>
-            <OuODottedPagination v-if="columnList.length===2" :total=2 @onclick="switchColumn"/>
-          </div>
-        </div>
-        <div v-if="!(appConfig.feature.comment === 'disable')" class="box mt-3">
-          <Comment/>
-        </div>
-      </div>
 
-      <div class="article__aside box pc:block pad:hidden mobile:hidden">
-        <ClientOnly>
-          <!--          目录-->
-          <div id="article-toc"
-               v-for="articleTocItem in articleTocList">
-            <TocItem :toc="articleTocItem"/>
-          </div>
-        </ClientOnly>
+        <div class="article__aside box pc:block pad:hidden mobile:hidden">
+          <ClientOnly>
+            <div id="article-toc"
+                 v-for="articleTocItem in articleTocList">
+              <TocItem :toc="articleTocItem"/>
+            </div>
+          </ClientOnly>
+        </div>
       </div>
     </div>
   </div>
@@ -216,19 +270,18 @@ onUnmounted(() => {
     width: 100vw;
     margin-left: -50vw;
     left: 50%;
-    margin-top: calc(-1 * var(--z-header-height));
     position: relative;
     overflow: hidden;
 
     .article-cover {
       position: relative;
       opacity: .5;
-      width: 100%;
+      width: 70%;
       height: 100%;
-      margin: 0;
+      margin: 0 -20% 0 auto;
       overflow: hidden;
       filter: blur(30px);
-      transform: scale(1.1) translateZ(0);
+      transform: rotate(10deg) translateY(30%) scale(2) translateZ(0);
 
       &:after {
         content: "";
@@ -237,14 +290,13 @@ onUnmounted(() => {
         left: 0;
         width: 100%;
         height: 100%;
-        box-shadow: 0 0 300px 60px rgba(var(--z-primary-color)) inset;
+        box-shadow: 110px -130px 300px 60px rgba(var(--z-primary-color)) inset;
       }
 
       img {
         opacity: .8;
         object-fit: cover;
-        width: 100%;
-        height: 100%;
+        min-width: 50vw;
         transition: opacity .5s ease-out;
       }
     }
@@ -252,7 +304,7 @@ onUnmounted(() => {
 
   &__container {
     animation: bottom-top 1s;
-    max-width: 1380px;
+    max-width: var(--z-max-width);
     margin: auto;
   }
 
@@ -287,7 +339,7 @@ onUnmounted(() => {
 
   &__info {
     margin: auto;
-    max-width: 1380px;
+    max-width: var(--z-max-width);
     color: rgba(var(--z-primary-fontcolor));
   }
 
@@ -331,28 +383,6 @@ onUnmounted(() => {
   }
 }
 
-.article-waves {
-  height: 90px;
-}
-
-.waves-parallax {
-  &:nth-child(1) {
-    fill: rgba(var(--z-basic-color), .7);
-  }
-
-  &:nth-child(2) {
-    fill: rgba(var(--z-basic-color), .5);
-  }
-
-  &:nth-child(3) {
-    fill: rgba(var(--z-basic-color), .3);
-  }
-
-  &:nth-child(3) {
-    fill: rgb(var(--z-basic-color));
-  }
-}
-
 @keyframes bottom-top {
   0% {
     opacity: 0;
@@ -390,32 +420,17 @@ onUnmounted(() => {
     background: rgba(35, 38, 57, 20%);
   }
 }
+
+.box-title-line{
+  margin-top: 3px;
+  background-image: linear-gradient(rgba(var(--z-primary-color)), rgba(0, 0, 0, 0));
+}
 </style>
 
 <style lang="scss">
 [view="mobile"] {
   .article__header {
     height: 290px;
-  }
-}
-
-.article-content,
-.copyright {
-  a {
-    padding: 0 3px;
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 2px dotted rgba(var(--z-fontcolor-gray), 1);
-    border-radius: 3px 3px 0 0;
-    transition: all .2s;
-
-    &:hover {
-      padding: 1px 3px;
-      color: rgb(var(--z-basic-color));
-      background-color: rgba(var(--z-primary-color), .7);
-      border-width: 0;
-      border-radius: 3px;
-    }
   }
 }
 

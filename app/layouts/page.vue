@@ -12,16 +12,16 @@ const layoutProps = computed(() => {
   <BaseLayout class="layout-page overflow-y-scroll">
     <div id="main" class="page">
       <slot name="header">
-        <div class="page-header" v-if="layoutProps.title && !layoutProps.fullPage">
+        <div class="page-header paragraph" v-if="layoutProps.title && !layoutProps.fullPage">
           <div class="flex flex-col ml-2 justify-center">
-            <span class="kksj-font title relative my-3">{{ layoutProps.title }}</span>
-            <span class="subtitle mb-5">{{ layoutProps.subtitle }}</span>
+            <span class="loli-font title relative my-3">{{ layoutProps.title }}</span>
+            <span class="subtitle mb-5" v-html="layoutProps.subtitle"></span>
           </div>
         </div>
       </slot>
       <NuxtPage v-if="layoutProps.fullPage"/>
       <div class="flex" v-else>
-        <div class="page-content w-full mobile:px-3 pad:px-8 py-8 rounded-lg">
+        <div class="page-content box-item w-full mobile:px-3 pad:px-8 py-8 rounded-lg">
           <slot/>
         </div>
         <Sidebar
@@ -46,7 +46,7 @@ const layoutProps = computed(() => {
 
   .subtitle {
     position: relative;
-    padding-bottom: 6px;
+    padding-bottom: 7px;
 
     &::after {
       content: "";

@@ -327,3 +327,24 @@ a[target="_blank"]:not(.no-style) {
     }
   }
 }
+
+.article-content,
+.copyright,
+.paragraph {
+  a {
+    padding: 0 3px;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px dotted rgba(var(--z-fontcolor-gray), 1);
+    border-radius: 3px 3px 0 0;
+    transition: all .2s;
+
+    &:hover {
+      padding: 1px 3px;
+      color: rgb(var(--z-basic-color));
+      background-color: rgba(var(--z-primary-color), .7);
+      border-width: 0;
+      border-radius: 3px;
+    }
+  }
+}

@@ -4,7 +4,7 @@ html {
     --z-primary-select-color: 61, 85, 223;
     --z-gray-color: 231, 234, 237;
     --z-deep-color: 18, 20, 22;
-    --z-fontcolor: 59, 59, 59;
+    --z-fontcolor: 64, 64, 64;
     --z-fontcolor-gray: 153, 164, 178;
     --z-primary-fontcolor: 255, 255, 255;
     --z-btn-fontcolor: 255, 255, 255;
@@ -14,9 +14,10 @@ html {
     --z-common-bg: 247, 248, 249;
     --z-regular-bg: 235, 236, 239;
     --z-regular-hover-bg: 215, 219, 255;
+    --z-regular-fontcolor: 91, 103, 184;
     --z-plain-bg: 231, 235, 240;
     --z-header-height: 82px;
-    --z-menu-shadow: 0 1px 7px 0 rgba(39, 39, 39, .04);;
+    --z-max-width: 1380px;
 }
 
 .dark {

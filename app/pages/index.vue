@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const {$viewport} = useNuxtApp();
+const appConfig = useAppConfig();
 
 definePageMeta({
   layout: "home",
@@ -11,13 +12,10 @@ useSeoMeta({
 });
 </script>
 <template>
-  <div v-if="!$viewport.isLessThan('lg')">
-    <Banner/>
-  </div>
   <div id="main" class="page" :class="$viewport.isLessThan('lg') ? 'mobile' : 'pc'">
     <div class="box-header flex flex-col">
       <div class="filter flex flex-col ml-2">
-        <span class="kksj-font title mt-7 tracking-wide">最近文章</span>
+        <span class="loli-font title mt-7 tracking-wide">最近文章</span>
         <span class="subtitle mt-2 mb-5">
           文章、记录、生活
         </span>
@@ -34,7 +32,7 @@ useSeoMeta({
 <style scoped lang="scss">
 #main {
   &.pc {
-    padding-top: 10px !important;
+    padding-top: 30px !important;
   }
 }
 

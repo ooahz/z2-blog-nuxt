@@ -20,8 +20,9 @@ async function getTopComment() {
 </script>
 <template>
   <div v-if="!(appConfig.feature?.comment === 'disable')"
-       class="top-comment box mt-5">
-    <div class="box-header bottom-line pb-1.5 mt-1 mx-1.5">最新评论</div>
+       class="top-comment box box-item mt-5">
+    <div class="box-header item-title mt-1 mx-1.5">最新评论</div>
+    <div class="bottom-line mb-1"></div>
     <a :href="commentItem.website"
        v-for="commentItem in commentList"
        class="no-style" target="_blank">
@@ -33,7 +34,7 @@ async function getTopComment() {
 <style lang="scss">
 .top-comment {
   &.box {
-    padding: 1.25rem 0.875rem 1rem;
+    padding: 1.25rem 1.4rem 1rem;
   }
 }
 </style>

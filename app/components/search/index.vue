@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import {useGlobalStore} from "@/store/globalStore";
 import {useSearchStore} from "@/store/searchStore";
-import {MagnifyingGlassIcon, XMarkIcon} from "@heroicons/vue/24/solid";
+import {Search, X} from "lucide-vue-next";
 
 const globalState = useGlobalStore();
 const searchStore = useSearchStore();
 const keyword = ref("");
-const selectList = ["在标题中搜索", "在内容中搜索", "全文搜索"];
+const selectList = ["全文搜索"];
 
 function closeSearch() {
   keyword.value = "";
@@ -38,9 +38,9 @@ function goSearch(item: string) {
           class="search-container flex flex-col relative w-4/6 pad:w-10/12 mobile:w-full h-48 m-5 mt-28 py-1.5 rounded-xl">
         <div class="search-container__basic flex flex-col w-full h-full">
           <div class="search-container__input bottom-line flex items-center">
-            <MagnifyingGlassIcon/>
+            <Search/>
             <input class="w-full" v-model="keyword" maxlength="15" placeholder="搜索"/>
-            <XMarkIcon class="hover-color cursor-pointer" @click="closeSearch"/>
+            <X class="hover-color cursor-pointer" @click="closeSearch"/>
           </div>
           <div class="search-container__select">
             <div class="hover-transparent select-item flex items-center justify-between cursor-pointer"
@@ -67,6 +67,7 @@ function goSearch(item: string) {
 
 .search-container {
   background-color: rgb(var(--z-common-bg));
+  border: 1px solid rgba(var(--z-gray-color), 1);
   transition: all .3s;
 
   &__input {
@@ -76,10 +77,6 @@ function goSearch(item: string) {
     svg {
       height: 1.4rem;
       width: 1.4rem;
-
-      &:nth-child(1) {
-        fill: rgba(var(--z-fontcolor), .5);
-      }
     }
   }
 
@@ -91,7 +88,7 @@ function goSearch(item: string) {
 
 
 .select-item {
-  padding: 8px 15px;
+  padding: 10px 15px;
 
 }
 </style>

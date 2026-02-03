@@ -27,6 +27,11 @@
   src: url("../fonts/kuaikanshijieti.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: loli;
+  src: url("../fonts/loli.woff2") format("woff2");
+}
+
 html {
   font-family: mi, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: rgb(var(--z-fontcolor));
@@ -115,7 +120,6 @@ input {
 
 #main {
   min-height: calc(100vh - var(--z-header-height));
-  max-width: 1380px;
   margin: 0 auto;
 }
 
@@ -127,7 +131,7 @@ input {
 
 .page {
   padding: var(--z-header-height) 20px 35px;
-  max-width: 1380px;
+  max-width: var(--z-max-width);
   margin: 0 auto;
 }
 
@@ -214,6 +218,10 @@ img {
   padding: 1.25rem;
 }
 
+.box-item {
+  box-shadow: rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0) 0 0 0 0, rgba(0, 0, 0, 0.05) 0 1px 2px 0;
+}
+
 .box-header {
   margin-bottom: 15px;
 }
@@ -225,6 +233,39 @@ img {
   background: rgba(var(--z-basic-input-color), .4);
   border-radius: 0 0 6px 6px;
   position: absolute;
+}
+
+.meta-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  border-radius: 6px;
+  padding: 4px;
+  background-color: rgba(var(--z-primary-color), .08);
+  color: rgba(var(--z-primary-color), 1);
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .15s;
+}
+
+.item-title {
+  position: relative;
+  align-items: center;
+  justify-items: center;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -11px;
+    margin: auto;
+    display: block;
+    width: 4px;
+    height: 55%;
+    background-color: rgba(var(--z-primary-color), .8);
+  }
 }
 
 .timeline {
