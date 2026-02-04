@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import type {ArticleInterface} from "@/types/articleInterface";
 import type {PreviewColumnInterface} from "@/types/columnInterface";
-import type {TocInterface} from "@/types/tocInterface";
 import {getArticleDetailApi} from "~~/service/article";
 import {listColumnByArticleIdApi} from "~~/service/column";
 import {useArticleStore} from "@/store/articleStore";
 import {useMenuStore} from "@/store/menuStore";
 import Prism from "prismjs";
 import {OuOButton, OuODottedPagination} from "@ahzoo/ouo";
-import {formatDateTime, getAttribute, setAttribute, tocGenerateByDomId} from "@ahzoo/utils";
+import {formatDateTime, getAttribute, setAttribute} from "@ahzoo/utils";
 import ArticleColumn from "@/components/column/ArticleColumn.vue";
 import Copyright from "@/static/svg/copyright.svg";
-import {throttle} from "@/utils/throttle";
+import Toc from "@/components/toc/Toc.vue";
 
 const {path} = useRoute();
 const appConfig = useAppConfig();
@@ -23,7 +22,7 @@ menuState.setWithComment();
 const {$viewport} = useNuxtApp();
 const article = reactive<ArticleInterface>({} as ArticleInterface);
 const columnList = reactive<Array<PreviewColumnInterface>>([]);
-const articleTocList = ref<TocInterface[]>([]);
+
 const nowIndex = ref(0);
 const articlePath = <string>path.split("/").pop();
 
@@ -33,54 +32,7 @@ const articlePath = <string>path.split("/").pop();
 await getArticleByPath(articlePath);
 await getColumnByArticleId(article.id);
 
-function initToc() {
-  articleTocList.value = tocGenerateByDomId("#article-content");
-  articleStore.setTocList(articleTocList.value);
-  if (articleTocList.value.length > 0) {
-    articleStore.setSelectTitle(articleTocList.value[0]?.id);
-  }
-}
 
-/**
- * 根据滚动位置更新当前激活的标题
- */
-function updateActiveTitle() {
-  // 如果正在点击跳转，暂停自动更新
-  if (articleStore.onClick) {
-    return;
-  }
-
-  if (articleTocList.value.length === 0) {
-    return;
-  }
-
-  const scrollTop = window.scrollY || document.documentElement.scrollTop;
-  // 获取固定头部高度
-  const headerHeight = parseInt(
-    getComputedStyle(document.documentElement)
-      .getPropertyValue('--z-header-height') || '82',
-    10
-  );
-  const offset = scrollTop + headerHeight + 50;
-
-  // 从后往前查找第一个 offsetTop <= offset 的标题
-  let activeId = articleTocList.value[0]?.id || "";
-  for (let i = articleTocList.value.length - 1; i >= 0; i--) {
-    const toc = articleTocList.value[i];
-    const element = document.getElementById(toc.id);
-    if (element) {
-      const elementTop = element.offsetTop;
-      if (elementTop <= offset) {
-        activeId = toc.id;
-        break;
-      }
-    }
-  }
-
-  if (activeId && articleStore.selectTitle !== activeId) {
-    articleStore.setSelectTitle(activeId);
-  }
-}
 
 function scrollTo(id: string) {
   document.querySelector(id)?.scrollIntoView({
@@ -145,30 +97,13 @@ useSeoMeta({
   description: () => `${article.description ?? appConfig.description}`
 })
 
-let scrollHandler: (() => void) | null = null;
-
 onMounted(() => {
-  initToc();
   Prism.highlightAll();
   setProperty();
   initStyle();
-
-  nextTick(() => {
-    if (process.client && articleTocList.value.length > 0) {
-      scrollHandler = throttle(updateActiveTitle, 100);
-      window.addEventListener("scroll", scrollHandler, {passive: true});
-      // 初始化时也更新一次
-      updateActiveTitle();
-    }
-  });
 });
 
 onUnmounted(() => {
-  // 清理滚动监听器
-  if (scrollHandler) {
-    window.removeEventListener("scroll", scrollHandler);
-    scrollHandler = null;
-  }
   // 重置toc
   articleStore.setTocList([]);
   articleStore.setSelectTitle("");
@@ -204,8 +139,8 @@ onUnmounted(() => {
       </div>
     </Banner>
     <div id="article">
-      <div class="article__container flex justify-end w-full pad:p-5 mb-5 mobile:p-0">
-        <div class="article__content pad:px-6 mobile:px-0 w-full">
+      <div class="article__container flex justify-end pad:p-5 mb-5 mobile:p-0">
+        <div class="article__content pad:px-6 mobile:px-0">
           <div class="aside sticky hidden screen:block">
             <div class="aside-item absolute flex flex-col">
               <OuOButton class="mb-3" :type="'card-2'" :equilateral="true" @click="scrollTo('#article')">置顶
@@ -241,10 +176,7 @@ onUnmounted(() => {
 
         <div class="article__aside box pc:block pad:hidden mobile:hidden">
           <ClientOnly>
-            <div id="article-toc"
-                 v-for="articleTocItem in articleTocList">
-              <TocItem :toc="articleTocItem"/>
-            </div>
+             <Toc />
           </ClientOnly>
         </div>
       </div>
@@ -267,7 +199,7 @@ onUnmounted(() => {
   &__header {
     --z-primary-color: 63, 71, 95;
     height: clamp(450px, 55vh, 550px);
-    width: 100vw;
+    width: 100%;
     margin-left: -50vw;
     left: 50%;
     position: relative;

@@ -58,22 +58,31 @@ function scrollToTitle() {
   overflow: hidden;
   white-space: nowrap;
   transition: all .25s;
+  border-left: 2px solid transparent;
+  margin-bottom: 4px;
+  padding: 3px;
+  border-radius: 0 4px 4px 0;
 
   &.active, &:hover {
     color: rgb(var(--z-primary-color));
+    background-color: rgba(var(--z-primary-color), 0.1);
+  }
+
+  &.active {
+    border-left-color: rgb(var(--z-primary-color));
   }
 }
 
 .toc-item-h2 {
-  padding-left: 3px;
+  padding-left: 9px;
 }
 
 .toc-item-h3 {
-  padding-left: 12px;
+  padding-left: 15px;
 }
 
 .toc-item-h4 {
-  padding-left: 25px;
+  padding-left: 27px;
 }
 
 .toc-item-h5,
