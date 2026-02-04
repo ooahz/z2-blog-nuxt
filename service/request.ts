@@ -1,3 +1,4 @@
+import {OuOMessage} from "@ahzoo/ouo";
 import {logger} from "@/utils/logger";
 
 type MethodType = "GET" | "POST" | "PUT" | "DELETE";
@@ -68,6 +69,9 @@ function formatResult<T>(res: ReturnType<typeof useFetch>, handleData: boolean):
         if (state === "success") {
             return handleData ? toRaw(responseData) : toRaw(originData);
         } else {
+            if (!handleData) {
+                OuOMessage.warning(message);
+            }
             logger.error("Request failed:", responseData);
             return "" as T;
         }
