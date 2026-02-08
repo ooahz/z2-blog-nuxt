@@ -24,18 +24,16 @@ Github：（十玖八柒）https://github.com/ooahz
 
 ## 项目预览
 
-![](https://s.ahzoo.cn/img/24/open/ob100101.webp)
-![](https://s.ahzoo.cn/img/24/open/ob10016.webp)
-![](https://s.ahzoo.cn/img/24/open/ob10005.webp)
-![](https://s.ahzoo.cn/img/24/open/ob10008.webp)
-![](https://s.ahzoo.cn/img/24/open/ob10013.webp)
-![](https://s.ahzoo.cn/img/24/open/ob10010.webp)
+![](https://s.ahzoo.cn/img/open/blog/open10001.webp)
+![](https://s.ahzoo.cn/img/open/blog/open10002.webp)
+![](https://s.ahzoo.cn/img/open/blog/open10004.webp)
+![](https://s.ahzoo.cn/img/open/blog/open10007.webp)
 
 
 ## 项目技术栈
 
 主要技术栈：
-Vue3、Nuxt3、Vite、Pinia、TypeScript、Tailwind、SCSS
+Vue3、Nuxt4、Vite、Pinia、TypeScript、Tailwind、SCSS
 
 ## 项目运行测试
 
@@ -50,7 +48,7 @@ pnpm install
 ```shell
 pnpm run dev
 ```
-默认访问地址：http://localhost:3200
+默认访问地址：http://127.0.0.1:3200
 
 ## 项目部署
 
