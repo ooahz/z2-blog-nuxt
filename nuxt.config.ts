@@ -112,6 +112,13 @@ export default defineNuxtConfig({
             brotli: true
         },
         routeRules: {
+            "/blog/**": {
+                cors: true,
+                cache: {
+                    maxAge: 60 * 60 * 24,
+                    swr: true
+                }
+            },
             "/_nuxt/**": {
                 cache: {
                     maxAge: 60 * 60 * 24 * 365,
