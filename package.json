@@ -1,7 +1,7 @@
 {
   "name": "z2blog",
   "private": true,
-  "version": "1.2.1",
+  "version": "2.0.0",
   "type": "module",
   "description": "Z次源——现代化Nuxt博客",
   "author": {
@@ -48,7 +48,7 @@
     "vue-tsc": "^3.2.2"
   },
   "dependencies": {
-    "@ahzoo/ouo": "^2.1.0",
+    "@ahzoo/ouo": "^2.1.3",
     "@ahzoo/sus": "^2.0.5",
     "@ahzoo/utils": "^1.1.1",
     "@nuxtjs/color-mode": "^4.0.0",
