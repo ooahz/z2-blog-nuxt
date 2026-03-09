@@ -300,6 +300,14 @@ p {
   margin: 5px 0;
 }
 
+hr {
+  position: relative;
+  margin: 25px 0;
+  height: .1em;
+  border-style: none;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(var(--z-primary-color), 40%) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
 a {
   text-decoration: none;
   word-break: break-word;

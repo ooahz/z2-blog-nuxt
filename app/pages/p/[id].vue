@@ -83,10 +83,6 @@ function initStyle() {
   }
 }
 
-function goColumnPage(columnName: string) {
-  navigateTo(`/column/${columnName}`);
-}
-
 definePageMeta({
   layout: "post",
   page: "post"
@@ -132,14 +128,13 @@ onUnmounted(() => {
             <span>最后更新：{{ formatDateTime(article?.updatedDate) }}</span>
           </span>
           <span class="article-meta__sort mt-2">
-            <span class="sort-column cursor-pointer" v-for="columnItem in columnList"
-                  @click="goColumnPage(columnItem.name)">{{ columnItem.name }}</span>
+            <a :href="`/column/${columnItem.name}`" class="sort-column cursor-pointer" v-for="columnItem in columnList">{{ columnItem.name }}</a>
           </span>
         </div>
       </div>
     </Banner>
     <div id="article">
-      <div class="article__container flex justify-end pad:p-5 mb-5 mobile:p-0">
+      <div class="article__container flex justify-end pad:p-5 mb-5 mobile:p-3">
         <div class="article__content pad:px-6 mobile:px-0">
           <div class="aside sticky hidden screen:block">
             <div class="aside-item absolute flex flex-col">
