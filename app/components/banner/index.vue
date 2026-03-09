@@ -16,7 +16,7 @@ onMounted(() => {
   <div id="banner" class="banner mb-3 flex items-center justify-center relative">
     <slot/>
     <svg v-if="!$viewport.isLessThan('lg')"
-         class="no-filter banner-waves w-full absolute bottom-0"
+         class="no-filter banner-waves !w-full absolute bottom-0"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
       <defs>

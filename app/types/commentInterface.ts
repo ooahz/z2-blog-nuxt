@@ -5,7 +5,7 @@ export interface CommentInterface {
     userWebsite: string;
     userAvatar: string;
     content: string;
-    contentMD: string;
+    contentText: string;
     replyName?: string;
     parentId?: string;
     website?: string;

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type {TopCommentItemInterface} from "@/types/commentInterface";
 import {topCommentApi} from "~~/service/comment";
-import {SuSTop} from "@ahzoo/sus/dist/v";
+import {SuSTop} from "@ahzoo/sus/dist";
 
 const appConfig = useAppConfig();
 const commentList = ref<TopCommentItemInterface[]>([]);

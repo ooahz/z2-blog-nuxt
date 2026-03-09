@@ -2,9 +2,8 @@
 import type {CommentInterface, CommentItemInterface} from "@/types/commentInterface";
 import {listFriendApi, saveCommentApi} from "~~/service/comment";
 import {useGlobalStore} from "@/store/globalStore";
-import {SuSList} from "@ahzoo/sus/dist/v";
+import {SuSList} from "@ahzoo/sus/dist";
 import {OuOMessage} from "@ahzoo/ouo";
-import emoji from "@/static/json/emoji.json";
 import {MessageCircle} from "lucide-vue-next";
 import CommentForm from "./form.vue";
 import EmptyState from "~/components/common/EmptyState.vue";
@@ -33,14 +32,6 @@ const susInfoBar = {
     placeholder: "邮箱(不会公开，仅用于通知回复)",
     tips: "输入QQ邮箱自动获取头像"
   }
-};
-const susEditor = {
-  placeholder: "支持常见的markdown语法，如图片、代码块等",
-  emojis: emoji,
-  toolBar: ["link", "code", "inline-code", "emoji"],
-  hljs: ["java", "html", "javascript", "typescript", "c++"],
-  cache: true,
-  cdn: "/static/vditor"
 };
 
 /**
@@ -76,11 +67,11 @@ function toCancelComment() {
 async function toSaveComment(comment: CommentInterface) {
   const beforeContent = localStorage.getItem("content");
   comment.articleId = articlePath;
-  const contentLength = comment.contentMD.length;
+  const contentLength = comment.content.length;
   if (!comment) {
     return;
   }
-  if (beforeContent === comment.contentMD) {
+  if (beforeContent === comment.contentText) {
     OuOMessage.warning("请勿发送重复内容");
     return;
   }
@@ -101,7 +92,7 @@ async function toSaveComment(comment: CommentInterface) {
   const res = await saveCommentApi(comment);
   showLoading.value = false;
   if (!!res) {
-    localStorage.setItem("content", comment.contentMD);
+    localStorage.setItem("content", comment.contentText);
     OuOMessage.success("评论成功");
     globalStore.setShowComment(false);
     await getCommentList(1);
@@ -109,7 +100,12 @@ async function toSaveComment(comment: CommentInterface) {
 }
 
 async function getCommentList(pagination: number) {
-  commentList.value = await listFriendApi(articlePath, pagination);
+  commentList.value = await listFriendApi(articlePath, pagination).then((res) => {
+    return res.map(item => ({
+      ...item,
+      avatarDisplay: 'text'
+    }));
+  });
 }
 
 /**
@@ -126,7 +122,6 @@ function updateAvatar(comment: CommentItemInterface) {
       :reply-comment="replyComment"
       :show-loading="showLoading"
       :sus-info-bar="susInfoBar"
-      :sus-editor="susEditor"
       @update-avatar="updateAvatar"
       @on-cancel="toCancelComment"
       @on-save="toSaveComment"

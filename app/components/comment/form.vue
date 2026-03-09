@@ -1,24 +1,98 @@
 <script setup lang="ts">
 import type {CommentInterface, CommentItemInterface} from "@/types/commentInterface";
 import {useGlobalStore} from "@/store/globalStore";
-import {SuSComment} from "@ahzoo/sus/dist/v";
+import {SuSComment, type ToolBar, type EmojiItem} from "@ahzoo/sus/dist";
 
 interface Props {
   replyComment: CommentItemInterface;
   showLoading: boolean;
   susInfoBar: any;
-  susEditor: any;
 }
 
 interface Emits {
   (e: 'update-avatar', comment: CommentItemInterface): void;
+
   (e: 'on-cancel'): void;
+
   (e: 'on-save', comment: CommentInterface): void;
 }
 
 const props = defineProps<Props>();
 const emit = defineEmits<Emits>();
 const globalStore = useGlobalStore();
+const emojis = ref<EmojiItem[]>([
+  {
+    name: "微笑",
+    fallbackImage: "/emoji/cat_face.svg",
+  },
+  {
+    name: "笑哭",
+    fallbackImage: "/emoji/tears_of_joy.svg",
+  },
+  {
+    name: "惊讶",
+    fallbackImage: "/emoji/weary.svg",
+  },
+  {
+    name: "微笑",
+    fallbackImage: "/emoji/cat_face.svg",
+  },
+  {
+    name: "笑哭",
+    fallbackImage: "/emoji/tears_of_joy.svg",
+  },
+  {
+    name: "惊讶",
+    fallbackImage: "/emoji/weary.svg",
+  },
+  {
+    name: "微笑",
+    fallbackImage: "/emoji/cat_face.svg",
+  },
+  {
+    name: "笑哭",
+    fallbackImage: "/emoji/tears_of_joy.svg",
+  },
+  {
+    name: "惊讶",
+    fallbackImage: "/emoji/weary.svg",
+  },
+  {
+    name: "微笑",
+    fallbackImage: "/emoji/cat_face.svg",
+  },
+  {
+    name: "笑哭",
+    fallbackImage: "/emoji/tears_of_joy.svg",
+  },
+  {
+    name: "惊讶",
+    fallbackImage: "/emoji/weary.svg",
+  },
+  {
+    name: "微笑",
+    fallbackImage: "/emoji/cat_face.svg",
+  },
+  {
+    name: "笑哭",
+    fallbackImage: "/emoji/tears_of_joy.svg",
+  },
+  {
+    name: "惊讶",
+    fallbackImage: "/emoji/weary.svg",
+  },
+] as EmojiItem[]);
+
+const toolbar: ToolBar = {
+  emoji: {
+    show: true,
+    emojis: emojis.value
+  },
+  notify: false,
+  bubbleMenu: {
+    show: true
+  },
+};
 
 function updateAvatar(comment: CommentItemInterface) {
   emit('update-avatar', comment);
@@ -45,7 +119,7 @@ function toSaveComment(comment: CommentInterface) {
         <SuSComment class="w-full h-auto"
                     :reply="replyComment"
                     :info-bar="susInfoBar"
-                    :editor="susEditor"
+                    :tool-bar="toolbar"
                     @update-avatar="updateAvatar"
                     @on-cancel="toCancelComment"
                     @on-save="toSaveComment"/>

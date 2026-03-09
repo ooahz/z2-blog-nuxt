@@ -9,14 +9,17 @@ importers:
   .:
     dependencies:
       '@ahzoo/ouo':
-        specifier: ^2.1.0
-        version: 2.1.0
+        specifier: ^2.1.3
+        version: 2.1.4
       '@ahzoo/sus':
-        specifier: ^2.0.5
-        version: 2.0.5
+        specifier: ^3.0.1
+        version: 3.0.1
       '@ahzoo/utils':
         specifier: ^1.1.1
         version: 1.1.1
+      '@floating-ui/vue':
+        specifier: ^1.1.11
+        version: 1.1.11(vue@3.5.26(typescript@5.9.3))
       '@nuxtjs/color-mode':
         specifier: ^4.0.0
         version: 4.0.0(magicast@0.5.1)
@@ -48,8 +51,8 @@ importers:
         specifier: ^1.30.0
         version: 1.30.0
       qs:
-        specifier: ^6.14.1
-        version: 6.14.1
+        specifier: 6.14.2
+        version: 6.14.2
       sass:
         specifier: ^1.97.2
         version: 1.97.2
@@ -111,11 +114,11 @@ importers:
 
 packages:
 
-  '@ahzoo/ouo@2.1.0':
-    resolution: {integrity: sha512-/9NmRmXDbriUcXbzGW51ItPgDZYb3fOwZ7F9b52E9CVDreJpeLXOqNiyWjGyluoWgc6QVAyzcDi0s97NyO9iKA==}
+  '@ahzoo/ouo@2.1.4':
+    resolution: {integrity: sha512-tML00sE6wNXSFzDCiuyUfqTQiKSTz///ofHMlgoYWHrXRtgEL6Mc6GkgFsCs9//FJuEJTrZ7w/c6oLq0O5Km/Q==}
 
-  '@ahzoo/sus@2.0.5':
-    resolution: {integrity: sha512-zYOfaeJTSQ6IKp5SlIa7WzoeCnV8T7IXGGX6mzocTBf4NvRz077u3Cnu3RMJGTUaTh0pabsKrTkf6xnatZP7EA==}
+  '@ahzoo/sus@3.0.1':
+    resolution: {integrity: sha512-03MLArDYlP7zUheh0eKc3ixIyUSXtLYzQVo43Zbd7VGl8+wfvJjKCVcen2+h6ibeWUpdRSqK1KK8cvfAjqVvVg==}
 
   '@ahzoo/utils@1.1.1':
     resolution: {integrity: sha512-etFUdGs/M1smNwTc4JMZYSJnsqdq81/6Ykcf4K0zSbof9NpLR77TbFO0PINnVScPisWpCEeQdFrQHIjeCBe5NA==}
@@ -539,6 +542,18 @@ packages:
 
   '@fingerprintjs/botd@2.0.0':
     resolution: {integrity: sha512-yhuz23NKEcBDTHmGz/ULrXlGnbHenO+xZmVwuBkuqHUkqvaZ5TAA0kAgcRy4Wyo5dIBdkIf57UXX8/c9UlMLJg==}
+
+  '@floating-ui/core@1.7.5':
+    resolution: {integrity: sha512-1Ih4WTWyw0+lKyFMcBHGbb5U5FtuHJuujoyyr5zTaWS5EYMeT6Jb2AuDeftsCsEuchO+mM2ij5+q9crhydzLhQ==}
+
+  '@floating-ui/dom@1.7.6':
+    resolution: {integrity: sha512-9gZSAI5XM36880PPMm//9dfiEngYoC6Am2izES1FF406YFsjvyBMmeJ2g4SAju3xWwtuynNRFL2s9hgxpLI5SQ==}
+
+  '@floating-ui/utils@0.2.11':
+    resolution: {integrity: sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg==}
+
+  '@floating-ui/vue@1.1.11':
+    resolution: {integrity: sha512-HzHKCNVxnGS35r9fCHBc3+uCnjw9IWIlCPL683cGgM9Kgj2BiAl8x1mS7vtvP6F9S/e/q4O6MApwSHj8hNLGfw==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -4711,8 +4726,8 @@ packages:
     resolution: {integrity: sha512-kXuQdQTB6oN3KhI6V4acnBSZx8D2I4xzZvn9+wFLLFCoBNQY/sFnCW6c43OL7pOQ2HvGV4lnWIXNmgfp7cTWhQ==}
     engines: {node: '>=20'}
 
-  qs@6.14.1:
-    resolution: {integrity: sha512-4EK3+xJl8Ts67nLYNwqw/dsFVnCf+qR7RgXSK9jEEm9unao3njwMDdmsdvoKBKHzxd7tCYz5e5M+SnMjdtXGQQ==}
+  qs@6.14.2:
+    resolution: {integrity: sha512-V/yCWTTF7VJ9hIh18Ugr2zhJMP01MY7c5kh4J870L7imm6/DIzBsNLTXzMwUA3yZ5b/KBqLx8Kp3uRvd7xSe3Q==}
     engines: {node: '>=0.6'}
 
   quansync@0.2.11:
@@ -5887,11 +5902,11 @@ packages:
 
 snapshots:
 
-  '@ahzoo/ouo@2.1.0': {}
+  '@ahzoo/ouo@2.1.4': {}
 
-  '@ahzoo/sus@2.0.5':
+  '@ahzoo/sus@3.0.1':
     dependencies:
-      '@ahzoo/ouo': 2.1.0
+      '@ahzoo/ouo': 2.1.4
       lowlight: 3.3.0
 
   '@ahzoo/utils@1.1.1': {}
@@ -6301,6 +6316,26 @@ snapshots:
       levn: 0.4.1
 
   '@fingerprintjs/botd@2.0.0': {}
+
+  '@floating-ui/core@1.7.5':
+    dependencies:
+      '@floating-ui/utils': 0.2.11
+
+  '@floating-ui/dom@1.7.6':
+    dependencies:
+      '@floating-ui/core': 1.7.5
+      '@floating-ui/utils': 0.2.11
+
+  '@floating-ui/utils@0.2.11': {}
+
+  '@floating-ui/vue@1.1.11(vue@3.5.26(typescript@5.9.3))':
+    dependencies:
+      '@floating-ui/dom': 1.7.6
+      '@floating-ui/utils': 0.2.11
+      vue-demi: 0.14.10(vue@3.5.26(typescript@5.9.3))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
 
   '@humanfs/core@0.19.1': {}
 
@@ -11154,7 +11189,7 @@ snapshots:
     dependencies:
       hookified: 1.15.0
 
-  qs@6.14.1:
+  qs@6.14.2:
     dependencies:
       side-channel: 1.1.0
 
