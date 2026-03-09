@@ -42,6 +42,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .home-banner {
   height: clamp(450px, 65vh, 600px);
+  transition: all .3s;
 }
 
 .banner-info {
@@ -63,8 +64,20 @@ onMounted(() => {
   }
 }
 
-.dark .banner-mask {
-  background-color: rgba(0, 0, 0, .5);
+.dark {
+  .banner-mask {
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  .banner-info {
+    position: absolute;
+    bottom: 90px;
+    left: 30px;
+  }
+
+  .banner {
+    align-items: flex-end;
+  }
 }
 
 .banner {
