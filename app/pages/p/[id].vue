@@ -134,8 +134,8 @@ onUnmounted(() => {
       </div>
     </Banner>
     <div id="article">
-      <div class="article__container flex justify-end mb-5">
-        <div class="article__content flex flex-col pad:px-6 mobile:px-0">
+      <div class="article__container flex justify-end mb-5 px-5 mobile:px-0">
+        <div class="article__content flex flex-col pad:px-6 mobile:px-0 flex-1">
           <div class="aside sticky hidden screen:block">
             <div class="aside-item absolute flex flex-col">
               <OuOButton class="mb-3" :type="'card-2'" :equilateral="true" @click="scrollTo('#article')">置顶
@@ -259,9 +259,8 @@ onUnmounted(() => {
     top: var(--z-header-height);
     position: sticky;
     overflow: hidden;
-    width: 20%;
+    width: clamp(200px, 23%, 350px);
     height: fit-content;
-    min-width: 200px;
   }
 
   &__info {
