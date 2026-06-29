@@ -34,6 +34,6 @@ html {
     --z-regular-bg: 50, 52, 71;
     --z-regular-hover-bg: 62, 64, 88;
     --z-plain-bg: 42, 43, 63;
-    --z-menu-shadow: 4px 4px 6px 0 rgba(48, 48, 48, .1), -4px -4px 6px rgb(var(--z-common-bg));
+    --z-menu-shadow: 4px 4px 6px 0 rgb(48 48 48 / 10%), -4px -4px 6px rgb(var(--z-common-bg));
 }
 

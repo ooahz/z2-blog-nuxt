@@ -42,14 +42,20 @@
   }
 }
 
-.comment-sus {
-  max-width: 600px !important;
-}
-
 .sus-avatar-text {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
+}
+
+.sus-comment {
+  .sus-input {
+    height: 42px;
+  }
+}
+
+.sus-comment__editor-wrapper {
+  margin-top: 5px;
 }

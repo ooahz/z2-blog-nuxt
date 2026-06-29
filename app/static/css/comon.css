@@ -95,25 +95,25 @@
 
 .ss-font {
     font-family: ss,
-    Microsoft Yahei,
+    "Microsoft Yahei",
     serif;
 }
 
 .loli-font {
     font-family: loli,
-    Microsoft Yahei,
+    "Microsoft Yahei",
     serif;
 }
 
 .kksj-font {
     font-family: kksj,
-    Microsoft Yahei,
+    "Microsoft Yahei",
     serif;
 }
 
 .mi-font {
     font-family: mi,
-    ui-sans-serif, system-ui, sans-serif, Microsoft Yahei, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+    ui-sans-serif, system-ui, sans-serif, "Microsoft Yahei", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
 
 .opacity-100 {
@@ -121,7 +121,7 @@
 }
 
 .bottom-line {
-    border-bottom: 1px solid rgba(var(--z-gray-color), .6);
+    border-bottom: 1px solid rgb(var(--z-gray-color), .6);
 }
 
 .backdrop-blur-2 {
@@ -135,19 +135,19 @@
 
 .hover-shadow:hover {
     color: rgb(var(--z-primary-color)) !important;
-    text-shadow: 0 2px 16px rgba(var(--z-primary-color), .5);
+    text-shadow: 0 2px 16px rgb(var(--z-primary-color), .5);
     transition: all .25s;
 }
 
 .hover-transparent:hover {
     border-radius: 5px;
-    background-color: rgba(var(--z-plain-bg), .5) !important;
+    background-color: rgb(var(--z-plain-bg), .5) !important;
     transition: all .25s;
 }
 
 .hover-primary:hover {
     border-radius: 5px;
-    color: rgba(var(--z-primary-color), .9);
-    background-color: rgba(var(--z-primary-color), .2) !important;
+    color: rgb(var(--z-primary-color), .9);
+    background-color: rgb(var(--z-primary-color), .2) !important;
     transition: all .25s ease;
 }

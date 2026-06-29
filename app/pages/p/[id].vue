@@ -33,7 +33,6 @@ await getArticleByPath(articlePath);
 await getColumnByArticleId(article.id);
 
 
-
 function scrollTo(id: string) {
   document.querySelector(id)?.scrollIntoView({
     behavior: "smooth"
@@ -128,7 +127,9 @@ onUnmounted(() => {
             <span>最后更新：{{ formatDateTime(article?.updatedDate) }}</span>
           </span>
           <span class="article-meta__sort mt-2">
-            <a :href="`/column/${columnItem.name}`" class="sort-column cursor-pointer" v-for="columnItem in columnList">{{ columnItem.name }}</a>
+            <a :href="`/column/${columnItem.name}`" class="sort-column cursor-pointer" v-for="columnItem in columnList">{{
+                columnItem.name
+              }}</a>
           </span>
         </div>
       </div>
@@ -165,13 +166,15 @@ onUnmounted(() => {
               <div class="box-title-line w-1 h-5 mr-2.5 rounded-full"></div>
               <span class="title">评论区</span>
             </div>
-            <Comment/>
+            <div class="mt-3">
+              <Comment/>
+            </div>
           </div>
         </div>
 
         <div class="article__aside box pc:block pad:hidden mobile:hidden">
           <ClientOnly>
-             <Toc />
+            <Toc/>
           </ClientOnly>
         </div>
       </div>
@@ -347,7 +350,7 @@ onUnmounted(() => {
   }
 }
 
-.box-title-line{
+.box-title-line {
   margin-top: 3px;
   background-image: linear-gradient(rgba(var(--z-primary-color)), rgba(0, 0, 0, 0));
 }

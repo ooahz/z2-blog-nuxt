@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@ahzoo/ouo':
-        specifier: ^2.1.3
-        version: 2.1.4
+        specifier: ^2.3.4
+        version: 2.3.4(vue@3.5.26(typescript@5.9.3))
       '@ahzoo/sus':
         specifier: ^3.0.1
-        version: 3.0.1
+        version: 3.0.1(vue@3.5.26(typescript@5.9.3))
       '@ahzoo/utils':
         specifier: ^1.1.1
         version: 1.1.1
@@ -114,8 +114,8 @@ importers:
 
 packages:
 
-  '@ahzoo/ouo@2.1.4':
-    resolution: {integrity: sha512-tML00sE6wNXSFzDCiuyUfqTQiKSTz///ofHMlgoYWHrXRtgEL6Mc6GkgFsCs9//FJuEJTrZ7w/c6oLq0O5Km/Q==}
+  '@ahzoo/ouo@2.3.4':
+    resolution: {integrity: sha512-Tkf83BsnFcPqVGGprFSbalofH9iYuKT4IFHqI0KoUnh0gtxDDkkBh4kHxFMsM8cw4wqm2Qg/KBIh0QSlGDLqOA==}
 
   '@ahzoo/sus@3.0.1':
     resolution: {integrity: sha512-03MLArDYlP7zUheh0eKc3ixIyUSXtLYzQVo43Zbd7VGl8+wfvJjKCVcen2+h6ibeWUpdRSqK1KK8cvfAjqVvVg==}
@@ -5902,12 +5902,20 @@ packages:
 
 snapshots:
 
-  '@ahzoo/ouo@2.1.4': {}
-
-  '@ahzoo/sus@3.0.1':
+  '@ahzoo/ouo@2.3.4(vue@3.5.26(typescript@5.9.3))':
     dependencies:
-      '@ahzoo/ouo': 2.1.4
+      '@floating-ui/vue': 1.1.11(vue@3.5.26(typescript@5.9.3))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
+  '@ahzoo/sus@3.0.1(vue@3.5.26(typescript@5.9.3))':
+    dependencies:
+      '@ahzoo/ouo': 2.3.4(vue@3.5.26(typescript@5.9.3))
       lowlight: 3.3.0
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
 
   '@ahzoo/utils@1.1.1': {}
 

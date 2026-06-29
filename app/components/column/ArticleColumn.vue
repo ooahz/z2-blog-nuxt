@@ -17,7 +17,7 @@ defineProps({
       <div class="title mb-2">{{ column.name }}</div>
       <div class="item-title relative ml-3 opacity-90 font-size-95">{{ column.description }}</div>
     </div>
-    <div class="hover-transparent font-size-small flex flex-col justify-center pt-2 mx-1 cursor-pointer"
+    <div class="font-size-small flex flex-col justify-center pt-2 mx-1 cursor-pointer"
          v-for="(article, index) in column.articleList">
       <ArticleSimpleItem :article="article" :index="index"/>
     </div>
