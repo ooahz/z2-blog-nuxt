@@ -11,6 +11,7 @@ const layoutProps = computed(() => {
 <template>
   <BaseLayout class="layout-page overflow-y-scroll">
     <div id="main" class="page">
+      <slot name="hero"/>
       <slot name="header">
         <div class="page-header paragraph" v-if="layoutProps.title && !layoutProps.fullPage">
           <div class="flex flex-col ml-2 justify-center">
@@ -19,9 +20,9 @@ const layoutProps = computed(() => {
           </div>
         </div>
       </slot>
-      <NuxtPage v-if="layoutProps.fullPage"/>
+      <slot v-if="layoutProps.fullPage"/>
       <div class="flex" v-else>
-        <div class="page-content box-item w-full mobile:px-3 pad:px-8 py-8 rounded-lg">
+        <div class="page-content w-full mobile:px-3 pad:px-8 py-8 rounded-lg">
           <slot/>
         </div>
         <Sidebar
@@ -66,6 +67,7 @@ const layoutProps = computed(() => {
     background: rgba(var(--z-common-bg), .6);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(var(--z-border-color), 0.1);
+    box-shadow: 0 -10px 30px -18px rgba(var(--z-gray-bg), 0.08);
     transition: all 0.3s ease;
     animation: fadeIn 0.5s ease forwards;
 

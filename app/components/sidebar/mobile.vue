@@ -54,8 +54,9 @@ function closeSidebar() {
     transition: all .3s;
   }
 
-  .box {
+  .sidebar-card {
     background-color: rgba(var(--z-basic-color), .6);
+    backdrop-filter: blur(10px);
   }
 
   .menu-box {

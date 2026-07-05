@@ -29,7 +29,11 @@
 
 @font-face {
   font-family: loli;
-  src: url("../fonts/loli-lite.woff2") format("woff2");
+  src: url("../fonts/loli.woff2") format("woff2");
+}
+
+*, :after, :before {
+  box-sizing: border-box;
 }
 
 html {

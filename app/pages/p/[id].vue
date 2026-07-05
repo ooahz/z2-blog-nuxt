@@ -234,11 +234,15 @@ onUnmounted(() => {
 
   &__container {
     animation: bottom-top 1s;
+    width: 100%;
     max-width: var(--z-max-width);
     margin: auto;
+    box-sizing: border-box;
   }
 
   &__content {
+    min-width: 0;
+
     .article-content {
       padding: 18px 25px;
       min-height: 50vh;
@@ -326,7 +330,7 @@ onUnmounted(() => {
 }
 
 [view="mobile"] {
-  &.article-content {
+  .article-content {
     padding: 10px 12px;
   }
 

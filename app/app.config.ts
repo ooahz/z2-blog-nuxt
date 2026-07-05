@@ -18,6 +18,16 @@ export default defineAppConfig({
     icp: "豫ICP备20021466号",
     icpLink: "http://beian.miit.gov.cn",
 
+    // 页面 Hero 背景图
+    heroThumbnails: {
+        default: "https://s.ahzoo.cn/picture/22436164.png",
+        archive: "https://s.ahzoo.cn/picture/22436164.png",
+        category: "https://s.ahzoo.cn/picture/22436164.png",
+        comment: "https://s.ahzoo.cn/picture/22436164.png",
+        search: "https://s.ahzoo.cn/picture/22436164.png",
+        friends: "https://s.ahzoo.cn/picture/22436164.png"
+    },
+
     // 功能开关
     feature: {
         // 评论功能（enable,disable)

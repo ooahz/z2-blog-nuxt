@@ -95,7 +95,7 @@ const props = defineProps({
   background: rgba(var(--z-common-bg), 0.8);
   transition: all 0.3s ease;
 
-  @media (max-width: 520px) {
+  [view="mobile"] {
     padding: 1.25rem;
     min-height: 160px;
   }

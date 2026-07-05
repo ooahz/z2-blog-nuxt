@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {CommentInterface, CommentItemInterface} from "@/types/commentInterface";
-import {listFriendApi, saveCommentApi} from "~~/service/comment";
+import {saveCommentApi} from "~~/service/comment";
 import {useGlobalStore} from "@/store/globalStore";
 import {SuSList} from "@ahzoo/sus/dist";
 import {OuOMessage} from "@ahzoo/ouo";
@@ -8,11 +8,19 @@ import {MessageCircle} from "lucide-vue-next";
 import CommentForm from "./form.vue";
 import EmptyState from "~/components/common/EmptyState.vue";
 
+interface Props {
+  commentList: CommentItemInterface[];
+}
+
+defineProps<Props>();
+
+const emit = defineEmits<{
+  (e: "refresh"): void;
+}>();
 
 const {path} = useRoute();
 const articlePath = <string>path.split("/").pop();
 const globalStore = useGlobalStore();
-const commentList = ref<CommentItemInterface[]>([] as CommentItemInterface[]);
 const replyComment = ref<CommentItemInterface>({} as CommentItemInterface);
 const showLoading = ref(false);
 
@@ -33,11 +41,6 @@ const susInfoBar = {
     tips: "输入QQ邮箱自动获取头像"
   }
 };
-
-/**
- * 数据获取
- */
-await getCommentList(1);
 
 /**
  * 正常评论弹窗
@@ -95,17 +98,8 @@ async function toSaveComment(comment: CommentInterface) {
     localStorage.setItem("content", comment.contentText);
     OuOMessage.success("评论成功");
     globalStore.setShowComment(false);
-    await getCommentList(1);
+    emit("refresh");
   }
-}
-
-async function getCommentList(pagination: number) {
-  commentList.value = await listFriendApi(articlePath, pagination).then((res) => {
-    return res.map(item => ({
-      ...item,
-      avatarDisplay: 'text'
-    }));
-  });
 }
 
 /**
@@ -136,14 +130,13 @@ function updateAvatar(comment: CommentItemInterface) {
         <MessageCircle/>
       </div>
     </div>
-    <div v-if="commentList.length > 0" class="comment-list mt-7">
+    <div v-if="commentList?.length > 0" class="comment-list mt-7">
       <SuSList v-for="commentItem in commentList" :comment="commentItem" @on-reply="toReplyComment"/>
     </div>
     <EmptyState
         v-else
-        :icon="'📃'"
-        :title="'暂无评论'"
-        :subtitle="'来发表首个评论吧'"
+        title="暂无评论"
+        subtitle="来发表首个评论吧"
     />
   </div>
 </template>

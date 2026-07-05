@@ -2,7 +2,7 @@
 
 [class*="ouo-"] {
   --ouo-basic-font-color: var(--z-fontcolor) !important;
-  --ouo-primary-font-color: var(--z-btn-fontcolor) !important;
+  --ouo-primary-font-color: var(--z-primary-fontcolor) !important;
   --ouo-primary-color: var(--z-primary-color) !important;
   --ouo-common-bg: var(--z-plain-bg) !important;
   --ouo-basic-color: var(--z-common-bg) !important;
@@ -10,6 +10,7 @@
   --ouo-gray-bg: var(--z-gray-color) !important;
   --ouo-input-bg: var(--z-global-bg) !important;
   --ouo-tag-group-bg: var(--z-global-bg) !important;
+  --ouo-tag-common-bg: var(--z-common-bg) !important;
 }
 
 .ouo-input {
@@ -20,4 +21,12 @@
   &:hover {
     transform: scale(1.1);
   }
+}
+
+.ouo-tag__input:checked + .ouo-tag--card,
+.ouo-tag__input:focus + .ouo-tag--card {
+  box-shadow:
+          0 1px 2px rgba(0, 0, 0, .04),
+          0 2px 8px rgba(var(--ouo-primary-color), .08),
+          inset 0 1px 0 rgba(var(--ouo-tag-bg), .8) !important;
 }

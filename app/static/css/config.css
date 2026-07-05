@@ -1,6 +1,7 @@
 /* 主题 */
 html {
     --z-primary-color: 66, 90, 239;
+    --z-primary-bg: 43, 60, 188;
     --z-primary-select-color: 61, 85, 223;
     --z-gray-color: 231, 234, 237;
     --z-deep-color: 18, 20, 22;
@@ -18,10 +19,13 @@ html {
     --z-plain-bg: 231, 235, 240;
     --z-header-height: 82px;
     --z-max-width: 1380px;
+    --z-border-color: 211, 234, 238;
+    --z-gray-bg: 30, 32, 38;
 }
 
 .dark {
-    --z-primary-color: 157, 163, 255;
+    --z-primary-color: 65, 71, 167;
+    --z-primary-bg: 22, 25, 44;
     --z-primary-select-color: 50, 52, 71;
     --z-gray-color: 50, 52, 71;
     --z-fontcolor: 167, 177, 190;

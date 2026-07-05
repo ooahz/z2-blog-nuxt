@@ -2,10 +2,8 @@
 import type {PropType} from "vue";
 import type {ArchiveArticleInterface} from "@/types/articleInterface";
 import {formatDateTime} from "@ahzoo/utils";
-import {ArrowUpRight} from "lucide-vue-next";
 
 defineProps({
-  index: Number,
   article: {
     type: Object as PropType<ArchiveArticleInterface>,
     required: true
@@ -14,227 +12,156 @@ defineProps({
 </script>
 
 <template>
-  <a 
-    :href="`/p/${article.path}`" 
-    class="archive-item group no-style"
-    :style="{ '--item-index': index || 0 }"
-  >
-    <div class="archive-item-inner">
-      <div class="item-date-badge">
-        <span class="date-day">{{ new Date(article.createdDate || '').getDate() }}</span>
-        <span class="date-month">{{ new Date(article.createdDate || '').toLocaleString('zh-CN', { month: 'short' }) }}</span>
+  <a :href="`/p/${article.path}`" class="timeline-card timeline-card--item">
+    <div class="archive-card-indicator">
+      <span class="indicator-pulse"></span>
+    </div>
+
+    <div class="archive-card-content">
+      <div class="archive-card-meta">
+        <span class="meta-type">ARTICLE</span>
+        <span class="meta-time">{{ formatDateTime(article.createdDate || "") }}</span>
       </div>
-      
-      <div class="item-content">
-        <h4 class="item-title">{{ article.title }}</h4>
-        <div class="item-meta">
-          <span class="meta-time">{{ formatDateTime(article.createdDate || "") }}</span>
-        </div>
-      </div>
-      
-      <div class="item-arrow">
-        <ArrowUpRight :size="20" strokeWidth="1.5" />
-      </div>
-      
-      <div class="item-hover-line"></div>
+
+      <p class="archive-card-text">{{ article.title }}</p>
+
+      <span class="archive-card-link">阅读全文 →</span>
     </div>
   </a>
 </template>
 
 <style scoped lang="scss">
-.archive-item {
+.timeline-card {
   display: block;
-  position: relative;
-  color: rgb(var(--z-fontcolor));
-  text-decoration: none;
-  animation: itemFadeIn 0.4s ease forwards;
-  animation-delay: calc(var(--item-index) * 0.05s);
-  opacity: 0;
-  transform: translateY(10px);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(var(--z-common-bg), 0.8);
+  border: 1px solid rgba(var(--z-border-color), 0.2);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-  @keyframes itemFadeIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  &:hover {
+    transform: translateX(8px);
+    border-color: rgba(var(--z-primary-color), 0.3);
+    box-shadow: 0 15px 30px -10px rgba(var(--z-primary-color), 0.1);
+
+    .archive-card-link {
+      color: rgb(var(--z-primary-color));
+    }
+
+    .indicator-pulse {
+      animation: pulseGlow 1s ease-in-out infinite;
     }
   }
 }
 
-.archive-item-inner {
+.timeline-card--item {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.875rem 1rem;
-  border-radius: 12px;
+  padding: 24px 24px 20px;
+  gap: 20px;
+  background: linear-gradient(
+      135deg,
+      rgba(var(--z-common-bg), 0.9) 0%,
+      rgba(var(--z-global-bg), 0.9) 100%
+  );
+}
+
+.archive-card-indicator {
   position: relative;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: transparent;
-  
+  width: 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.indicator-pulse {
+  width: 8px;
+  height: 8px;
+  background: rgba(var(--z-primary-color), 0.6);
+  border-radius: 50%;
+  position: relative;
+
   &::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(var(--z-primary-color), 0.03) 0%,
-      transparent 50%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    inset: -4px;
+    border: 1px solid rgba(var(--z-primary-color), 0.3);
+    border-radius: 50%;
   }
 }
 
-.archive-item:hover .archive-item-inner {
-  background: rgba(var(--z-common-bg), 0.8);
-  transform: translateX(8px);
-  
-  &::before {
-    opacity: 1;
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(var(--z-primary-color), 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(var(--z-primary-color), 0);
   }
 }
 
-.item-date-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: linear-gradient(
-    145deg,
-    rgba(var(--z-primary-color), 0.1) 0%,
-    rgba(var(--z-primary-color), 0.05) 100%
-  );
-  border: 1px solid rgba(var(--z-primary-color), 0.1);
-  transition: all 0.3s ease;
-  
-  .date-day {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: rgb(var(--z-primary-color));
-    line-height: 1;
-  }
-  
-  .date-month {
-    font-size: 0.625rem;
-    text-transform: uppercase;
-    color: rgb(var(--z-fontcolor-gray));
-    letter-spacing: 0.5px;
-    margin-top: 2px;
-  }
-}
-
-.archive-item:hover .item-date-badge {
-  background: linear-gradient(
-    145deg,
-    rgba(var(--z-primary-color), 0.15) 0%,
-    rgba(var(--z-primary-color), 0.08) 100%
-  );
-  border-color: rgba(var(--z-primary-color), 0.2);
-  transform: scale(1.05);
-}
-
-.item-content {
+.archive-card-content {
   flex: 1;
   min-width: 0;
 }
 
-.item-title {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: rgb(var(--z-fontcolor));
-  margin: 0 0 4px 0;
-  line-height: 1.4;
-  transition: color 0.3s ease;
+.archive-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.meta-type {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(var(--z-fontcolor), 0.4);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.meta-time {
+  font-size: 11px;
+  color: rgba(var(--z-fontcolor), 0.4);
+}
+
+.archive-card-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(var(--z-fontcolor), 0.85);
+  margin: 0 0 12px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.archive-item:hover .item-title {
-  color: rgb(var(--z-primary-color));
+.archive-card-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(var(--z-fontcolor), 0.4);
+  transition: color 0.3s ease;
 }
 
-.item-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.meta-time {
-  font-size: 0.75rem;
-  color: rgb(var(--z-fontcolor-gray));
-  opacity: 0.8;
-}
-
-.item-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  color: rgb(var(--z-fontcolor-gray));
-  opacity: 0;
-  transform: translateX(-8px) rotate(-45deg);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(var(--z-primary-color), 0.08);
-}
-
-.archive-item:hover .item-arrow {
-  opacity: 1;
-  transform: translateX(0) rotate(0deg);
-  color: rgb(var(--z-primary-color));
-  background: rgba(var(--z-primary-color), 0.12);
-}
-
-.item-hover-line {
-  position: absolute;
-  bottom: 0;
-  left: 1rem;
-  right: 1rem;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(var(--z-primary-color), 0.2),
-    transparent
-  );
-  opacity: 0;
-  transform: scaleX(0);
-  transition: all 0.4s ease;
-}
-
-.archive-item:hover .item-hover-line {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-@media (max-width: 640px) {
-  .archive-item-inner {
-    padding: 0.75rem;
-    gap: 0.75rem;
+[view="mobile"] {
+  .timeline-card--item {
+    padding: 18px;
+    gap: 14px;
   }
-  
-  .item-date-badge {
-    min-width: 42px;
-    height: 42px;
-    
-    .date-day {
-      font-size: 1rem;
-    }
+
+  .archive-card-text {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
   }
-  
-  .item-title {
-    font-size: 0.875rem;
-  }
-  
-  .item-arrow {
-    width: 28px;
-    height: 28px;
+}
+
+[data-theme="dark"] {
+  .timeline-card--item {
+    background: linear-gradient(
+        135deg,
+        rgba(var(--z-common-bg), 0.6) 0%,
+        rgba(var(--z-page-bg), 0.6) 100%
+    );
   }
 }
 </style>

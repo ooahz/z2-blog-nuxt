@@ -3,6 +3,7 @@ import type {PreviewArticleInterface} from "@/types/articleInterface";
 import {searchAllApi} from "~~/service/search";
 import {useSearchStore} from "@/store/searchStore";
 import ArticleItem from "@/components/list/HorizontalArticleItem.vue";
+import PageHero from "@/layouts/PageHero.vue";
 
 const searchStore = useSearchStore();
 
@@ -35,38 +36,48 @@ searchStore.$subscribe((mutation, state) => {
   searchArticleList(state.marking, 1);
 });
 
-const layoutState = reactive({
-  title: "文章搜索",
-  subtitle: "",
-  pageTitle: "搜索页",
-});
+const appConfig = useAppConfig();
+const heroThumbnail = appConfig.heroThumbnails.search ?? appConfig.heroThumbnails.default;
+const heroSubtitle = computed(() => searchStore.keyword ? `正在搜索：${searchStore.keyword}` : "");
 
-definePageMeta({
-  layout: "page",
-  layoutProps: layoutState
-})
+const heroStats = computed(() => [
+  { value: searchList.value.length, label: "条结果" },
+]);
 
 useSeoMeta({
   title: "搜索",
   description: "搜索页"
 })
+
+definePageMeta({
+  layout: false,
+})
 </script>
 
 <template>
-  <div v-show="showLoading" class="w-full h-full">
-    <Loading/>
-  </div>
-  <div class="search-header box flex rounded-xl">
-    <span class="title tag-item">{{ searchStore.keyword }}</span>
-  </div>
-  <div class="page-content w-full">
-    <div class="mt-7">
-      <div v-if="!searchList||searchList.length<=0" class="text-center">
-        什么也没有搜索到（⊙ｏ⊙）
-      </div>
-      <div v-for="article in searchList">
-        <ArticleItem :article="article"/>
+  <NuxtLayout name="page">
+    <template #hero>
+      <PageHero
+        title="文章搜索"
+        eyebrow="Search"
+        :subtitle="heroSubtitle"
+        :thumbnail="heroThumbnail"
+        :stats="heroStats"
+      />
+    </template>
+
+    <div v-show="showLoading" class="w-full h-full">
+      <Loading/>
+    </div>
+    <div v-show="!showLoading" class="page-content w-full">
+      <div class="mt-7">
+        <div v-if="!searchList||searchList.length<=0" class="text-center">
+          什么也没有搜索到（⊙ｏ⊙）
+        </div>
+        <div v-for="article in searchList">
+          <ArticleItem :article="article"/>
+        </div>
       </div>
     </div>
-  </div>
+  </NuxtLayout>
 </template>

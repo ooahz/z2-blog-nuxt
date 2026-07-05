@@ -1,57 +1,45 @@
 <script setup lang="ts">
 import type {PreviewColumnInterface} from "@/types/columnInterface";
 import type {CategoryMapInterface} from "@/types/categoryInterface";
-import {listCategoryApi} from "~~/service/category";
-import {listAllColumnApi, listColumnByCategoryIdApi} from "~~/service/column";
 import {OuOSkeleton} from "@ahzoo/ouo";
 import ColumnItem from "@/components/list/ColumnItem.vue";
-import {LayoutGrid, Code2, Palette, Cpu, BookOpen, Gamepad2, Music, Camera, Globe, Box} from "lucide-vue-next";
+import {LayoutGrid, Code2, Palette, Cpu, BookOpen, Gamepad2, Music, Camera, Globe} from "lucide-vue-next";
+import EmptyState from "~/components/common/EmptyState.vue";
 
-const categoryList = ref<CategoryMapInterface[]>([]);
-const columnList = ref<PreviewColumnInterface[]>([]);
-const categoryName = ref("");
-const showLoading = ref(false);
-const selectIndex = ref(-1);
+interface Props {
+  categoryList: CategoryMapInterface[];
+  columnList: PreviewColumnInterface[];
+  selectIndex?: number;
+  loading?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  selectIndex: -1,
+  loading: false
+});
+
+const emit = defineEmits<{
+  (e: "select-all"): void;
+  (e: "select-category", category: CategoryMapInterface, index: number): void;
+}>();
+
 const isAnimating = ref(false);
 
-await getCategoryList();
-await getColumnList(1, 0);
+watch(() => props.loading, (loading) => {
+  isAnimating.value = true;
+  if (!loading) {
+    setTimeout(() => {
+      isAnimating.value = false;
+    }, 300);
+  }
+}, {immediate: true});
 
-async function getCategoryList() {
-  categoryList.value = await listCategoryApi();
+function onSelectAll() {
+  emit("select-all");
 }
 
-async function getColumnList(pagination: number, index = -1) {
-  if (index === selectIndex.value) {
-    return;
-  }
-  isAnimating.value = true;
-  selectIndex.value = -1;
-  categoryName.value = "全部专栏";
-  columnList.value = await listAllColumnApi();
-  setTimeout(() => {
-    isAnimating.value = false;
-  }, 300);
-}
-
-async function getColumnListByCategoryId(category: CategoryMapInterface, pagination: number, index: number, top = false) {
-  if (index === selectIndex.value) {
-    return;
-  }
-  showLoading.value = true;
-  isAnimating.value = true;
-  if (top) {
-    document?.querySelector("#main")?.scrollIntoView({
-      behavior: "smooth"
-    });
-  }
-  selectIndex.value = index;
-  columnList.value = await listColumnByCategoryIdApi(category.id, pagination);
-  categoryName.value = category.name;
-  showLoading.value = false;
-  setTimeout(() => {
-    isAnimating.value = false;
-  }, 300);
+function onSelectCategory(category: CategoryMapInterface, index: number) {
+  emit("select-category", category, index);
 }
 
 const categoryIcons = [
@@ -88,16 +76,16 @@ function getCategoryIcon(index: number) {
 
 <template>
   <div class="category-container">
-    <div v-show="showLoading" class="skeleton h-full">
+    <div v-show="loading" class="skeleton h-full">
       <OuOSkeleton/>
     </div>
-    <div v-show="!showLoading" class="category-content">
+    <div v-show="!loading" class="category-content">
       <div class="category-nav mb-8">
         <div class="nav-track flex">
           <div
             class="nav-item"
             :class="{ 'nav-item--active': selectIndex === -1 }"
-            @click="getColumnList(1)"
+            @click="onSelectAll"
           >
             <div class="nav-item__inner">
               <LayoutGrid class="nav-icon" :size="18"/>
@@ -115,7 +103,7 @@ function getCategoryIcon(index: number) {
               '--active-border': getCategoryStyle(index).border,
               '--active-accent': getCategoryStyle(index).accent
             } : {}"
-            @click="getColumnListByCategoryId(category, 1, index)"
+            @click="onSelectCategory(category, index)"
           >
             <div class="nav-item__inner">
               <component :is="getCategoryIcon(index)" class="nav-icon" :size="18"/>
@@ -137,10 +125,10 @@ function getCategoryIcon(index: number) {
         </TransitionGroup>
       </div>
 
-      <div v-if="columnList.length === 0 && !showLoading" class="category-empty flex flex-xol items-center justify-center">
-        <Box class="empty-icon" :size="64"/>
-        <p class="empty-text">暂无专栏内容</p>
-      </div>
+      <EmptyState
+          v-if="columnList.length === 0 && !loading"
+          title="暂无专栏内容"
+      />
     </div>
   </div>
 </template>
@@ -250,21 +238,6 @@ function getCategoryIcon(index: number) {
 
   &.is-animating {
     opacity: 0.6;
-  }
-}
-
-.category-empty {
-  padding: 4rem 2rem;
-  color: rgba(var(--z-fontcolor-gray));
-
-  .empty-icon {
-    opacity: 0.5;
-    margin-bottom: 1rem;
-  }
-
-  .empty-text {
-    font-size: 1rem;
-    margin: 0;
   }
 }
 

@@ -6,7 +6,9 @@ import {OuOButton, OuOInput, OuOMessage, OuOTag, OuOTextarea, OuOTagGroup} from 
 
 const appConfig = useAppConfig();
 const globalStore = useGlobalStore();
-const friend = reactive<FriendInterface>({} as FriendInterface);
+const friend = reactive<FriendInterface>({
+  type: "1"
+} as FriendInterface);
 const websiteTitle = ref("友链网址");
 const updateFriend = ref(false);
 
@@ -315,7 +317,7 @@ function onCancel() {
     max-height: inherit;
     padding: 40px 32px;
     color: rgba(var(--z-primary-fontcolor));
-    background: linear-gradient(160deg, rgba(var(--z-primary-color), 0.92) 0%, rgba(var(--z-primary-color), 0.75) 100%),
+    background: linear-gradient(160deg, rgba(var(--z-primary-bg), 0.92) 0%, rgba(var(--z-primary-bg), 0.75) 100%),
     radial-gradient(circle at 20% 120%, rgba(255, 255, 255, 0.18), transparent 55%);
     border-radius: 28px 0 0 28px;
     overflow: hidden;
@@ -370,11 +372,11 @@ function onCancel() {
     &-info-title {
       position: sticky;
       top: 0;
-      font-size: 13px;
+      font-size: .9rem;
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      opacity: 0.65;
+      opacity: 0.7;
       margin-bottom: 18px;
       padding-bottom: 8px;
       background: rgba(var(--z-primary-color), 0.01);
@@ -400,7 +402,7 @@ function onCancel() {
     }
 
     &-label {
-      font-size: 11px;
+      font-size: .8rem;
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -408,7 +410,7 @@ function onCancel() {
     }
 
     &-value {
-      font-size: 13px;
+      font-size: .85rem;
       line-height: 1.5;
       word-break: break-all;
       opacity: 0.9;
@@ -519,9 +521,9 @@ function onCancel() {
     }
 
     &-label {
-      font-size: 13px;
+      font-size: .85rem;
       font-weight: 600;
-      color: rgba(var(--z-text-color), 0.75);
+      color: rgba(var(--z-text-color), 0.8);
     }
   }
 

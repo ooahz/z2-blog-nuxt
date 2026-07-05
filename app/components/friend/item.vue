@@ -8,7 +8,8 @@ defineProps({
 </script>
 
 <template>
-  <a :href="friend?.website" class="friends-item relative flex items-center rounded-xl">
+  <a :href="friend?.website" class="friends-item relative flex items-center rounded-xl overflow-hidden">
+    <div class="friends-item-mask"></div>
     <div class="friends-item-img ring-2 ring-base-200 shadow-sm p-0.5">
       <img :src="friend?.avatar" loading="lazy" decoding="async" :alt="friend?.name || 'Friend avatar'"/>
     </div>
@@ -34,12 +35,22 @@ defineProps({
   &:hover {
     transform: matrix(1, 0, 0, 1, 0, -4);
     border: 1px solid rgba(var(--z-primary-color), .3);
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1);
+    box-shadow: 0 8px 30px -10px rgba(var(--z-gray-bg), 0.1);
 
     .friends-item-img {
       scale: 1.05;
       box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(var(--z-primary-color), .5) 0px 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
     }
+  }
+
+  &-mask {
+    position: absolute;
+    top: -70%;
+    left: -70%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(var(--z-primary-color), 0.08), transparent 50%);
+    pointer-events: none;
   }
 
   p {
