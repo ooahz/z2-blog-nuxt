@@ -52,15 +52,16 @@ definePageMeta({
     </template>
 
     <Friend/>
-    <div class="box-header flex justify-end">
-      <div v-if="!(appConfig.feature?.friendLink === 'disable')"
-           @click="showFriendForm"
-           class="hover-color flex items-center right cursor-pointer transition-all duration-300 hover:scale-105">
-        <span class="title mx-1">
-          交换友链
-         </span>
-        <Link/>
-      </div>
+    <div class="box-header flex justify-end mobile:px-3 pad:px-8 py-8">
+      <button
+          v-if="!(appConfig.feature.friendLink === 'disable')"
+          class="write-btn"
+          @click="showFriendForm"
+      >
+        <Link class="btn-icon"/>
+        <span>交换友链</span>
+        <span class="btn-arrow">→</span>
+      </button>
     </div>
 
     <div v-if="friendList.length > 0" class="friend-list grid gap-7 my-7">

@@ -79,7 +79,7 @@ const props = defineProps({
     .column-card__thumbnail {
       .thumbnail-img {
         transform: scale(1.05);
-        opacity: 0.15;
+        opacity: 0.3;
       }
     }
 
@@ -154,8 +154,7 @@ const props = defineProps({
 }
 
 .column-card__thumbnail {
-  height: 80%;
-  border-radius: 12px;
+  inset: 0;
   pointer-events: none;
 
   .thumbnail-img {
@@ -164,7 +163,7 @@ const props = defineProps({
     object-fit: cover;
     opacity: 0.08;
     transition: all 0.4s ease;
-    filter: blur(1px);
+    filter: blur(11px);
   }
 
   .thumbnail-overlay {

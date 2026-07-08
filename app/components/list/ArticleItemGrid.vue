@@ -21,8 +21,9 @@ defineProps({
      class="story box-item"
      :style="{ '--item-index': index }">
     <div class="story__inner">
-      <div class="story__cover" v-if="article.thumbnail">
-        <img :src="article.thumbnail" :alt="article.title"
+      <div class="story__cover">
+        <img v-if="article.thumbnail"
+             :src="article.thumbnail" :alt="article.title"
              class="story__img" loading="lazy" decoding="async">
         <div class="story__cover-sheen"/>
       </div>

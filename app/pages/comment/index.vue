@@ -34,6 +34,7 @@ useSeoMeta({
 
 definePageMeta({
   layout: false,
+  layoutProps: {customPage: true}
 })
 </script>
 

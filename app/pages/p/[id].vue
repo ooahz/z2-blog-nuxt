@@ -176,7 +176,7 @@ onUnmounted(() => {
             </div>
           </div>
           <div v-if="!(appConfig.feature?.comment === 'disable')" class="box mt-3">
-            <div class="absolute flex">
+            <div class="absolute flex z-[2]">
               <div class="box-title-line w-1 h-5 mr-2.5 rounded-full"></div>
               <span class="title">评论区</span>
             </div>

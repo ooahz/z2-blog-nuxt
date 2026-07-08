@@ -12,17 +12,10 @@ const layoutProps = computed(() => {
   <BaseLayout class="layout-page overflow-y-scroll">
     <div id="main" class="page">
       <slot name="hero"/>
-      <slot name="header">
-        <div class="page-header paragraph" v-if="layoutProps.title && !layoutProps.fullPage">
-          <div class="flex flex-col ml-2 justify-center">
-            <span class="loli-font title relative my-3">{{ layoutProps.title }}</span>
-            <span class="subtitle mb-5" v-html="layoutProps.subtitle"></span>
-          </div>
-        </div>
-      </slot>
       <slot v-if="layoutProps.fullPage"/>
       <div class="flex" v-else>
-        <div class="page-content w-full mobile:px-3 pad:px-8 py-8 rounded-lg">
+        <div class="w-full"
+             :class="layoutProps.customPage ? 'custom-page-content' : 'page-content mobile:px-3 pad:px-8 py-8 rounded-lg'">
           <slot/>
         </div>
         <Sidebar
