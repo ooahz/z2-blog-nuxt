@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type {ArticleInterface} from "@/types/articleInterface";
 import type {PreviewColumnInterface} from "@/types/columnInterface";
+import type {CommentItemInterface} from "@/types/commentInterface";
 import {getArticleDetailApi} from "~~/service/article";
 import {listColumnByArticleIdApi} from "~~/service/column";
+import {listFriendApi} from "~~/service/comment";
 import {useArticleStore} from "@/store/articleStore";
 import {useMenuStore} from "@/store/menuStore";
 import Prism from "prismjs";
@@ -22,6 +24,7 @@ menuState.setWithComment();
 const {$viewport} = useNuxtApp();
 const article = reactive<ArticleInterface>({} as ArticleInterface);
 const columnList = reactive<Array<PreviewColumnInterface>>([]);
+const commentList = ref<CommentItemInterface[]>([]);
 
 const nowIndex = ref(0);
 const articlePath = <string>path.split("/").pop();
@@ -31,6 +34,17 @@ const articlePath = <string>path.split("/").pop();
  */
 await getArticleByPath(articlePath);
 await getColumnByArticleId(article.id);
+await getCommentList();
+
+async function getCommentList(pagination: number = 1) {
+  commentList.value = await listFriendApi(articlePath, pagination).then((res) => {
+    if (!res) return [];
+    return res.map(item => ({
+      ...item,
+      avatarDisplay: "text"
+    }));
+  });
+}
 
 
 function scrollTo(id: string) {
@@ -161,13 +175,15 @@ onUnmounted(() => {
               <OuODottedPagination v-if="columnList.length===2" :total=2 @onclick="switchColumn"/>
             </div>
           </div>
-          <div v-if="!(appConfig.feature.comment === 'disable')" class="box mt-3">
+          <div v-if="!(appConfig.feature?.comment === 'disable')" class="box mt-3">
             <div class="absolute flex">
               <div class="box-title-line w-1 h-5 mr-2.5 rounded-full"></div>
               <span class="title">评论区</span>
             </div>
             <div class="mt-3">
-              <Comment/>
+              <ClientOnly>
+                <Comment :comment-list="commentList" @refresh="getCommentList"/>
+              </ClientOnly>
             </div>
           </div>
         </div>

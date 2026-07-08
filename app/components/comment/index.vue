@@ -9,10 +9,12 @@ import CommentForm from "./form.vue";
 import EmptyState from "~/components/common/EmptyState.vue";
 
 interface Props {
-  commentList: CommentItemInterface[];
+  commentList?: CommentItemInterface[];
 }
 
-defineProps<Props>();
+withDefaults(defineProps<Props>(), {
+  commentList: () => []
+});
 
 const emit = defineEmits<{
   (e: "refresh"): void;

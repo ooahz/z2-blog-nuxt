@@ -100,7 +100,7 @@ export default defineNuxtConfig({
         host: "0.0.0.0"
     },
     nitro: {
-        devProxy: {
+        devProxy: process.env.NUXT_PUBLIC_MOCK_ENABLED === "true" ? {} : {
             "/blog/": {
                 target: "http://127.0.0.1:8080/blog/",
                 changeOrigin: true,
@@ -142,7 +142,8 @@ export default defineNuxtConfig({
     experimental: {
         payloadExtraction: true,
         inlineRouteRules: true,
-        componentIslands: true
+        componentIslands: true,
+        asyncContext: true
     },
     vite: {
         plugins: [
@@ -199,7 +200,8 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            apiBase: process.env.NUXT_PUBLIC_API_BASE || "/blog"
+            apiBase: process.env.NUXT_PUBLIC_API_BASE || "/blog",
+            mockEnabled: process.env.NUXT_PUBLIC_MOCK_ENABLED === "true"
         },
         security: {
             xFrameOptions: process.env.NUXT_SECURITY_X_FRAME_OPTIONS || "DENY",

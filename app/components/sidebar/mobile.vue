@@ -33,7 +33,7 @@ function closeSidebar() {
       <div class="mt-5">
         <a href="/category" class="menu-box">分类</a>
         <a href="/archive" class="menu-box">归档</a>
-        <a href="/comment" v-if="!(appConfig.feature.comment === 'disable')"
+        <a href="/comment" v-if="!(appConfig.feature?.comment === 'disable')"
            class="menu-box">留言</a>
         <a href="/friends" class="menu-box">友链</a>
       </div>

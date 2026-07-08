@@ -13,7 +13,7 @@ const commentList = ref<TopCommentItemInterface[]>([]);
 await getTopComment();
 
 async function getTopComment() {
-  if (appConfig.feature.comment === "disable") {
+  if (appConfig.feature?.comment === "disable") {
     return;
   }
   commentList.value = await topCommentApi();

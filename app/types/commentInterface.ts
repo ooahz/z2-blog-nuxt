@@ -19,7 +19,7 @@ export interface CommentItemInterface {
     content: string;
     parentId?: string;
     replyName?: string;
-    createTime: string;
+    createdDate: string;
     area?: string;
     tag?: string;
     showMore?: boolean;

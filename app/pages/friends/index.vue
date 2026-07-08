@@ -53,7 +53,7 @@ definePageMeta({
 
     <Friend/>
     <div class="box-header flex justify-end">
-      <div v-if="!(appConfig.feature.friendLink === 'disable')"
+      <div v-if="!(appConfig.feature?.friendLink === 'disable')"
            @click="showFriendForm"
            class="hover-color flex items-center right cursor-pointer transition-all duration-300 hover:scale-105">
         <span class="title mx-1">
