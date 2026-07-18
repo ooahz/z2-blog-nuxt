@@ -31,18 +31,11 @@ async function getColumnInfoByName(name: string) {
   columnInfo.title = previewColumn.value.name;
   columnInfo.thumbnail = previewColumn.value.thumbnail;
   columnInfo.description = previewColumn.value.description;
-  columnInfo.style = previewColumn.value.style;
 }
 
 async function getArticleListByColumnId(columnId: string, pagination: number) {
   articleList.value = await listArticleByColumnIdApi(columnId, pagination);
 }
-
-watch(() => columnInfo.style, (style) => {
-  if (import.meta.client && style) {
-    document.getElementById("ahzoo")?.style.setProperty("--z-bg", style);
-  }
-}, {immediate: true});
 
 const heroStats = computed(() => {
   const stats = [{ value: totalCount.value, label: "篇文章" }];

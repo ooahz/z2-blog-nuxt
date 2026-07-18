@@ -27,7 +27,6 @@ const columns: PreviewColumnInterface[] = [
         description: "基于 Nuxt 构建现代化全栈应用实战记录",
         thumbnail: "https://s.ahzoo.cn/demo/img/CG_317.png",
         total: 5,
-        style: "rgba(0, 220, 130, 0.15)",
         categoryList: [categories[0], categories[3]]
     },
     {
@@ -36,7 +35,6 @@ const columns: PreviewColumnInterface[] = [
         description: "Vue 生态进阶与最佳实践",
         thumbnail: "https://s.ahzoo.cn/demo/img/CG_382.png",
         total: 4,
-        style: "rgba(65, 184, 131, 0.15)",
         categoryList: [categories[0]]
     },
     {
@@ -45,7 +43,6 @@ const columns: PreviewColumnInterface[] = [
         description: "记录生活里的细碎与美好",
         thumbnail: "",
         total: 3,
-        style: "rgba(255, 170, 100, 0.15)",
         categoryList: [categories[2]]
     }
 ];
@@ -206,7 +203,6 @@ const fullArticles: ArticleInterface[] = previewArticles.map(preview => ({
     thumbnail: preview.thumbnail,
     createdDate: preview.createdDate || "",
     updatedDate: preview.updatedDate || "",
-    style: "rgba(63, 71, 95, 1)",
     columnList: preview.columnList,
     category: preview.categoryMap
 }));

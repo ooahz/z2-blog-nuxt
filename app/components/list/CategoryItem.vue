@@ -6,23 +6,8 @@ const props = defineProps({
   category: {
     type: Object as PropType<CategoryMapInterface>,
     required: true
-  },
-  style: String
-});
-
-/**
- * 设置预览页主题
- */
-function setProperty() {
-  const primary = document.getElementById("ahzoo");
-  if (!!props.style) {
-    primary!.style.setProperty("--z-bg", props.style);
   }
-}
-
-onMounted(() => {
-  setProperty();
-})
+});
 </script>
 
 <template>

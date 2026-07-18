@@ -47,12 +47,12 @@ onMounted(() => {
 
 <template>
   <div id="post" class="flex-1">
-    <div class="screen" v-if="$viewport.isLessThan('lg')">
+    <div class="screen hidden mobile:block pc:hidden">
       <ArticleItem v-for="article in articleList"
                    :key="article.path"
                    :article="article"/>
     </div>
-    <div class="screen" v-else>
+    <div class="screen block mobile:hidden pc:block">
       <FeaturedArticle v-if="articleList?.length"
                        :article="articleList[0]"
                        :index="0"
@@ -81,6 +81,7 @@ onMounted(() => {
   :deep(.lead) {
     animation-delay: 0.1s !important;
   }
+
   :deep(.story) {
     animation-delay: calc(var(--item-index, 0) * 60ms + 0.25s) !important;
   }

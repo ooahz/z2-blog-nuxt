@@ -7,7 +7,6 @@ export interface PreviewColumnInterface {
     description: string;
     thumbnail?: string;
     total?: number;
-    style?: string;
     articleList?: PreviewArticleInterface[];
     categoryList?: CategoryMapInterface[];
 }

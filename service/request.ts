@@ -65,7 +65,6 @@ function formatResult<T>(res: ReturnType<typeof useFetch>, handleData: boolean):
 
         // 处理 API 响应格式
         const {data: responseData, state, message} = originData as ApiResponse;
-        console.log("Response data:", responseData);
         if (state === "success") {
             return handleData ? toRaw(responseData) : toRaw(originData);
         } else {
