@@ -19,15 +19,16 @@ Github：（十玖八柒）https://github.com/ooahz
 ## 仓库地址
 
 博客前端开源仓库地址：[z2-nuxt-blog](https://github.com/ooahz/z2-blog-nuxt)
+> blog：博客端    
+> admin：后台管理端
+
 博客后端开源仓库地址：[z2-blog-cloud](https://github.com/ooahz/z2-blog-cloud)
-后台管理前端开源仓库地址：[z2-blog-admin](https://github.com/ooahz/z2-blog-admin)
 
 ## 项目预览
 
-![](https://s.ahzoo.cn/img/open/blog/open10001.webp)
-![](https://s.ahzoo.cn/img/open/blog/open10002.webp)
-![](https://s.ahzoo.cn/img/open/blog/open10004.webp)
-![](https://s.ahzoo.cn/img/open/blog/open10007.webp)
+![](https://s.ahzoo.cn/img/open/blog/open10101.webp)
+![](https://s.ahzoo.cn/img/open/blog/open10102.webp)
+![](https://s.ahzoo.cn/img/open/blog/open10111.webp)
 
 
 ## 项目技术栈
@@ -48,7 +49,8 @@ pnpm install
 ```shell
 pnpm run dev
 ```
-默认访问地址：http://127.0.0.1:3200
+blog默认访问地址：http://127.0.0.1:3200
+admin默认访问地址：http://127.0.0.1:3000
 
 ## 项目部署
 

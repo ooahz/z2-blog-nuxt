@@ -1,7 +1,8 @@
 {
-  "name": "nuxt-admin",
-  "type": "module",
+  "name": "z2blog-admin",
   "private": true,
+  "version": "2.5.0",
+  "type": "module",
   "description": "Z次源——现代化Nuxt博客",
   "author": {
     "name": "Ahzoo(十玖八柒)",
